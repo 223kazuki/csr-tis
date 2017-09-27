@@ -98,6 +98,16 @@ module.exports = {
       linkToSalesforce: 'Link to Salesforce lead',
       createSalesforceLead: 'Create Salesforce lead'
     },
+    zendeskTickets: {
+      id: 'ID:',
+      subject: 'Subject:',
+      description: 'Description:',
+      buttonText: 'View ticket in Zendesk',
+      loadingTickets: 'tickets'
+    },
+    errorBanner: {
+      text: 'Error:'
+    },
     date: {
       long: 'MMMM Do, YYYY'
     },
@@ -206,6 +216,16 @@ module.exports = {
       zip: 'ZIP',
       linkToSalesforce: 'Link to Salesforce lead',
       createSalesforceLead: 'Create Salesforce lead'
+    },
+    zendeskTickets: {
+      id: 'ID:',
+      subject: 'Subject:',
+      description: 'Description:',
+      buttonText: 'View ticket in Zendesk',
+      loadingTickets: 'tickets'
+    },
+    errorBanner: {
+      text: 'Error:'
     },
     date: {
       long: 'D MMMM YYYY'
