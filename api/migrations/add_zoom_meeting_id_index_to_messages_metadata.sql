@@ -1,0 +1,1 @@
+CREATE INDEX IF NOT EXISTS zoom_meeting_id_idx ON messages_metadata (((messages_metadata.metadata->>'zoom_meeting_id')::integer));

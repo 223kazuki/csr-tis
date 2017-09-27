@@ -1,0 +1,1 @@
+UPDATE sessions SET invalidated = $2 WHERE token = $1;

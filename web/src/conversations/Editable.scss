@@ -1,0 +1,56 @@
+.profileField {
+  border: 1px solid #E4E9EC;
+  border-radius: 0.4rem;
+  line-height: 1.5em;
+  padding: 0.2em 0.4em;
+  position: relative;
+  label {
+    color: #999;
+    display: inline-block;
+    font-size: 0.8rem;
+    line-height: 1em;
+  }
+}
+
+span.profileValue {
+  bottom: 0;
+  color: #313F48;
+  display: inline-block;
+  margin: 0 0.5em;
+  position: relative;
+  &.blockField {
+    display: block;
+    margin: 0.25em 0;
+    width: 100%;
+  }
+}
+
+span.editable {
+  border: 1px solid transparent;
+  border-radius: 0.25em;
+  box-sizing: border-box;
+  display: inline-block;
+  min-height: 1.5em;
+  padding: 0 0.3em;
+  transition: background 0.25s, border 0.25s;
+  width: 100%;
+  &:hover {
+    background-color: white;
+    border: 1px solid #DDD;
+  }
+  &.empty {
+    color: #CCC;
+    font-style: italic;
+    position: relative;
+  }
+}
+
+input.editable {
+  outline: none;
+  padding: 0 0.3em;
+  width: 100%;
+}
+
+textarea.editable {
+  width: 100%;
+}

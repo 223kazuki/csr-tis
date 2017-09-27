@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+WORKDIR=/tmp/dom-webhooks-deploy
+mkdir $WORKDIR
+
+cp app.js "$WORKDIR/app.js"
+cp package.json "$WORKDIR/package.json"
+cp -r src/ "$WORKDIR/src/"
+
+cd $WORKDIR
+git init
+git add .
+git commit -m "Deploy"
+git push -f https://git.heroku.com/layer-dom-webhooks-listener.git master
+
+cd /
+rm -rf $WORKDIR

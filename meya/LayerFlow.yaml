@@ -1,0 +1,11 @@
+name: LayerFlow
+states:
+    greeting:
+        component: meya.text
+        properties:
+            text: "Hello! Welcome to Layer."
+        delay:
+            relative: 1
+    ask:
+        flow: ask_service
+        return: true

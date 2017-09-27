@@ -1,0 +1,1 @@
+SELECT * FROM conversations WHERE metadata->>'primary_user_id' = $1::text;

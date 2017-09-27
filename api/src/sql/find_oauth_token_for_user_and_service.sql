@@ -1,0 +1,1 @@
+SELECT * FROM oauth_tokens WHERE user_id = $1 AND service = $2;

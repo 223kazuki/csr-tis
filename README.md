@@ -1,0 +1,3 @@
+CSR is an open-source application showing what can be built using Layer SDKs and libraries. As of April 2017, it is intended to be a reference implementation of the rich functionality and integrations typically used in an agent-to-user scenario. Currently, we make no guarantees about the production-readiness of the code, although we use CSR internally at Layer for public demonstrations and to handle non-critical customer interactions. We are rapidly iterating based on our internal use cases and early adopter feedback; while we try to avoid breaking changes, we are currently unable to guarantee that updates won’t cause breakage.
+
+Documentation and setup instructions can be found [here](https://layerhq.github.io/csr/).

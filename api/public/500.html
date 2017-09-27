@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600" rel="stylesheet">
+  <title>Layer Demo — Server Error</title>
+  <style>
+    html, body {
+      color: #444;
+      font-family: 'Open Sans', 'Helvetica', sans-serif;
+      font-size: 16px;
+      line-height: 1.5em;
+      padding: 2rem 1rem;
+    }
+    .container {
+      margin: auto;
+      width: 600px;
+    }
+    p.links {
+      border-bottom: 1px solid #EEE;
+      border-top: 1px solid #EEE;
+      color: #888;
+      margin: 2rem 0;
+      padding: 1rem 0;
+      text-align: center;
+    }
+    p.links a {
+      color: #19a5e4;
+      padding: 0 0.5rem;
+      text-decoration: none;
+      transition: color 0.25s;
+    }
+    p.links a:hover {
+      color: #1384b6;
+    }
+    .dividerImage {
+      margin: 3rem 0;
+      text-align: center;
+    }
+    h2 {
+      font-size: 1.2rem;
+    }
+    pre {
+      background: #F4F5F6;
+      border: 1px solid #DDD;
+      border-radius: 0.5rem;
+      font-family: monospace;
+      overflow-x: scroll;
+      padding: 0.5rem;
+    }
+  </style>
+</head>
+
+<body>
+  <div class='container'>
+    <header class='hero'>
+      <img class='heroImage' src='/beasties.jpg' width='600' height='auto' />
+      <h1>Looks like something went wrong!</h1>
+      <p>Our engineers are working on getting things back. Feel free to contact us if the problem persists.</p>
+
+      <p class='links'>
+        <a href='https://support.layer.com'>Layer support</a>
+        &bull;
+        <a href='https://status.layer.com'>Service status</a>
+        &bull;
+        <a href='https://layer.com'>Layer homepage</a>
+      </p>
+      <p class='dividerImage'>
+        <img src='/hackle.jpg' width='150' height='auto' />
+      </p>
+    </header>
+
+    <div class='content'>
+      <div class='technical'>
+        <h2>Technical details</h2>
+        <pre>
+          {{stack}}
+        </pre>
+      </div>
+    </div>
+  </div>
+</body>

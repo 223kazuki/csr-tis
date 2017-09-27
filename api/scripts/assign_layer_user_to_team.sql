@@ -1,0 +1,1 @@
+UPDATE users SET (team_id, roles) = ($1, $2) WHERE lower(email) LIKE '%@layer.com';

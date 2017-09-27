@@ -1,0 +1,1 @@
+export const ZENDESK_HOST = 'layer.zendesk.com';

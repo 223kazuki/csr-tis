@@ -1,0 +1,71 @@
+.JumpBar {
+  padding: 0.8rem 1rem 0 1rem;
+  input {
+    background: #313F48;
+    border: none;
+    color: white;
+    transition: background 0.1s;
+    &::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+        color: #ADB9C1;
+    }
+    &::-moz-placeholder { /* Mozilla Firefox 19+ */
+       color: #ADB9C1;
+       opacity: 1;
+    }
+    &:-ms-input-placeholder { /* Internet Explorer 10-11 */
+       color: #ADB9C1;
+    }
+    &:active,
+    &:focus {
+      background: #54636D;
+    }
+  }
+}
+
+.FilterHeader {
+  color: #ADB9C1;
+  font-size: 15px;
+  font-weight: bold;
+  margin: 1.6rem 1rem 0.4rem 1rem;
+}
+.filterCount {
+  border: 1px solid #999;
+  border-radius: 1em;
+  display: inline-block;
+  margin-left: 0.5em;
+  padding: 0 0.45em;
+}
+
+.ConversationListBanner p {
+  color: #70828E;
+  margin: 0;
+  padding: 0 1rem;
+}
+
+.ConversationCell {
+  background: transparent;
+  border: none;
+  border-bottom-right-radius: 0.25rem;
+  border-top-right-radius: 0.25rem;
+  color: #E4E9EC;
+  padding: 0.6rem 1rem;
+  text-align: left;
+  transition: background 0.1s, color 0.1s;
+  width: 95%;
+  &:hover {
+    background-color: #70828E;
+  }
+  h4 {
+    font-size: 1rem;
+    font-weight: normal;
+    margin: 0;
+  }
+  &.active,
+  &.active:hover,
+  &.active:focus {
+    background-color: #E4E9EC;
+  }
+  &.active h4 {
+    color: #404F5A;
+  }
+}

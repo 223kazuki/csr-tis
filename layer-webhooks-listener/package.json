@@ -1,0 +1,22 @@
+{
+  "name": "layer-webhooks-listener",
+  "version": "1.0.0",
+  "description": "Listen to Layer webhooks and process them as needed",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app.js || node app.js",
+    "start-redis": "redis-server /usr/local/etc/redis.conf",
+    "test": "npm test"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "2.0.0",
+    "express": "4.14.0",
+    "layer-api": "2.3.1",
+    "layer-webhooks-services": "feifanzhou/node-layer-webhooks-services",
+    "pg": "6.1.0",
+    "pg-native": "1.10.0",
+    "redis": "2.6.3"
+  }
+}

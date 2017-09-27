@@ -1,0 +1,1 @@
+UPDATE conversations SET metadata = $2::jsonb WHERE id = $1;

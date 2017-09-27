@@ -1,0 +1,1 @@
+SELECT u.* FROM conversations c, users u WHERE c.id = $1 AND u.id = (c.metadata->>'primary_user_id')::int;

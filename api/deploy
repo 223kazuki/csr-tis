@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+WORKDIR=/tmp/dom-api-deploy
+mkdir $WORKDIR
+
+cp database.json "$WORKDIR/database.json"
+cp index.js "$WORKDIR/index.js"
+cp Procfile "$WORKDIR/Procfile"
+cp -r migrations/ "$WORKDIR/migrations"
+cp -r scripts/ "$WORKDIR/scripts"
+cp package.json "$WORKDIR/package.json"
+cp -r seeds/ "$WORKDIR/seeds/"
+cp seed-db.js "$WORKDIR/seed-db.js"
+cp -r src/ "$WORKDIR/src/"
+cp -r ../common/ "$WORKDIR/src/"
+cp -r public/ "$WORKDIR/public/"
+cp -r emails/ "$WORKDIR/emails"
+cp newrelic.js "$WORKDIR/newrelic.js"
+
+cd $WORKDIR
+git init
+git add .
+git commit -m "Deploy"
+git push -f https://git.heroku.com/layer-dom.git master
+
+cd /
+rm -rf $WORKDIR

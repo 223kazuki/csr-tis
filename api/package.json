@@ -1,0 +1,66 @@
+{
+  "name": "csr-api",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint src/",
+    "migrate": "PGDATABASE=csr_dev db-migrate up",
+    "migrate:test": "db-migrate up -e test",
+    "seed": "node seed-db.js",
+    "start": "nodemon index.js || node index.js",
+    "test": "PGDATABASE=csr_test node __tests__/cleanup_database.js; PGDATABASE=csr_test jest --forceExit"
+  },
+  "author": "",
+  "license": "ISC",
+  "engines": {
+    "node": ">= 6.0.0"
+  },
+  "dependencies": {
+    "base-64": "^0.1.0",
+    "bcrypt": "0.8.7",
+    "bitly": "^4.1.1",
+    "db-migrate": "0.10.0-beta.20",
+    "db-migrate-pg": "0.1.11",
+    "dotenv": "2.0.0",
+    "each-cons": "^1.0.0",
+    "emailreplyparser": "0.0.5",
+    "google-libphonenumber": "^2.0.11",
+    "handlebars": "^4.0.6",
+    "jquery": "3.1.1",
+    "jws": "3.1.4",
+    "koa": "1.2.4",
+    "koa-bodyparser": "2.3.0",
+    "koa-compose": "^2.5.1",
+    "koa-cors": "0.0.16",
+    "koa-multer": "0.0.2",
+    "koa-router": "5.4.0",
+    "koa-static": "^2.0.0",
+    "layer-api": "2.3.2",
+    "layer-patch": "1.1.1",
+    "lodash": "4.17.2",
+    "meta-extractor": "^1.0.7",
+    "newrelic": "^1.36.1",
+    "nylas": "3.0.0",
+    "pg": "6.1.0",
+    "pg-native": "1.10.0",
+    "request": "2.79.0",
+    "sendgrid": "4.7.1",
+    "timekit-booking": "1.9.3",
+    "twilio": "^2.11.1",
+    "urlsafe-base64": "^1.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^3.19.0",
+    "jest": "^18.0.0",
+    "nock": "9.0.2",
+    "nodemon": "^1.11.0"
+  },
+  "jest": {
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "test_helper",
+      "cleanup_database"
+    ]
+  }
+}

@@ -1,0 +1,1 @@
+SELECT * FROM lead_users WHERE user_id=$1;

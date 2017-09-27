@@ -1,0 +1,24 @@
+.Login,
+.ResetPassword {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  form {
+    width: 300px;
+    label {
+      display: block;
+      margin-bottom: 1em;
+      span {
+        display: inline-block;
+        font-size: 0.9em;
+        margin-bottom: 0.3em;
+      }
+    }
+  }
+  button.primary {
+    width: 100%;
+  }
+  button.inline.pull-right {
+    font-weight: normal;
+  }
+}

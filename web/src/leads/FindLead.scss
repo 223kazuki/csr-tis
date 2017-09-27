@@ -1,0 +1,60 @@
+.FindLeadContainer {
+  margin: 2rem auto;
+  width: 600px;
+}
+
+.FindLead {
+  margin-top: 2em;
+}
+
+.searchbar {
+  display: flex;
+  input {
+    flex: 0.9;
+  }
+  button.primary {
+    flex: 0.1;
+    margin-left: 0.25em;
+  }
+}
+
+.searchResults {
+  margin-top: 1rem;
+  & > p {
+    color: #999;
+    font-weight: bold;
+    text-align: center;
+  }
+}
+.searchResult {
+  border-bottom: 1px solid #CCC;
+  display: flex;
+  padding: 0.5em;
+  transition: background 0.25s;
+  &:hover {
+    background: rgba(245, 245, 245, 0.7);
+  }
+  p {
+    flex: 0.6;
+    margin-bottom: 0;
+  }
+  .resultName {
+    display: block;
+    font-weight: bold;
+  }
+  .resultEmail {
+    display: block;
+  }
+  .resultSFLink {
+    display: inline-block;
+    flex: 0.2;
+    font-size: 0.85em;
+    margin-top: 1.5rem;
+  }
+  .resultAction {
+    flex: 0.2;
+    font-size: 0.85em;
+    margin-top: 0.8rem;
+    height: 3rem;
+  }
+}

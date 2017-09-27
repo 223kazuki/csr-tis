@@ -1,0 +1,83 @@
+# select a blueprint above or type/paste YAML here
+name: ask_service
+states:
+    set_service:
+        component: meya.input_string
+        properties:
+            text: "Would you like a demonstration? Or would you like product support?"
+            output: service
+    get_service:
+        component: whichService
+        transitions:
+            customer_service: help
+            sales: sale
+            not_matched: error
+    error:
+        component: meya.text
+        properties:
+            text: "I'm sorry. I wasn't able to process your request."
+        return: true
+    help:
+        component: meya.text
+        properties:
+            text: "Great! I'd be happy to help. Let me point you in the right direction. Please visit http://support.layer.com/ for support"
+        return: true
+    sale:
+        component: meya.text
+        properties:
+            text: "Great, welcome to a small example of what is possible.  We will start with some bot interaction and then you will transition to a live demo"
+        delay:
+            relative: 2
+    prep:
+        component: meya.text
+        properties:
+            text: "Let's start with a few questions to get to know you"
+        delay:
+            relative: 1
+    name:
+        component: meya.input_string
+        properties:
+            text: "What is your name?"
+            output: name
+    email:
+        component: meya.input_string
+        properties:
+            text: "What is your email, {{ flow.name }}?"
+            output: email_address
+    phone:
+        component: meya.input_string
+        properties:
+            text: "What is your phone number?"
+            output: phone_number
+    company:
+        component: meya.input_string
+        properties:
+            text: "What company do you represent?"
+            output: company_name
+    # check_agent:
+    #     component: check_time
+    #     transitions:
+    #         available: wait
+    #         out: send_calendar
+    # wait:
+    #     component: meya.text
+    #     properties:
+    #         text: "Thank you, {{ flow.name }}. One moment please."
+    #     return: true
+    closed:
+        component: meya.text
+        properties:
+            text: "Thank you, {{ flow.name }}! We are currently closed for the day, but let's set up a time for you to join us in a live demo!"
+            delay:
+            relative: 1
+    pick_cal:
+        component: meya.text
+        properties:
+            text: "Please tap the best time for you"
+    send_calendar:
+        component: sendCalendar
+    bye:
+        component: meya.text
+        properties:
+            text: "Thank you, {{ flow.name }}. We'll see you then!"
+        return: true

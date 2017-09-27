@@ -1,0 +1,135 @@
+<!-- Emails use the XHTML Strict doctype -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <!-- The character set should be utf-8 -->
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width"/>
+  <!-- Link to the email's CSS, which will be inlined into the email -->
+  <link rel="stylesheet" href="css/foundation-emails.css">
+  <style>
+    html, body {
+      background: #f3f3f3;
+    }
+    body, p, td, th, a {
+      color: #444;
+      font-family: 'Trebuchet MS', sans-serif;
+    }
+    table.message-body {
+      margin: 0 auto;
+      width: 500px;
+    }
+    table.message-body tbody {
+      background: #fefefe;
+      border-radius: 6px;
+    }
+    table.reply-button {
+      margin: 0 auto;
+      width: 120px;
+    }
+    table.reply-button a {
+      color: white;
+    }
+    #replyButton {
+      background: #19a5e4;
+      border-radius: 4px;
+      padding: 0;
+    }
+    th.button a {
+      display: block;
+      height: 100%;
+      padding: 10px 0;
+      text-align: center;
+      width: 100%;
+    }
+    th.content {
+      padding-top: 10px;
+    }
+    table.message-content {
+      border-bottom: 1px solid #EEE;
+      border-top: 1px solid #EEE;
+      margin: 20px auto;
+    }
+    table.message-content th {
+      padding: 10px 0;
+    }
+    table.message-content p:last-child {
+      margin-bottom: 0;
+    }
+    p.message-metadata {
+      color: #444;
+      font-size: 14px;
+    }
+    p.message-metadata .sender {
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Wrapper for the body of the email -->
+  <table class="body">
+    <tr>
+      <!-- The class, align, and <center> tag center the container -->
+      <td class="float-center" align="center" valign="top">
+        <center>
+
+          <table class="spacer float-center">
+            <tbody>
+              <tr>
+                <td>&nbsp;</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <table align="center" class="float-center">
+            <table class="row">
+              <th class="small-12 first last columns">
+                <img src="https://layer-dom-prod.herokuapp.com/logo.png" class="float-center" />
+              </th>
+            </table>
+          </table>
+
+          <table align="center" class="float-center message-body">
+            <tbody>
+              <tr>
+                <td>
+                  <table align="center" class="float-center row">
+                    <tr>
+                      <th class="small-12 columns first last content">
+                        <p>{{firstName}} from Layer sent you a message.</p>
+                        <table align="center" class="float-center message-content">
+                          <tbody>
+                            <tr>
+                              <th class="small-12 columns first last">
+                                <p class="message-metadata">
+                                  <span class="sender">{{firstName}}</span>
+                                  <span class="timestamp">{{timestamp}}</span>
+                                </p>
+                                <p>
+                                  {{{content}}}
+                                </p>
+                              </th>
+                          </tbody>
+                        <table align="center" class="float-center reply-button button">
+                          <tbody>
+                            <tr>
+                              <th class="button" id='replyButton'>
+                                <a href='{{link}}'>Reply</a>
+                              </th>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </th>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </center>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>

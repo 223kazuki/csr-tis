@@ -1,0 +1,1 @@
+INSERT INTO teams (app_id, sapi_token) VALUES ($1, $2) RETURNING app_id;

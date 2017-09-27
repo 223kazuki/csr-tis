@@ -1,0 +1,1 @@
+UPDATE conversations SET last_message = $2 WHERE id = $1;

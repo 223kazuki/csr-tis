@@ -1,0 +1,1 @@
+CREATE INDEX IF NOT EXISTS primary_user_id_idx ON conversations (((conversations.metadata->>'primary_user_id')::integer));

@@ -1,0 +1,1 @@
+SELECT u.* FROM sessions s, users u WHERE s.token = $1 AND u.id = s.user_id;

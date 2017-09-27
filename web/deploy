@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+WORKDIR=/tmp/dom-ui-deploy
+mkdir $WORKDIR
+
+cp package.json "$WORKDIR/package.json"
+cp -r public/ "$WORKDIR/public/"
+cp -r src/ "$WORKDIR/src/"
+cp static.json "$WORKDIR/static.json"
+cp ../common/LeadEnumFields.js "$WORKDIR/src/conversations/LeadEnumFields.js"
+cp ../common/LeadEnumFields.js "$WORKDIR/src/leads/LeadEnumFields.js"
+
+git log --pretty=medium -n 100 | ./gitlog_to_changelog.rb > "$WORKDIR/changelog.json"
+
+cd $WORKDIR
+git init
+git add .
+git commit -m "Deploy"
+git push -f https://git.heroku.com/dom-ui.git master
+
+cd /
+rm -rf $WORKDIR

@@ -1,0 +1,1 @@
+SELECT * FROM leads WHERE salesforce_id = $1;

@@ -1,0 +1,18 @@
+.SettingsContainer {
+  margin: 2rem auto;
+  width: 300px;
+}
+
+.Settings {
+  background: white;
+  border: 1px solid #C3CDD4;
+  box-shadow: 0 0 2px 2px #E4E9EC;
+  margin-top: 1rem;
+  padding: 1rem;
+  button {
+    width: 100%;
+  }
+  button, a {
+    margin: 0.4rem auto;
+  }
+}

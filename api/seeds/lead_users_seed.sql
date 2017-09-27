@@ -1,0 +1,4 @@
+INSERT INTO lead_users (lead_id, user_id) VALUES
+  (2000000, 1000003),
+  (2000001, 1000004),
+  (2000002, 1000005);

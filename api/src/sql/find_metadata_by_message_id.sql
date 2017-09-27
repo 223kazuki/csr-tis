@@ -1,0 +1,1 @@
+SELECT metadata FROM messages_metadata WHERE id = $1;
