@@ -30,8 +30,10 @@ import { isDev } from './utils'
 
 import { loadTranslations, setLocale, syncTranslationWithStore, i18nReducer } from 'react-redux-i18n'
 
-import translationsObject from './data/translations'
+const LOCALE_LANGUAGE = 'ja'
+const translationsObject = require(`./data/i18n/${LOCALE_LANGUAGE}.json`)
 
+console.log('translationsObject', translationsObject)
 const routeMiddleware = routerMiddleware(browserHistory)
 const store = createStore(
   combineReducers({
@@ -48,7 +50,7 @@ const store = createStore(
 
 syncTranslationWithStore(store)
 store.dispatch(loadTranslations(translationsObject))
-store.dispatch(setLocale('ja'))
+store.dispatch(setLocale(LOCALE_LANGUAGE))
 
 if (isDev()) window._reduxStore = store
 

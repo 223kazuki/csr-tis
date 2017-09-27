@@ -1,0 +1,112 @@
+{
+  "en": {
+    "login": {
+      "email": "1Layer email",
+      "password": "Password",
+      "emailPlaceholder": "example@layer.com",
+      "passwordPlaceholder": "thereisnopassword",
+      "resetPassword": "Reset password",
+      "button": "Login"
+    },
+    "conversationsFilters": {
+      "jumpbarPlaceholder": "Find name or email...",
+      "constants": {
+        "unclaimed": "Unclaimed",
+        "my_unanswered": "My Unanswered",
+        "my_active": "My Active",
+        "archived": "Archived",
+        "no_conversations": "No Conversations",
+        "error_conversations": "Error loading conversations"
+      }
+    },
+    "conversations": {
+      "findLeadButtonText": " Find lead"
+    },
+    "createConversation": {
+      "startNewConversationButtonText": "Start new conversation",
+      "prospectEmail": "Prospect email",
+      "firstName": "First name",
+      "lastName": "Last Name",
+      "inviteButtonText": "Invite"
+    },
+    "messages": {
+      "newConversationText": "New conversation",
+      "sendMessageText": "Send a message to start a conversation",
+      "leadSince": "Lead since ",
+      "removeBotText": "Remove bot",
+      "removingBotText": "Removing... ",
+      "errorMessage": "Error (click to show)",
+      "botRemovedText": "Bot removed ",
+      "unrecognizedState": "Unrecognized state",
+      "sendEmailText": "Send email",
+      "sendingText": "Sending... ",
+      "sentEmailText": "Email sent",
+      "sendSMSText": "Send SMS",
+      "smsSentText": "SMS sent",
+      "doneText": "Done",
+      "actionsText": "Actions",
+      "reassignText": "Reassign",
+      "sendText": "Send",
+      "composePlaceholder": "Enter message here"
+    },
+    "cardTypes": {
+      "Calendar invite": "Calendar invite",
+      "Zoom call": "Zoom call",
+      "Location": "Location",
+      "Carousel (properties)": "Carousel (properties)",
+      "Carousel (finance)": "Carousel (finance)",
+      "Carousel (pages)": "Carousel (pages)",
+      "Carousel (videos)": "Carousel (videos)",
+      "Poll": "Poll",
+      "File": "File",
+      "Good news": "Good news",
+      "Touchpoint 2": "Touchpoint 2"
+    },
+    "leadProfile": {
+      "statsText": "Stats",
+      "zendeskText": "Zendesk",
+      "profileName": "Profile",
+      "salesforceName": "Salesforce"
+    },
+    "leadProjectDetails": {
+      "projectTimelineText": "Project timeline",
+      "projectDetailsText": "Project details",
+      "errorMessage": "Error loading profile"
+    },
+    "simpleProfile": {
+      "userProfileSubject": "User profile"
+    },
+    "leadSalesforce": {
+      "subject": "Salesforce profile",
+      "error": "Error loading profile",
+      "name": "Name",
+      "email": "Email",
+      "phone": "Phone",
+      "leadOwner": "Lead owner",
+      "leadStatus": "Lead Status",
+      "leadSource": "Lead Source",
+      "company": "Company",
+      "segment": "Segment",
+      "industry": "Industry",
+      "employees": "Employees",
+      "department": "Department",
+      "role": "Role",
+      "address": "Address",
+      "city": "City",
+      "state": "State",
+      "zip": "ZIP",
+      "linkToSalesforce": "Link to Salesforce lead",
+      "createSalesforceLead": "Create Salesforce lead"
+    },
+    "zendeskTickets": {
+      "id": "ID:",
+      "subject": "Subject:",
+      "description": "Description:",
+      "buttonText": "View ticket in Zendesk",
+      "loadingTickets": "tickets"
+    },
+    "errorBanner": {
+      "text": "Error:"
+    }
+  }
+}
