@@ -310,6 +310,7 @@ class MessagesImpl extends Component {
                   pageSize={100}
                   emptyMessageListNode={this.emptyConversationNode()}
                   getMessageDeleteEnabled={(_) => false}
+                  composePlaceholder={I18n.t('messages.composePlaceholder')}
                   composeText={composerContent}
                   composeButtonsLeft={[
                     <OverlayTrigger ref={self => { this.overlayTrigger = self }} trigger='click' placement='top' rootClose overlay={addCardPicker}>

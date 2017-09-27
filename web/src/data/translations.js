@@ -46,7 +46,8 @@ module.exports = {
       doneText: 'Done',
       actionsText: 'Actions',
       reassignText: 'Reassign',
-      sendText: 'Send'
+      sendText: 'Send',
+      composePlaceholder: 'Enter message here'
     },
     cardTypes: {
       'Calendar invite': 'Calendar invite',
@@ -118,7 +119,8 @@ module.exports = {
       doneText: 'Done',
       actionsText: 'Actions',
       reassignText: 'Reassign',
-      sendText: 'Send'
+      sendText: 'Send',
+      composePlaceholder: 'Enter message here'
     },
     cardTypes: {
       'Calendar invite': 'Calendar invite',
