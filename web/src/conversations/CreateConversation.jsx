@@ -1,49 +1,50 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { setCreateConversationWidgetState, inviteToChat } from './actions';
-import FontAwesome from 'react-fontawesome';
-import { isStaging, isDev } from '../utils';
-import styled from 'styled-components';
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { setCreateConversationWidgetState, inviteToChat } from './actions'
+import FontAwesome from 'react-fontawesome'
+import { isStaging, isDev } from '../utils'
+import styled from 'styled-components'
+import { I18n } from 'react-redux-i18n'
 
 class CreateConversationPrompt extends Component {
-  render() {
+  render () {
     return isStaging() || isDev() ? (
       <button className='primary' onClick={this.props.onClick}>
-        <FontAwesome name='plus' /> <span>Start new conversation</span>
+        <FontAwesome name='plus' /> <span>{I18n.t('createConversation.startNewConversationButtonText')}</span>
       </button>
-    ) : null;
+    ) : null
   }
 }
 
 class CreateConversationInputImpl extends Component {
-  constructor(props) {
-    super(props);
+  constructor (props) {
+    super(props)
     this.state = { email: '', firstName: '', lastName: '' }
   }
-  componentDidMount() {
+  componentDidMount () {
     this.refs.input.focus()
   }
-  updateFirstNameInput(e) {
+  updateFirstNameInput (e) {
     this.setState({ firstName: e.target.value })
   }
-  updateLastNameInput(e) {
+  updateLastNameInput (e) {
     this.setState({ lastName: e.target.value })
   }
-  updateEmailInput(e) {
+  updateEmailInput (e) {
     this.setState({ email: e.target.value })
   }
-  render() {
-    const { disabled, loading } = this.props;
-    const invite = this.props.invite || (_ => alert('Invalid state — button should not be active'));
-    const buttonPrompt = loading ? <FontAwesome name='spinner' spin /> : 'Invite';
-    const { email, firstName, lastName } = this.state;
+  render () {
+    const { disabled, loading } = this.props
+    const invite = this.props.invite || (_ => alert('Invalid state — button should not be active'))
+    const buttonPrompt = loading ? <FontAwesome name='spinner' spin /> : I18n.t('createConversation.inviteButtonText')
+    const { email, firstName, lastName } = this.state
     return (
       <div className={`CreateConversationInput ${this.props.className}`}>
         <input
           disabled={disabled}
           type='email'
           name='email'
-          placeholder='Prospect email'
+          placeholder={I18n.t('createConversation.prospectEmail')}
           required
           ref='input'
           value={email}
@@ -52,7 +53,7 @@ class CreateConversationInputImpl extends Component {
           disabled={disabled}
           type='text'
           name='firstName'
-          placeholder='First name'
+          placeholder={I18n.t('createConversation.firstName')}
           required
           value={firstName}
           onChange={this.updateFirstNameInput.bind(this)} />
@@ -60,7 +61,7 @@ class CreateConversationInputImpl extends Component {
           disabled={disabled}
           type='text'
           name='lastName'
-          placeholder='Last name'
+          placeholder={I18n.t('createConversation.lastName')}
           required
           value={lastName}
           onChange={this.updateLastNameInput.bind(this)} />

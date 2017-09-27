@@ -1,17 +1,18 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { NavItem } from 'react-bootstrap';
-import { LinkContainer } from 'react-router-bootstrap';
-import FontAwesome from 'react-fontawesome';
-import ConversationsFilters from './ConversationsFilters';
-import CreateConversation from './CreateConversation';
-import Messages from './Messages';
-import LeadProfile from './LeadProfile';
-import styled from 'styled-components';
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { NavItem } from 'react-bootstrap'
+import { LinkContainer } from 'react-router-bootstrap'
+import FontAwesome from 'react-fontawesome'
+import ConversationsFilters from './ConversationsFilters'
+import CreateConversation from './CreateConversation'
+import Messages from './Messages'
+import LeadProfile from './LeadProfile'
+import styled from 'styled-components'
+import { I18n } from 'react-redux-i18n'
 
 class NavLogoImpl extends Component {
-  render() {
-    const { logo, companyName, className } = this.props;
+  render () {
+    const { logo, companyName, className } = this.props
     return (
       <LinkContainer to='/' className={className}>
         <NavItem className='navLogo'>
@@ -39,11 +40,11 @@ const NavLogo = styled(NavLogoImpl)`
     position: relative;
     top: -0.4rem;
   }
-`;
+`
 
 class NavHeaderImpl extends Component {
-  render() {
-    const { logo, companyName, className } = this.props;
+  render () {
+    const { logo, companyName, className } = this.props
     return (
       <header className={`NavHeader ${className}`}>
         <NavLogo logo={logo} companyName={companyName} />
@@ -69,14 +70,14 @@ const NavHeader = styled(NavHeaderImpl)`
       }
     }
   }
-`;
+`
 
 class NewConversationActionsImpl extends Component {
-  render() {
+  render () {
     return (
       <div className={`NewConversationActions ${this.props.className}`}>
         <LinkContainer to='/leads/find' className='FindLeadLink'>
-          <NavItem><FontAwesome name='search' /> Find lead</NavItem>
+          <NavItem><FontAwesome name='search' />{I18n.t('conversations.findLeadButtonText')}</NavItem>
         </LinkContainer>
         <CreateConversation />
       </div>
@@ -98,17 +99,17 @@ const NewConversationActions = styled(NewConversationActionsImpl)`
       color: #ADB9C1;
     }
   }
-`;
+`
 
 class QuickLinksImpl extends Component {
-  render() {
+  render () {
     return (
       <ul className={`QuickLinks ${this.props.className}`}>
         <LinkContainer to='/settings'>
-          <NavItem><FontAwesome name='cog' /> Settings</NavItem>
+          <NavItem><FontAwesome name='cog' /> {I18n.t('conversations.settingsText')}</NavItem>
         </LinkContainer>
         <LinkContainer to='/logout'>
-          <NavItem><FontAwesome name='unlink' /> Logout</NavItem>
+          <NavItem><FontAwesome name='unlink' /> {I18n.t('conversations.logoutText')}</NavItem>
         </LinkContainer>
       </ul>
     )
@@ -129,14 +130,14 @@ const QuickLinks = styled(QuickLinksImpl)`
       color: #C3CDD4;
     }
   }
-`;
+`
 
 const ConversationListImpl = connect(state => ({
   logo: state.ui.logo,
   companyName: state.ui.companyName
 }))(class extends Component {
-  render() {
-    const { logo, companyName, className } = this.props;
+  render () {
+    const { logo, companyName, className } = this.props
     return (
       <div className={`full-height-panel ConversationsList ${className}`}>
         <NavHeader logo={logo} companyName={companyName} />
@@ -148,7 +149,7 @@ const ConversationListImpl = connect(state => ({
       </div>
     )
   }
-});
+})
 const ConversationList = styled(ConversationListImpl)`
   background: #404F5A;
   display: flex;
@@ -157,10 +158,10 @@ const ConversationList = styled(ConversationListImpl)`
   .content {
     flex: 1;
   }
-`;
+`
 
 class ConversationsImpl extends Component {
-  render() {
+  render () {
     return (
       <div>
         <div className={`full-height-panel Conversations ${this.props.className}`}>
@@ -169,7 +170,7 @@ class ConversationsImpl extends Component {
           <LeadProfile />
         </div>
       </div>
-    );
+    )
   }
 }
 const Conversations = styled(ConversationsImpl)`
@@ -190,6 +191,6 @@ const Conversations = styled(ConversationsImpl)`
     overflow-y: hidden;
     width: 420px;
   }
-`;
+`
 
-export default Conversations;
+export default Conversations

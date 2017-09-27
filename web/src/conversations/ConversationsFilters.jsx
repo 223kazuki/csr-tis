@@ -29,8 +29,7 @@ class JumpBar extends Component {
 
 class FilterHeader extends Component {
   render() {
-    const { name, conversations } = this.props;
-    console.log('FilterHeader', name)
+    const { name, conversations } = this.props
     return (
       <h2 className='FilterHeader'>
         {name}

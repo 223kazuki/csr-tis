@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
-import ReactDOMServer from 'react-dom/server';
-import LayerUI, { WebSDK, LayerSDK } from '../Layer';
-const { ConversationPanel, SendButton } = LayerUI;
-import { Button, OverlayTrigger, Popover } from 'react-bootstrap';
-import FontAwesome from 'react-fontawesome';
-import { connect } from 'react-redux';
+import React, { Component } from 'react'
+import ReactDOMServer from 'react-dom/server'
+import LayerUI, { WebSDK, LayerSDK } from '../Layer'
+const { ConversationPanel, SendButton } = LayerUI
+import { Button, OverlayTrigger, Popover } from 'react-bootstrap'
+import FontAwesome from 'react-fontawesome'
+import { connect } from 'react-redux'
 import {
   updateConversationPreview,
   updateComposerContent,
@@ -37,13 +37,14 @@ require('./cards/LinkPreview');
 require('./cards/Response');
 import { messagePartsForFile } from './cards/File';
 require('./cards/Receipt');
+import { I18n } from 'react-redux-i18n'
 
 class EmptyConversationPrompt extends Component {
   render() {
     return (
       <div className='emptyConversationPrompt'>
-        <h5>New conversation</h5>
-        <p>Send a message to start a conversation.</p>
+        <h5>{I18n.t('messages.newConversationText')}</h5>
+        <p>{I18n.t('messages.sendMessageText')}</p>
       </div>
     );
   }
@@ -74,7 +75,7 @@ class ActionBarImpl extends Component {
       if (lead) {
         if (lead.created_at) {
           const leadCreatedAt = (lead.created_at instanceof Date) ? lead.created_at : new Date(lead.created_at);
-          leadSince = <p>Lead since {leadCreatedAt.getMonth() + 1}/{leadCreatedAt.getDate()}</p>;
+          leadSince = <p>{I18n.t('messages.leadSince')} {leadCreatedAt.getMonth() + 1}/{leadCreatedAt.getDate()}</p>;
         }
       }
       recipientInfo = (
@@ -87,52 +88,52 @@ class ActionBarImpl extends Component {
 
     var removeBotButton;
     if (removeBotState === 'default')
-      removeBotButton = <button className='inline' onClick={removeBot}>Remove bot</button>;
+      removeBotButton = <button className='inline' onClick={removeBot}>{I18n.t('messages.removeBotText')}</button>
     else if (removeBotState === 'removing')
-      removeBotButton = <button className='inline' disabled>Removing... <FontAwesome name='spinner' spin /></button>;
+      removeBotButton = <button className='inline' disabled>{I18n.t('messages.removingBotText')}<FontAwesome name='spinner' spin /></button>
     else if (removeBotState instanceof Error)
-      removeBotButton = <button className='inline error' onClick={() => alert(removeBotState)}>Error (click to show)</button>;
+      removeBotButton = <button className='inline error' onClick={() => alert(removeBotState)}>{I18n.t('messages.errorMessage')}</button>
     else if (removeBotState === 'done')
-      removeBotButton = <button className='inline success'>Bot removed <FontAwesome name='check' /></button>;
+      removeBotButton = <button className='inline success'>{I18n.t('messages.botRemovedText')}<FontAwesome name='check' /></button>
     else
-      removeBotButton = <button className='inline error'>Unrecognized state {removeBotState}</button>;
+      removeBotButton = <button className='inline error'>{I18n.t('messages.unrecognizedState')} {removeBotState}</button>
 
     var emailButton;
     if (selectedMessages.length < 1)
       emailButton = null;
     else if (sendEmailState === 'default')
-      emailButton = <button className='inline' onClick={sendEmail}>Send email</button>;
+      emailButton = <button className='inline' onClick={sendEmail}>{I18n.t('messages.sendEmailText')}</button>
     else if (sendEmailState === 'sending')
-      emailButton = <button className='inline' disabled>Sending... <FontAwesome name='spinner' spin /></button>;
+      emailButton = <button className='inline' disabled>{I18n.t('messages.sendingText')} <FontAwesome name='spinner' spin /></button>
     else if (sendEmailState instanceof Error)
-      emailButton = <button className='inline error' onClick={() => alert(sendEmailState)}>Error (click to show)</button>;
+      emailButton = <button className='inline error' onClick={() => alert(sendEmailState)}>{I18n.t('messages.errorMessage')}</button>
     else if (sendEmailState === 'sent')
-      emailButton = <button className='inline success'>Email sent <FontAwesome name='check' /></button>;
+      emailButton = <button className='inline success'>{I18n.t('messages.sentEmailText')} <FontAwesome name='check' /></button>
     else
-      emailButton = <button className='inline error'>Unrecognized state {sendEmailState}</button>;
+      emailButton = <button className='inline error'>{I18n.t('messages.unrecognizedState')} {sendEmailState}</button>
 
     var smsButton;
     if (selectedMessages.length < 1)
-      smsButton = null;
+      smsButton = null
     else if (sendSMSState === 'default')
-      smsButton = <button className='inline' onClick={sendSMS}>Send SMS</button>;
+      smsButton = <button className='inline' onClick={sendSMS}>{I18n.t('messages.sendSMSText')}</button>
     else if (sendSMSState === 'sending')
-      smsButton = <button className='inline' disabled>Sending... <FontAwesome name='spinner' spin /></button>;
+      smsButton = <button className='inline' disabled>{I18n.t('messages.sendingText')} <FontAwesome name='spinner' spin /></button>
     else if (sendSMSState instanceof Error)
-      smsButton = <button className='inline error' onClick={() => alert(sendSMSState)}>Error (click to show)</button>;
+      smsButton = <button className='inline error' onClick={() => alert(sendSMSState)}>{I18n.t('messages.errorMessage')}</button>
     else if (sendSMSState === 'sent')
-      smsButton = <button className='inline success'>SMS sent <FontAwesome name='check' /></button>;
+      smsButton = <button className='inline success'>{I18n.t('messages.smsSentText')} <FontAwesome name='check' /></button>
     else
-      smsButton = <button className='inline error'>Unrecognized state {sendEmailState}</button>;
+      smsButton = <button className='inline error'>{I18n.t('messages.unrecognizedState')} {sendEmailState}</button>
 
     const actionButton = active
-                          ? <button className='inline active' onClick={onDeactivate}>Done</button>
-                          : <button className='inline' onClick={onActivate}>Actions</button>
+                          ? <button className='inline active' onClick={onDeactivate}>{I18n.t('messages.doneText')}</button>
+                          : <button className='inline' onClick={onActivate}>{I18n.t('messages.actionsText')}</button>
     const assigneeSelect = assignees ? (
       <select defaultValue={conversation.metadata.owner_id} onChange={reassign}>
         {assignees.map(a => <option value={a.id} key={a.id}>{a.first_name} {a.last_name}</option>)}
       </select>
-    ) : <button className='inline' onClick={showAssigneeTargets}>Reassign</button>;
+    ) : <button className='inline' onClick={showAssigneeTargets}>{I18n.t('messages.reassignText')}</button>
     return (
       <div className='ActionBar'>
         <div className='recipientInfo'>
@@ -313,9 +314,9 @@ class MessagesImpl extends Component {
                   composeButtonsLeft={[
                     <OverlayTrigger ref={self => { this.overlayTrigger = self }} trigger='click' placement='top' rootClose overlay={addCardPicker}>
                       <Button id='addCardButton'>+</Button>
-                    </OverlayTrigger>,
+                    </OverlayTrigger>
                   ]}
-                  composeButtons={[<SendButton text='Send' />]}
+                  composeButtons={[<SendButton text={I18n.t('messages.sendText')} />]}
                   onComposerChangeValue={onComposerChange}
                   onSendMessage={onSend} />;
       if (!("geolocation" in navigator))
