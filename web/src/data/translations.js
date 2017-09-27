@@ -62,6 +62,42 @@ module.exports = {
       'Good news': 'Good news',
       'Touchpoint 2': 'Touchpoint 2'
     },
+    leadProfile: {
+      statsText: 'Stats',
+      zendeskText: 'Zendesk',
+      profileName: 'Profile',
+      salesforceName: 'Salesforce'
+    },
+    leadProjectDetails: {
+      projectTimelineText: 'Project timeline',
+      projectDetailsText: 'Project details',
+      errorMessage: 'Error loading profile'
+    },
+    simpleProfile: {
+      userProfileSubject: 'User profile'
+    },
+    leadSalesforce: {
+      subject: 'Salesforce profile',
+      error: 'Error loading profile',
+      name: 'Name',
+      email: 'Email',
+      phone: 'Phone',
+      leadOwner: 'Lead owner',
+      leadStatus: 'Lead Status',
+      leadSource: 'Lead Source',
+      company: 'Company',
+      segment: 'Segment',
+      industry: 'Industry',
+      employees: 'Employees',
+      department: 'Department',
+      role: 'Role',
+      address: 'Address',
+      city: 'City',
+      state: 'State',
+      zip: 'ZIP',
+      linkToSalesforce: 'Link to Salesforce lead',
+      createSalesforceLead: 'Create Salesforce lead'
+    },
     date: {
       long: 'MMMM Do, YYYY'
     },
@@ -134,6 +170,42 @@ module.exports = {
       'File': 'File',
       'Good news': 'Good news',
       'Touchpoint 2': 'Touchpoint 2'
+    },
+    leadProfile: {
+      statsText: 'Stats',
+      zendeskText: 'Zendesk',
+      profileName: 'Profile',
+      salesforceName: 'Salesforce'
+    },
+    leadProjectDetails: {
+      projectTimelineText: 'Project timeline',
+      projectDetailsText: 'Project details',
+      errorMessage: 'Error loading profile'
+    },
+    simpleProfile: {
+      userProfileSubject: 'User profile'
+    },
+    leadSalesforce: {
+      subject: 'Salesforce profile',
+      error: 'Error loading profile',
+      name: 'Name',
+      email: 'Email',
+      phone: 'Phone',
+      leadOwner: 'Lead owner',
+      leadStatus: 'Lead Status',
+      leadSource: 'Lead Source',
+      company: 'Company',
+      segment: 'Segment',
+      industry: 'Industry',
+      employees: 'Employees',
+      department: 'Department',
+      role: 'Role',
+      address: 'Address',
+      city: 'City',
+      state: 'State',
+      zip: 'ZIP',
+      linkToSalesforce: 'Link to Salesforce lead',
+      createSalesforceLead: 'Create Salesforce lead'
     },
     date: {
       long: 'D MMMM YYYY'

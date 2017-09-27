@@ -1,35 +1,34 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { editProfile, selectTab, editLeads, createSalesforceLead } from './actions';
-import TabController, { Tab } from './TabController';
-import Stats from './LeadStats';
-import SimpleProfile from './SimpleProfile';
-import Salesforce from './LeadSalesforce';
-import ProjectDetails from './LeadProjectDetails';
-import ZendeskTickets from './ZendeskTickets';
-import styled from 'styled-components';
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { editProfile, selectTab, editLeads, createSalesforceLead } from './actions'
+import TabController, { Tab } from './TabController'
+import Stats from './LeadStats'
+import SimpleProfile from './SimpleProfile'
+import Salesforce from './LeadSalesforce'
+import ProjectDetails from './LeadProjectDetails'
+import ZendeskTickets from './ZendeskTickets'
+import styled from 'styled-components'
+import { I18n } from 'react-redux-i18n'
 
 class LeadProfileImpl extends Component {
-  render() {
+  render () {
     const { isDemo, stats, profile, selectedTab, zendeskTickets,
-      onFieldChange, selectedConversationID, createLead, onTabChange } = this.props;
-    const profileTickets = profile && profile.id ? zendeskTickets[profile.id] : undefined;
-    if (!selectedConversationID) {
-      return <div></div>;
-    }
-    const profileTabName = isDemo ? 'Profile' : 'Salesforce';
-    const profileView = isDemo ? <SimpleProfile profile={profile} onFieldChange={onFieldChange} /> : <Salesforce profile={profile} onFieldChange={onFieldChange} createLead={createLead} />;
+      onFieldChange, selectedConversationID, createLead, onTabChange } = this.props
+    const profileTickets = profile && profile.id ? zendeskTickets[profile.id] : undefined
+    if (!selectedConversationID) return <div />
+    const profileTabName = isDemo ? I18n.t('leadProfile.profileName') : I18n.t('leadProfile.salesforceName')
+    const profileView = isDemo ? <SimpleProfile profile={profile} onFieldChange={onFieldChange} /> : <Salesforce profile={profile} onFieldChange={onFieldChange} createLead={createLead} />
     return (
       <div className={`full-height-panel LeadProfile ${this.props.className}`}>
         <TabController selectedTab={selectedTab} onTabChange={onTabChange}>
-          <Tab name='Stats' icon='commenting'>
+          <Tab name={I18n.t('leadProfile.statsText')} icon='commenting'>
             <Stats stats={stats} />
             <ProjectDetails profile={profile} onFieldChange={onFieldChange} />
           </Tab>
           <Tab name={profileTabName} icon='user'>
             {profileView}
           </Tab>
-          <Tab name='Zendesk' icon='/zendesk.svg'>
+          <Tab name={I18n.t('leadProfile.zendeskText')} icon='/zendesk.svg'>
             <ZendeskTickets tickets={profileTickets} />
           </Tab>
         </TabController>
@@ -68,7 +67,7 @@ const LeadProfile = styled(LeadProfileImpl)`
   .TabBar {
     border-bottom: 1px solid #E4E9EC;
   }
-  
+
   .createSalesforceLink {
     float: right;
   }
