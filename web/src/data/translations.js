@@ -20,10 +20,14 @@ module.exports = {
     export_1: 'Export %{count} item',
     two_lines: 'Line 1<br />Line 2'
   },
-  nl: {
-    application: {
-      title: 'Toffe app met i18n!',
-      hello: 'Hallo, %{name}!'
+  ja: {
+    login: {
+      email: 'レイヤー電子メール',
+      password: 'パスワード',
+      emailPlaceholder: 'メールアドレスを入力して',
+      passwordPlaceholder: 'パスワードを入力する',
+      resetPassword: 'パスワードを再設定する',
+      button: 'ログイン'
     },
     date: {
       long: 'D MMMM YYYY'

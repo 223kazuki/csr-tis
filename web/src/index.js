@@ -48,7 +48,7 @@ const store = createStore(
 
 syncTranslationWithStore(store)
 store.dispatch(loadTranslations(translationsObject))
-store.dispatch(setLocale('en'))
+store.dispatch(setLocale('ja'))
 
 if (isDev()) window._reduxStore = store
 

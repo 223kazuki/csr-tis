@@ -1,14 +1,14 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { Alert } from 'react-bootstrap';
-import { authenticate, requestReset, toggleResetMode } from './actions';
-import FontAwesome from 'react-fontawesome';
-import './Login.css';
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { Alert } from 'react-bootstrap'
+import { authenticate, requestReset, toggleResetMode } from './actions'
+import FontAwesome from 'react-fontawesome'
+import './Login.css'
 
 import { Translate, Localize, I18n } from 'react-redux-i18n'
 
 class Login extends Component {
-  render() {
+  render () {
     const name = 'James Smith'
     const unreadCount = 10000000
     const { email, password, result, loading, onChange, onLogin, resetMode, onReset, toggleResetMode } = this.props;
