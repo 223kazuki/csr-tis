@@ -6,6 +6,7 @@ import { currentSessionToken } from '../login/auth';
 import { getFilters, reloadFilters, selectConversation, jumpFilter } from './actions';
 import { snakeCaseToTitle } from '../utils';
 import './ConversationsFilters.css';
+import { Translate, I18n } from 'react-redux-i18n'
 
 const provideActions = dispatch => {
   return {
@@ -20,7 +21,7 @@ class JumpBar extends Component {
     const { value, onChange } = this.props;
     return (
       <div className='JumpBar'>
-        <input type='text' placeholder='Find name or email...' value={value} onChange={e => onChange(e.target.value)} />
+        <input type='text' placeholder={I18n.t('conversationsFilters.jumpbarPlaceholder')} value={value} onChange={e => onChange(e.target.value)} />
       </div>
     );
   }
@@ -29,6 +30,7 @@ class JumpBar extends Component {
 class FilterHeader extends Component {
   render() {
     const { name, conversations } = this.props;
+    console.log('FilterHeader', name)
     return (
       <h2 className='FilterHeader'>
         {name}
@@ -74,13 +76,13 @@ class ConversationsList extends Component {
     else if (!conversations)
       cells = (
         <div className='ConversationListBanner error'>
-          <p>Error loading conversations</p>
+          <p>{I18n.t('conversationsFilters.constants.error_conversations')}</p>
         </div>
       )
     else if (conversations.length < 1)
       cells = (
         <div className='ConversationListBanner'>
-          <p><strong>No conversations</strong></p>
+          <p><strong>{I18n.t('conversationsFilters.constants.no_conversations')}</strong></p>
         </div>
       )
     else
@@ -103,8 +105,8 @@ class ConversationsFilters extends Component {
   render() {
     const conversations = this.props.conversations;
     const sections = Object.keys(conversations).map((key, idx) => {
-      const sectionConversations = conversations[key];
-      const header = <FilterHeader name={snakeCaseToTitle(key)} conversations={sectionConversations} key={'header' + idx} />;
+      const sectionConversations = conversations[key]
+      const header = <FilterHeader name={I18n.t('conversationsFilters.constants.' + key)} conversations={sectionConversations} key={'header' + idx} />
       const stateQuery = state => ({
         filterName: key,
         conversations: sectionConversations,

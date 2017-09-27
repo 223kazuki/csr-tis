@@ -5,7 +5,7 @@ import { authenticate, requestReset, toggleResetMode } from './actions'
 import FontAwesome from 'react-fontawesome'
 import './Login.css'
 
-import { Translate, Localize, I18n } from 'react-redux-i18n'
+import { Translate, I18n } from 'react-redux-i18n'
 
 class Login extends Component {
   render () {

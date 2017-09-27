@@ -8,6 +8,17 @@ module.exports = {
       resetPassword: 'Reset password',
       button: 'Login'
     },
+    conversationsFilters: {
+      jumpbarPlaceholder: 'Find name or email...',
+      constants: {
+        unclaimed: 'Unclaimed',
+        my_unanswered: 'My Unanswered',
+        my_active: 'My Active',
+        archived: 'Archived',
+        no_conversations: 'No Conversations',
+        error_conversations: 'Error loading conversations'
+      }
+    },
     application: {
       title: 'Awesome app with i18n!',
       hello: 'Hello, %{name}!'
@@ -28,6 +39,17 @@ module.exports = {
       passwordPlaceholder: 'パスワードを入力する',
       resetPassword: 'パスワードを再設定する',
       button: 'ログイン'
+    },
+    conversationsFilters: {
+      jumpbarPlaceholder: 'Find name or email...',
+      constants: {
+        unclaimed: 'Unclaimed',
+        my_unanswered: 'My Unanswered',
+        my_active: 'My Active',
+        archived: 'Archived',
+        no_conversations: 'No Conversations',
+        error_conversations: 'Error loading conversations'
+      }
     },
     date: {
       long: 'D MMMM YYYY'

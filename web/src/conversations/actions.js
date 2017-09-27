@@ -96,8 +96,10 @@ export const getFilters = callback => {  // callback … can this be done better
     get('/filters', (err, resp) => {
       if (err)
         dispatch(loadFilters(err));
-      else
+      else {
+        console.log('GET /conversations', resp)
         dispatch(loadFilters(resp));
+      }
 
       const selectedConversation = getState().conversations.selectedConversation;
       // Overlap with `selectConversation` below
