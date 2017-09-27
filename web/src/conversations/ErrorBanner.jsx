@@ -22,4 +22,4 @@ class ErrorBanner extends Component {
   }
 }
 
-export default ErrorBanner;
+export default ErrorBanner
