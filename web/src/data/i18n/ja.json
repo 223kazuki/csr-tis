@@ -54,7 +54,13 @@
         "usersAreTypingText": " ユーザーが入力中です",
         "andText": " そして",
         "usersPausedTypingText": " ユーザーが入力を一時停止しました"
-      }
+      },
+      "receipts": {
+        "sent": "送られた",
+        "delivered": "配信された",
+        "read": "読む"
+      },
+      "export": "%{count}人の読者が読む"
     },
     "cardTypes": {
       "Calendar invite": "カレンダーへの招待",

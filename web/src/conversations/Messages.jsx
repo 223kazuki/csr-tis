@@ -247,12 +247,30 @@ class MessagesImpl extends Component {
     //   panel.query = newQuery;
     // }
   }
-  emptyConversationNode() {
-    const node = document.createElement('div');
-    node.innerHTML = ReactDOMServer.renderToString(<EmptyConversationPrompt />);
-    return node;
+  emptyConversationNode () {
+    const node = document.createElement('div')
+    node.innerHTML = ReactDOMServer.renderToString(<EmptyConversationPrompt />)
+    return node
   }
-  render() {
+  onMessageStatusRendered (message) {
+    let text = ''
+    if (message instanceof LayerSDK.Message.ChannelMessage ||
+      message.deliveryStatus === LayerSDK.Constants.RECIPIENT_STATE.NONE) {
+      text = I18n.t('messages.receipts.sent')
+    } else if (message.readStatus === LayerSDK.Constants.RECIPIENT_STATE.NONE) {
+      text = I18n.t('messages.receipts.delivered')
+    } else if (message.readStatus === LayerSDK.Constants.RECIPIENT_STATE.ALL) {
+      text = I18n.t('messages.receipts.read')
+    } else {
+      const sessionOwnerId = message.getClient().user.id
+      const status = message.recipientStatus
+      const count = Object.keys(status).filter(identityId =>
+        identityId !== sessionOwnerId && status[identityId] === LayerSDK.Constants.RECEIPT_STATE.READ).length
+      text = I18n.t('messages.export', {count: count}) // `read by ${count} participants`
+    }
+    return text
+  }
+  render () {
     // Hack to show "Loading" while link preview loads
     const composer = document.getElementsByTagName('layer-composer')[0];
     var conversationID = this.props.conversationID;
@@ -332,6 +350,7 @@ class MessagesImpl extends Component {
                   ]}
                   composeButtons={[<SendButton text={I18n.t('messages.sendText')} />]}
                   onComposerChangeValue={onComposerChange}
+                  messageStatusRenderer={(message) => this.onMessageStatusRendered(message)}
                   onSendMessage={onSend} />;
       if (!("geolocation" in navigator))
         cards = cards.filter(c => c.title !== 'Location');
