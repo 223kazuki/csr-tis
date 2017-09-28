@@ -27,13 +27,13 @@ import Login from './login/Login'
 import { selectConversation } from './conversations/actions'
 import applyPrimaryColor from './colorScheme'
 import { isDev } from './utils'
-
+import config from './config.json'
+console.log('config', config)
 import { loadTranslations, setLocale, syncTranslationWithStore, i18nReducer } from 'react-redux-i18n'
 
-const LOCALE_LANGUAGE = 'ja'
+const LOCALE_LANGUAGE = config.locale.language || 'en'
 const translationsObject = require(`./data/i18n/${LOCALE_LANGUAGE}.json`)
 
-console.log('translationsObject', translationsObject)
 const routeMiddleware = routerMiddleware(browserHistory)
 const store = createStore(
   combineReducers({

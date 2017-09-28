@@ -6,13 +6,14 @@ import { API_HOST, post } from './api';
 import textHandlers from './conversations/textHandlers';
 import { currentUser, currentSessionToken } from './login/auth';
 import { isStaging } from './utils';
+import config from './config.json'
 
 // Lots of hard-coded stuff here for rapid development
-var APP_ID;
+var APP_ID
 if (process.env.NODE_ENV === 'production' && !isStaging())
-    APP_ID = "layer:///apps/staging/7c91dbc4-a2f7-11e7-bb21-87ee22204fbe";
+    APP_ID = config.app_id.production
 else
-    APP_ID = "layer:///apps/staging/7c91dbc4-a2f7-11e7-bb21-87ee22204fbe";
+    APP_ID = config.app_id.staging
 const authenticationURL = `${API_HOST}/layer_authenticate`;
 
 LayerSDK.MessagePart.TextualMimeTypes.push(/^location\/coordinate$/);

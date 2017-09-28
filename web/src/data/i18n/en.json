@@ -20,7 +20,9 @@
       }
     },
     "conversations": {
-      "findLeadButtonText": " Find lead"
+      "findLeadButtonText": " Find lead",
+      "settingsText": "Settings",
+      "logoutText": "Logout"
     },
     "createConversation": {
       "startNewConversationButtonText": "Start new conversation",
