@@ -6,10 +6,18 @@
       "emailPlaceholder": "メールアドレスを入力",
       "passwordPlaceholder": "パスワードを入力",
       "resetPassword": "パスワードをリセット",
-      "button": "ログイン"
+      "button": "ログイン",
+      "backToLogin": "ログイン画面に戻る",
+      "sendResetMail": "リセットメールを送信する"
+    },
+    "resetPassword": {
+      "resetPassword.setNewPassword": "新しいパスワードを設定してください",
+      "resetPassword.goToLogin": "ログイン画面に戻る",
+      "resetPassword.passwordResetSuccessfully": "パスワードは正常にリセットされました",
+      "resetPassword.pickSomethingSecure": "安全なパスワードを設定してください"
     },
     "conversationsFilters": {
-      "jumpbarPlaceholder": "ログインメールアドレス...",
+      "jumpbarPlaceholder": "名前またはメールアドレスで検索...",
       "constants": {
         "unclaimed": "通達不明の会話",
         "my_unanswered": "未回答の会話",
@@ -60,7 +68,8 @@
         "delivered": "配信済み",
         "read": "既読"
       },
-      "export": "%{count}人が既読"
+      "export": "%{count}人が既読",
+      "noConversationSelected": "会話が選択されていません"
     },
     "cardTypes": {
       "Calendar invite": "予定の作成",
@@ -122,7 +131,39 @@
       "text": "エラー:"
     },
     "notify": {
-      "export": "%{name} さんがあなたにメッセージを送った"
+      "export": "%{name} さんがあなたにメッセージを送信しました"
+    },
+    "leadStats" : {
+      "chatStarted": "チャット開始",
+      "sentRecdRatio": "送信/返信比率*",
+      "leadRespTime": "リードからの返信時間*",
+      "agentRespTime": "エージェントの返信時間*"
+    },
+    "team": {
+      "backToConversations": " 会話に戻る"
+    },
+    "findLeads": {
+      "backToConversations": " 会話に戻る",
+      "searchButton": "検索",
+      "searchFormPlaceholder": "名前またはメールアドレスでSalesForceリードを検索"
+    },
+    "setting": {
+      "backToConversations": " 会話に戻る",
+      "connectZoomAccount": "Zoomアカウントに接続",
+      "disconnectZoomAccount": "Zoomアカウントと切断",
+      "connectSalesForce": "SalesForceに接続",
+      "connectZendesk": "Zendeskに接続",
+      "connectCalendars": "カレンダーに接続"
+    },
+    "name": {
+      "text": "%{lastName} %{firstName}"
+    },
+    "unknown": {
+      "text": "不明"
+    },
+    "spinnerButton": {
+      "errorMessage": "エラー（クリックして詳細表示）",
+      "unrecognizedState": "想定外のエラー %{status}"
     }
   }
 }

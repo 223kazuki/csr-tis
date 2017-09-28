@@ -46,7 +46,7 @@ class ConversationCell extends Component {
 
     var participantNames;
     if (conversation.primary_user_first_name)
-      participantNames = `${conversation.primary_user_first_name} ${conversation.primary_user_last_name}`;
+      participantNames = I18n.t('name.text', {firstName: conversation.primary_user_first_name, lastName: conversation.primary_user_last_name});
     else if (conversation.primary_user_email)
       participantNames = conversation.primary_user_email;
     else

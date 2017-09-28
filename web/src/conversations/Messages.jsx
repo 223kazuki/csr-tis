@@ -80,7 +80,7 @@ class ActionBarImpl extends Component {
       }
       recipientInfo = (
         <div>
-          <h4>{conversation.primary_user_first_name} {conversation.primary_user_last_name}</h4>
+          <h4>{I18n.t('name.text', {firstName: conversation.primary_user_first_name, lastName: conversation.primary_user_last_name})}</h4>
           {leadSince}
         </div>
       );
@@ -303,7 +303,7 @@ class MessagesImpl extends Component {
     if (!conversationID) {
       content = (
         <div className='noConversationSelected'>
-          <p>No conversation selected</p>
+          <p>{I18n.t('messages.noConversationSelected')}</p>
         </div>
       );
     }

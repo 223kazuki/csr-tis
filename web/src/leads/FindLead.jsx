@@ -5,6 +5,7 @@ import FontAwesome from 'react-fontawesome';
 import { updateSearchQuery, searchSalesforceLeads, startConversation } from './actions';
 import './FindLead.css';
 import { currentUser } from '../login/auth';
+import { I18n } from 'react-redux-i18n';
 
 class FindLead extends Component {
   render() {
@@ -85,18 +86,18 @@ class FindLead extends Component {
 
     return (
       <div className='FindLeadContainer'>
-        <a href='/'><FontAwesome name='long-arrow-left' /> Back to conversations</a>
+        <a href='/'><FontAwesome name='long-arrow-left' />{I18n.t('findLeads.backToConversations')}</a>
         <div className='FindLead'>
           <div className='searchbar'>
             <input
               type='search'
               disabled={searchLoading}
-              placeholder='Find a SalesForce lead by name or email'
+              placeholder={I18n.t('findLeads.searchFormPlaceholder')}
               value={searchQuery}
               onKeyDown={e => e.keyCode === 13 ? search(searchQuery) : undefined}
               onChange={e => updateSearchQuery(e.target.value)} />
             <button className='primary' onClick={_ => search(searchQuery)}>
-              {searchLoading ? spinner : 'Search'}
+              {searchLoading ? spinner : I18n.t('findLeads.searchButton')}
             </button>
           </div>
           <div className='searchResults'>

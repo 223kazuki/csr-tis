@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Panel } from 'react-bootstrap';
 import Loading from './Loading';
 import styled from 'styled-components';
+import { I18n } from 'react-redux-i18n';
 
 class LabelledStatImpl extends Component {
   render() {
@@ -40,10 +41,10 @@ class LeadStats extends Component {
       return (
         <Panel>
           <div className='cellRow'>
-            <LabelledStat value={startDateString} label='Chat started' />
-            <LabelledStat value={stats.ratio.toFixed(3)} label='Sent/recd ratio*' />
-            <LabelledStat value={stats.leadResponseTime.toFixed(0) + ' min'} label='Lead resp time*' />
-            <LabelledStat value={stats.agentResponseTime.toFixed(0) + ' min'} label='Agent resp time*' />
+            <LabelledStat value={startDateString} label={I18n.t('leadStats.chatStarted')} />
+            <LabelledStat value={stats.ratio.toFixed(3)} label={I18n.t('leadStats.sentRecdRatio')} />
+            <LabelledStat value={stats.leadResponseTime.toFixed(0) + ' min'} label={I18n.t('leadStats.leadRespTime')} />
+            <LabelledStat value={stats.agentResponseTime.toFixed(0) + ' min'} label={I18n.t('leadStats.agentRespTime')} />
           </div>
         </Panel>
       );

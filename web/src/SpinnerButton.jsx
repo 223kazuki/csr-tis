@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import FontAwesome from 'react-fontawesome';
+import { I18n } from 'react-redux-i18n';
 
 class SpinnerButton extends Component {
   constructor(props) {
@@ -33,11 +34,11 @@ class SpinnerButton extends Component {
     else if (status === 'loading')
       return <button className='inline' disabled>{loadingTitle}... <FontAwesome name='spinner' spin /></button>;
     else if (status instanceof Error)
-      return <button className='inline error' onClick={() => alert(JSON.stringify(status.message || status))}>Error (click to show)</button>;
+      return <button className='inline error' onClick={() => alert(JSON.stringify(status.message || status))}>{I18n.t('spinnerButton.errorMessage')}</button>;
     else if (status === 'loaded')
       return <button className='inline success'>{doneTitle} <FontAwesome name='check' /></button>;
     else
-      return <button className='inline error'>Unrecognized state ({status})</button>;
+      return <button className='inline error'>{I18n.t('spinnerButton.unrecognizedState', {status: status})}</button>;
   }
 }
 

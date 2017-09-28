@@ -18,12 +18,13 @@ class ProjectDetails extends Component {
     const timelineEnum = leadEnumFields.project_timeline
     const timelineOptions = Object.keys(timelineEnum).map(key => (
       { id: `${timelineEnum[key]}`, text: key }))
+    const unknown = I18n.t('unknown.text')
     return (
       <Panel>
         <Row>
           <Col xs={12}>
-            <LabelledField label={I18n.t('leadProjectDetails.projectTimelineText')} detail={profile.project_timeline} placeholder='Unknown' selectOptions={timelineOptions} onChange={onFieldChange('project_timeline')} />
-            <LabelledField label={I18n.t('leadProjectDetails.projectDetailsText')} detail={profile.project_details} placeholder='Unknown' nodeType={RIETextArea} valueClassName='blockField' onChange={onFieldChange('project_details')} />
+            <LabelledField label={I18n.t('leadProjectDetails.projectTimelineText')} detail={profile.project_timeline} placeholder={unknown} selectOptions={timelineOptions} onChange={onFieldChange('project_timeline')} />
+            <LabelledField label={I18n.t('leadProjectDetails.projectDetailsText')} detail={profile.project_details} placeholder={unknown} nodeType={RIETextArea} valueClassName='blockField' onChange={onFieldChange('project_details')} />
           </Col>
         </Row>
       </Panel>
