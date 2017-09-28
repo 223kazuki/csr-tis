@@ -49,7 +49,12 @@
       "actionsText": "行動",
       "reassignText": "再割り当て",
       "sendText": "送信",
-      "composePlaceholder": "ここにメッセージを入力してください"
+      "composePlaceholder": "ここにメッセージを入力してください",
+      "typingIndicator": {
+        "usersAreTypingText": " ユーザーが入力中です",
+        "andText": " そして",
+        "usersPausedTypingText": " ユーザーが入力を一時停止しました"
+      }
     },
     "cardTypes": {
       "Calendar invite": "カレンダーへの招待",

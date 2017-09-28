@@ -49,7 +49,12 @@
       "actionsText": "Actions",
       "reassignText": "Reassign",
       "sendText": "Send",
-      "composePlaceholder": "Enter message here"
+      "composePlaceholder": "Enter message here",
+      "typingIndicator": {
+        "usersAreTypingText": " users are typing",
+        "andText": " and",
+        "usersPausedTypingText": " users have paused typing"
+      }
     },
     "cardTypes": {
       "Calendar invite": "Calendar invite",

@@ -216,6 +216,19 @@ class MessagesImpl extends Component {
   componentDidMount() {
     if (this.props.clickThroughMessages)
       document.addEventListener('click', demoModeShowNextMessage);
+
+    // add intl to typing indicator
+    document.addEventListener('layer-typing-indicator-change', (evt) => {
+      evt.preventDefault()
+      var widget = evt.target
+      var typingUsers = evt.detail.typing
+      var pausedUsers = evt.detail.paused
+      var text = ''
+      if (typingUsers.length) text = typingUsers.length + I18n.t('messages.typingIndicator.usersAreTypingText')
+      if (pausedUsers.length && typingUsers.length) text += I18n.t('messages.typingIndicator.andText')
+      if (pausedUsers.length) text += pausedUsers.length + I18n.t('messages.typingIndicator.usersPausedTypingText')
+      widget.value = text
+    })
   }
   componentWillUnmount() {
     if (this.props.clickThroughMessages)
