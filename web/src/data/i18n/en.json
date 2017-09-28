@@ -137,7 +137,8 @@
       "chatStarted": "Chat started",
       "sentRecdRatio": "Sent/recd ratio*",
       "leadRespTime": "Lead resp time*",
-      "agentRespTime": "Agent resp time*"
+      "agentRespTime": "Agent resp time*",
+      "minutes": "%{minute} min"
     },
     "team": {
       "backToConversations": " Back to conversations"

@@ -43,8 +43,8 @@ class LeadStats extends Component {
           <div className='cellRow'>
             <LabelledStat value={startDateString} label={I18n.t('leadStats.chatStarted')} />
             <LabelledStat value={stats.ratio.toFixed(3)} label={I18n.t('leadStats.sentRecdRatio')} />
-            <LabelledStat value={stats.leadResponseTime.toFixed(0) + ' min'} label={I18n.t('leadStats.leadRespTime')} />
-            <LabelledStat value={stats.agentResponseTime.toFixed(0) + ' min'} label={I18n.t('leadStats.agentRespTime')} />
+            <LabelledStat value={I18n.t('leadStats.chatStarted', {minute: stats.leadResponseTime.toFixed(0)})} label={I18n.t('leadStats.leadRespTime')} />
+            <LabelledStat value={I18n.t('leadStats.chatStarted', {minute: stats.agentResponseTime.toFixed(0)})} label={I18n.t('leadStats.agentRespTime')} />
           </div>
         </Panel>
       );

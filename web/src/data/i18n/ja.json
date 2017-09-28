@@ -137,7 +137,8 @@
       "chatStarted": "チャット開始",
       "sentRecdRatio": "送信/返信比率*",
       "leadRespTime": "リードからの返信時間*",
-      "agentRespTime": "エージェントの返信時間*"
+      "agentRespTime": "エージェントの返信時間*",
+      "minutes": "%{minute} 分"
     },
     "team": {
       "backToConversations": " 会話に戻る"
