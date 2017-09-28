@@ -54,7 +54,13 @@
         "usersAreTypingText": " users are typing",
         "andText": " and",
         "usersPausedTypingText": " users have paused typing"
-      }
+      },
+      "receipts": {
+        "sent": "sent",
+        "delivered": "delivered",
+        "read": "read"
+      },
+      "export": "read by %{count} participants"
     },
     "cardTypes": {
       "Calendar invite": "Calendar invite",
@@ -114,6 +120,9 @@
     },
     "errorBanner": {
       "text": "Error:"
+    },
+    "notify": {
+      "export": "%{name} sent you a message"
     }
   }
 }

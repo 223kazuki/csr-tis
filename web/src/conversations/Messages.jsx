@@ -247,12 +247,12 @@ class MessagesImpl extends Component {
     //   panel.query = newQuery;
     // }
   }
-  emptyConversationNode() {
-    const node = document.createElement('div');
-    node.innerHTML = ReactDOMServer.renderToString(<EmptyConversationPrompt />);
-    return node;
+  emptyConversationNode () {
+    const node = document.createElement('div')
+    node.innerHTML = ReactDOMServer.renderToString(<EmptyConversationPrompt />)
+    return node
   }
-  render() {
+  render () {
     // Hack to show "Loading" while link preview loads
     const composer = document.getElementsByTagName('layer-composer')[0];
     var conversationID = this.props.conversationID;

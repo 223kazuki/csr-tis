@@ -53,8 +53,14 @@
       "typingIndicator": {
         "usersAreTypingText": " ユーザーが入力中です",
         "andText": " そして",
-        "usersPausedTypingText": " ユーザーが入力を一時中断しました"
-      }
+        "usersPausedTypingText": " ユーザーが入力を一時停止しました"
+      },
+      "receipts": {
+        "sent": "送信済み",
+        "delivered": "配信済み",
+        "read": "既読"
+      },
+      "export": "%{count}人が既読"
     },
     "cardTypes": {
       "Calendar invite": "予定の作成",
@@ -114,6 +120,9 @@
     },
     "errorBanner": {
       "text": "エラー:"
+    },
+    "notify": {
+      "export": "%{name} さんがあなたにメッセージを送った"
     }
   }
 }
