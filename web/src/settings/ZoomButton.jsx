@@ -3,13 +3,14 @@ import { connect } from 'react-redux';
 import { getZoomAccount, setZoomConnection } from './actions';
 import FontAwesome from 'react-fontawesome';
 import './Settings.css';
+import { I18n } from 'react-redux-i18n';
 
 class ZoomDisconnected extends Component {
   render() {
     return (
       <div>
         <button className='primary' onClick={this.props.onClick}>
-          <span>Connect Zoom Account</span>
+          <span>{I18n.t('setting.connectZoomAccount')}</span>
         </button>
       </div>
     )
@@ -21,7 +22,7 @@ class ZoomConnected extends Component {
     return (
       <div>
         <button className='primary' onClick={this.props.onClick}>
-          <span>Disconnect Zoom Account</span>
+          <span>{I18n.t('setting.disconnectZoomAccount')}</span>
         </button>
       </div>
     )

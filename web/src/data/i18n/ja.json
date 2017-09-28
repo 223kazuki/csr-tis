@@ -1,22 +1,30 @@
 {
   "ja": {
     "login": {
-      "email": "レイヤー電子メール",
+      "email": "ログインメールアドレス",
       "password": "パスワード",
-      "emailPlaceholder": "メールアドレスを入力して",
-      "passwordPlaceholder": "パスワードを入力する",
-      "resetPassword": "パスワードを再設定する",
-      "button": "ログイン"
+      "emailPlaceholder": "メールアドレスを入力",
+      "passwordPlaceholder": "パスワードを入力",
+      "resetPassword": "パスワードをリセット",
+      "button": "ログイン",
+      "backToLogin": "ログイン画面に戻る",
+      "sendResetMail": "リセットメールを送信する"
+    },
+    "resetPassword": {
+      "resetPassword.setNewPassword": "新しいパスワードを設定してください",
+      "resetPassword.goToLogin": "ログイン画面に戻る",
+      "resetPassword.passwordResetSuccessfully": "パスワードは正常にリセットされました",
+      "resetPassword.pickSomethingSecure": "安全なパスワードを設定してください"
     },
     "conversationsFilters": {
-      "jumpbarPlaceholder": "名前や電子メールを検索する...",
+      "jumpbarPlaceholder": "名前またはメールアドレスで検索...",
       "constants": {
-        "unclaimed": "未請求",
-        "my_unanswered": "私の未回答",
-        "my_active": "私の活動",
-        "archived": "アーカイブ済み",
-        "no_conversations": "会話なし",
-        "error_conversations": "会話を読み込む際にエラー"
+        "unclaimed": "通達不明の会話",
+        "my_unanswered": "未回答の会話",
+        "my_active": "アクティブな会話",
+        "archived": "アーカイブ",
+        "no_conversations": "会話がありません",
+        "error_conversations": "会話の読み込みに失敗しました"
       }
     },
     "conversations": {
@@ -26,54 +34,55 @@
     },
     "createConversation": {
       "startNewConversationButtonText": "新しい会話を始める",
-      "prospectEmail": "見通しの電子メール",
-      "firstName": "ファーストネーム",
-      "lastName": "苗字",
-      "inviteButtonText": "招待"
+      "prospectEmail": "顧客メールアドレス",
+      "firstName": "名",
+      "lastName": "姓",
+      "inviteButtonText": "招待する"
     },
     "messages": {
       "newConversationText": "新しい会話",
-      "sendMessageText": "会話を開始するメッセージを送信する",
-      "leadSince": "リード ",
-      "removeBotText": "ボットを削除",
-      "removingBotText": "削除する... ",
-      "errorMessage": "エラー（クリックして表示）",
-      "botRemovedText": "ボットを取り外した ",
-      "unrecognizedState": "認識できない状態",
-      "sendEmailText": "メールを送る",
-      "sendingText": "送信... ",
+      "sendMessageText": "メッセージを送信して会話を開始する",
+      "leadSince": "%{date}からリード",
+      "removeBotText": "ボットを外す",
+      "removingBotText": "除外中... ",
+      "errorMessage": "エラー（クリックして詳細表示）",
+      "botRemovedText": "ボットを外しました ",
+      "unrecognizedState": "想定外のエラー",
+      "sendEmailText": "メール送信",
+      "sendingText": "送信中... ",
       "sentEmailText": "メールを送信しました",
-      "sendSMSText": "SMSを送信する",
-      "smsSentText": "送信されたSMS",
+      "sendSMSText": "SMS送信",
+      "smsSentText": "SMSを送信しました",
       "doneText": "完了",
-      "actionsText": "行動",
-      "reassignText": "再割り当て",
+      "actionsText": "アクション",
+      "reassignText": "担当再割り当て",
       "sendText": "送信",
-      "composePlaceholder": "ここにメッセージを入力してください",
+      "composePlaceholder": "メッセージを入力してください",
       "typingIndicator": {
         "usersAreTypingText": " ユーザーが入力中です",
         "andText": " そして",
         "usersPausedTypingText": " ユーザーが入力を一時停止しました"
       },
       "receipts": {
-        "sent": "送られた",
-        "delivered": "配信された",
-        "read": "読む"
+        "sent": "送信済み",
+        "delivered": "配信済み",
+        "read": "既読"
       },
-      "export": "%{count}人の読者が読む"
+      "export": "%{count}人が既読",
+      "noConversationSelected": "会話が選択されていません"
     },
     "cardTypes": {
-      "Calendar invite": "カレンダーへの招待",
-      "Zoom call": "Zoom コール",
-      "Location": "ロケーション",
-      "Carousel (properties)": "カルーセル（プロパティ",
-      "Carousel (finance)": "カルーセル（金融)",
-      "Carousel (pages)": "カルーセル（ページ)",
-      "Carousel (videos)": "カルーセル（動画)",
-      "Poll": "世論調査",
+      "Calendar invite": "予定の作成",
+      "Zoom call": "Zoomで通話",
+      "Location": "現在位置",
+      "Carousel (properties)": "カルーセル (物件情報)",
+      "Carousel (finance)": "カルーセル (金融情報)",
+      "Carousel (pages)": "カルーセル (Webページ)",
+      "Carousel (videos)": "カルーセル (ビデオ)",
+      "Poll": "投票",
       "File": "ファイル",
-      "Good news": "良いニュース",
-      "Touchpoint 2": "Touchpoint 2"
+      "Good news": "定型文1",
+      "Touchpoint 2": "定型文2"
     },
     "leadProfile": {
       "statsText": "統計",
@@ -82,47 +91,80 @@
       "salesforceName": "Salesforce"
     },
     "leadProjectDetails": {
-      "projectTimelineText": "プロジェクトのタイムライン",
-      "projectDetailsText": "プロジェクトの詳細",
-      "errorMessage": "プロファイルを読み込む際のエラー"
+      "projectTimelineText": "プロジェクトタイムライン",
+      "projectDetailsText": "プロジェクト詳細",
+      "errorMessage": "プロファイル読み込みエラー"
     },
     "simpleProfile": {
       "userProfileSubject": "ユーザープロフィール"
     },
     "leadSalesforce": {
       "subject": "Salesforce プロフィール",
-      "error": "プロファイルを読み込む際のエラー",
-      "name": "名",
-      "email": "Eメール",
-      "phone": "電話",
+      "error": "プロファイル読み込みエラー",
+      "name": "名前",
+      "email": "メールアドレス",
+      "phone": "電話番号",
       "leadOwner": "リードオーナー",
       "leadStatus": "リードステータス",
       "leadSource": "リードソース",
-      "company": "会社",
-      "segment": "セグメント",
+      "company": "会社名",
+      "segment": "区分",
       "industry": "業界",
-      "employees": "従業員",
+      "employees": "雇用者数",
       "department": "部門",
-      "role": "役割",
+      "role": "役職",
       "address": "住所",
-      "city": "シティ",
-      "state": "状態",
-      "zip": "ZIP",
-      "linkToSalesforce": "Salesforceリードへのリンク",
-      "createSalesforceLead": "Salesforceのリードを作成する"
+      "city": "市",
+      "state": "県",
+      "zip": "郵便番号",
+      "linkToSalesforce": "Salesforceリードとリンク",
+      "createSalesforceLead": "Salesforceリードを作成"
     },
     "zendeskTickets": {
       "id": "ID:",
       "subject": "件名:",
       "description": "説明:",
-      "buttonText": "Zendeskのチケットを見る",
-      "loadingTickets": "切符売場"
+      "buttonText": "Zendeskチケットを見る",
+      "loadingTickets": "チケットを読み込む"
     },
     "errorBanner": {
       "text": "エラー:"
     },
     "notify": {
-      "export": "%{name} さんがあなたにメッセージを送った"
+      "export": "%{name} さんがあなたにメッセージを送信しました"
+    },
+    "leadStats" : {
+      "chatStarted": "チャット開始",
+      "sentRecdRatio": "送信/返信比率*",
+      "leadRespTime": "リードからの返信時間*",
+      "agentRespTime": "エージェントの返信時間*",
+      "minutes": "%{minute} 分"
+    },
+    "team": {
+      "backToConversations": " 会話に戻る"
+    },
+    "findLeads": {
+      "backToConversations": " 会話に戻る",
+      "searchButton": "検索",
+      "searchFormPlaceholder": "名前またはメールアドレスでSalesForceリードを検索"
+    },
+    "setting": {
+      "backToConversations": " 会話に戻る",
+      "connectZoomAccount": "Zoomアカウントに接続",
+      "disconnectZoomAccount": "Zoomアカウントと切断",
+      "connectSalesForce": "SalesForceに接続",
+      "connectZendesk": "Zendeskに接続",
+      "connectCalendars": "カレンダーに接続"
+    },
+    "name": {
+      "text": "%{lastName} %{firstName}"
+    },
+    "unknown": {
+      "text": "不明"
+    },
+    "spinnerButton": {
+      "errorMessage": "エラー（クリックして詳細表示）",
+      "unrecognizedState": "想定外のエラー %{status}"
     }
   }
 }

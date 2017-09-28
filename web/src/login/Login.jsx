@@ -25,14 +25,14 @@ class Login extends Component {
         onReset();
         return false;
       };
-      const buttonContent = loading ? <FontAwesome name='spinner' spin /> : 'Send reset email';
+      const buttonContent = loading ? <FontAwesome name='spinner' spin /> : I18n.t('login.sendResetMail');
       return (
         <div className='Login'>
           <form onSubmit={onSubmit}>
             {errorBanner}
-            <button className='inline pull-right' type='button' onClick={toggleResetMode}>Back to login</button>
+            <button className='inline pull-right' type='button' onClick={toggleResetMode}>{I18n.t('login.backToLogin')}</button>
             <label>
-              <span>Layer email</span>
+              <span>{I18n.t('login.email')}</span>
               <input type='email' placeholder='example@layer.com' value={email} onChange={onChange('email')} />
             </label>
             <button className='primary' onClick={onReset} disabled={loading} type='button'>{buttonContent}</button>

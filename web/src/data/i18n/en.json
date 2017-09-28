@@ -1,12 +1,20 @@
 {
   "en": {
     "login": {
-      "email": "1Layer email",
+      "email": "Layer email",
       "password": "Password",
       "emailPlaceholder": "example@layer.com",
       "passwordPlaceholder": "thereisnopassword",
       "resetPassword": "Reset password",
-      "button": "Login"
+      "button": "Login",
+      "backToLogin": "Back to login",
+      "sendResetMail": "Send reset email"
+    },
+    "resetPassword": {
+      "resetPassword.setNewPassword": "Set new password",
+      "resetPassword.goToLogin": "Go to login",
+      "resetPassword.passwordResetSuccessfully": "Password reset successfully. ",
+      "resetPassword.pickSomethingSecure": "Pick something secure"
     },
     "conversationsFilters": {
       "jumpbarPlaceholder": "Find name or email...",
@@ -34,7 +42,7 @@
     "messages": {
       "newConversationText": "New conversation",
       "sendMessageText": "Send a message to start a conversation",
-      "leadSince": "Lead since ",
+      "leadSince": "Lead since %{date}",
       "removeBotText": "Remove bot",
       "removingBotText": "Removing... ",
       "errorMessage": "Error (click to show)",
@@ -60,7 +68,8 @@
         "delivered": "delivered",
         "read": "read"
       },
-      "export": "read by %{count} participants"
+      "export": "read by %{count} participants",
+      "noConversationSelected": "No conversation selected"
     },
     "cardTypes": {
       "Calendar invite": "Calendar invite",
@@ -123,6 +132,39 @@
     },
     "notify": {
       "export": "%{name} sent you a message"
+    },
+    "leadStats" : {
+      "chatStarted": "Chat started",
+      "sentRecdRatio": "Sent/recd ratio*",
+      "leadRespTime": "Lead resp time*",
+      "agentRespTime": "Agent resp time*",
+      "minutes": "%{minute} min"
+    },
+    "team": {
+      "backToConversations": " Back to conversations"
+    },
+    "findLeads": {
+      "backToConversations": " Back to conversations",
+      "searchButton": "Search",
+      "searchFormPlaceholder": "Find a SalesForce lead by name or email"
+    },
+    "setting": {
+      "backToConversations": " Back to conversations",
+      "connectZoomAccount": "Connect Zoom Account",
+      "disconnectZoomAccount": "Disconnect Zoom Account",
+      "connectSalesForce": "Connect SalesForce",
+      "connectZendesk": "Connect Zendesk",
+      "connectCalendars": "Connect calendars"
+    },
+    "name": {
+      "text": "%{lastName} %{firstName}"
+    },
+    "unknown": {
+      "text": "Unknown"
+    },
+    "spinnerButton": {
+      "errorMessage": "Error (click to show)",
+      "unrecognizedState": "Unrecognized state %{status}"
     }
   }
 }

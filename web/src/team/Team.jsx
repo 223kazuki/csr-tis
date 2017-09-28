@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import FontAwesome from 'react-fontawesome';
 import { getTeamMembers, toggleRole, inviteAgent } from './TeamActions';
 import './Team.css';
+import { I18n } from 'react-redux-i18n'
 
 // class Roles extends Component {
 //   render() {
@@ -108,7 +109,7 @@ class Team extends Component {
     // )
     return (
       <div className='TeamContainer'>
-        <a href='/'><FontAwesome name='long-arrow-left' /> Back to conversations</a>
+        <a href='/'><FontAwesome name='long-arrow-left' />{I18n.t('team.backToConversations')}</a>
         <div className='Team'>
           <p><FontAwesome name='rocket' /> Coming soon &hellip;</p>
         </div>

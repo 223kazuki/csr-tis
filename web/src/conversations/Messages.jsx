@@ -75,12 +75,12 @@ class ActionBarImpl extends Component {
       if (lead) {
         if (lead.created_at) {
           const leadCreatedAt = (lead.created_at instanceof Date) ? lead.created_at : new Date(lead.created_at);
-          leadSince = <p>{I18n.t('messages.leadSince')} {leadCreatedAt.getMonth() + 1}/{leadCreatedAt.getDate()}</p>;
+          leadSince = <p>{I18n.t('messages.leadSince', {date: String(leadCreatedAt.getMonth() + 1) + '/' + String(leadCreatedAt.getDate())})}</p>;
         }
       }
       recipientInfo = (
         <div>
-          <h4>{conversation.primary_user_first_name} {conversation.primary_user_last_name}</h4>
+          <h4>{I18n.t('name.text', {firstName: conversation.primary_user_first_name, lastName: conversation.primary_user_last_name})}</h4>
           {leadSince}
         </div>
       );
@@ -303,7 +303,7 @@ class MessagesImpl extends Component {
     if (!conversationID) {
       content = (
         <div className='noConversationSelected'>
-          <p>No conversation selected</p>
+          <p>{I18n.t('messages.noConversationSelected')}</p>
         </div>
       );
     }
