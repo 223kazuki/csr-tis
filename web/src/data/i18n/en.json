@@ -120,6 +120,9 @@
     },
     "errorBanner": {
       "text": "Error:"
+    },
+    "notify": {
+      "export": "%{name} sent you a message"
     }
   }
 }

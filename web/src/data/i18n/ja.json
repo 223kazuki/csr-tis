@@ -120,6 +120,9 @@
     },
     "errorBanner": {
       "text": "エラー:"
+    },
+    "notify": {
+      "export": "%{name} さんがあなたにメッセージを送った"
     }
   }
 }
