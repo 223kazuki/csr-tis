@@ -28,7 +28,6 @@ import { selectConversation } from './conversations/actions'
 import applyPrimaryColor from './colorScheme'
 import { isDev } from './utils'
 import config from './config.json'
-console.log('config', config)
 import { loadTranslations, setLocale, syncTranslationWithStore, i18nReducer } from 'react-redux-i18n'
 
 const LOCALE_LANGUAGE = config.locale.language || 'en'
