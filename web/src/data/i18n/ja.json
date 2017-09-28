@@ -49,7 +49,7 @@
       "actionsText": "アクション",
       "reassignText": "担当再割り当て",
       "sendText": "送信",
-      "composePlaceholder": "メッセージを入力してください"
+      "composePlaceholder": "メッセージを入力してください",
       "typingIndicator": {
         "usersAreTypingText": " ユーザーが入力中です",
         "andText": " そして",
