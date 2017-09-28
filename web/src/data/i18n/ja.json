@@ -34,7 +34,7 @@
     "messages": {
       "newConversationText": "新しい会話",
       "sendMessageText": "メッセージを送信して会話を開始する",
-      "leadSince": "リード ",
+      "leadSince": "%{date}からリード",
       "removeBotText": "ボットを外す",
       "removingBotText": "除外中... ",
       "errorMessage": "エラー（クリックして詳細表示）",
@@ -106,7 +106,7 @@
       "role": "役職",
       "address": "住所",
       "city": "市",
-      "state": "州",
+      "state": "県",
       "zip": "郵便番号",
       "linkToSalesforce": "Salesforceリードとリンク",
       "createSalesforceLead": "Salesforceリードを作成"

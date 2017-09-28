@@ -75,7 +75,7 @@ class ActionBarImpl extends Component {
       if (lead) {
         if (lead.created_at) {
           const leadCreatedAt = (lead.created_at instanceof Date) ? lead.created_at : new Date(lead.created_at);
-          leadSince = <p>{I18n.t('messages.leadSince')} {leadCreatedAt.getMonth() + 1}/{leadCreatedAt.getDate()}</p>;
+          leadSince = <p>{I18n.t('messages.leadSince', {date: String(leadCreatedAt.getMonth() + 1) + '/' + String(leadCreatedAt.getDate())})}</p>;
         }
       }
       recipientInfo = (

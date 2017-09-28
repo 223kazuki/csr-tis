@@ -34,7 +34,7 @@
     "messages": {
       "newConversationText": "New conversation",
       "sendMessageText": "Send a message to start a conversation",
-      "leadSince": "Lead since ",
+      "leadSince": "Lead since %{date}",
       "removeBotText": "Remove bot",
       "removingBotText": "Removing... ",
       "errorMessage": "Error (click to show)",
