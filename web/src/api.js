@@ -4,8 +4,8 @@ var API_HOST;
 const host = window.location.host;
 if (host.indexOf('localhost') >= 0)
   API_HOST = 'http://localhost:3001';
-else if (host === 'dom-ui-prod.herokuapp.com' || host === 'csr.layer.com' || host === 'demo.layer.com')
-  API_HOST = 'https://layer-dom-prod.herokuapp.com';
+else if (host === 'csr-tis.herokuapp.com' || host === 'csr.layer.com' || host === 'demo.layer.com')
+  API_HOST = 'https://csr-tis-api.herokuapp.com';
 else if (host === 'dom-ui.herokuapp.com' || host === 'csr-staging.layer.com' || host === 'demo-staging.layer.com')
   API_HOST = 'https://layer-dom.herokuapp.com';
 else if (host.indexOf('csr-ui.com') >= 0)
