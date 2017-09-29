@@ -154,6 +154,7 @@ class ActionBarImpl extends Component {
 const ActionBar = connect(
   state => Object.assign({},
                          state.conversations.ui.actionBar,
+                         state.i18n,
                          { conversation: conversationWithID(state, state.conversations.selectedConversation) },
                          { lead: state.conversations.selectedProfile },
                          { assignees: state.conversations.assignees }),
@@ -348,14 +349,14 @@ class MessagesImpl extends Component {
 }
 
 const Messages = connect(
-  (state, ownProps) => ({
-    isDemo: state.ui.isDemo,
-    clickThroughMessages: state.ui.clickThroughMessages,
-    selectedConversation: conversationWithID(state, ownProps.conversationID || state.conversations.selectedConversation),
-    conversationID: ownProps.conversationID || state.conversations.selectedConversation,
-    composerContent: state.conversations.ui.composerContent,
-    onSendTrigger: ownProps.onSendTrigger
-  }),
+  (state, ownProps) => Object.assign({},
+                                     state.i18n,
+                                     { isDemo: state.ui.isDemo },
+                                     { clickThroughMessages: state.ui.clickThroughMessages },
+                                     { selectedConversation: conversationWithID(state, ownProps.conversationID || state.conversations.selectedConversation) },
+                                     { conversationID: ownProps.conversationID || state.conversations.selectedConversation },
+                                     { composerContent: state.conversations.ui.composerContent },
+                                     { onSendTrigger: ownProps.onSendTrigger }),
   (dispatch) => ({
     onSendMessage: (conversationID, evt) => {
       dispatch(updateConversationPreview(conversationID, evt.detail.item));

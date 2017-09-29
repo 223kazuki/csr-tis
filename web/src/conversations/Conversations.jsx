@@ -8,7 +8,7 @@ import CreateConversation from './CreateConversation'
 import Messages from './Messages'
 import LeadProfile from './LeadProfile'
 import styled from 'styled-components'
-import { I18n } from 'react-redux-i18n'
+import { I18n, setLocale } from 'react-redux-i18n'
 
 class NavLogoImpl extends Component {
   render () {
@@ -42,12 +42,62 @@ const NavLogo = styled(NavLogoImpl)`
   }
 `
 
+class ToggleLanguageButtonImpl extends Component {
+  render () {
+    const { toggleLanguage, locale, translations } = this.props
+    const toggleButtons = Object.keys(translations).map((k) => {
+      return <button className={locale === k ? 'active' : ''} key={k} onClick={() => toggleLanguage(k)}>{k}</button>
+    })
+    return (
+      <li className={this.props.className}>
+        <div className='btn-group' data-toggle="buttons">
+          {toggleButtons}
+        </div>
+      </li>
+    )
+  }
+}
+const ToggleLanguageButton = connect(
+  state => state.i18n,
+  (dispatch) => ({
+    toggleLanguage: (locale) => {
+      dispatch(setLocale(locale))
+    }
+  })
+)(styled(ToggleLanguageButtonImpl)`
+  position: relative;
+  margin-left: 1.5rem;
+  top: -0.5rem;
+  .btn-group{
+    display:inline-block;
+  }
+  .btn-group button {
+    width: 2.3rem;
+    padding: 0.2rem 0.5rem;
+    border: solid;
+    background-color: rgba(0,0,0,0);
+    color: #fff;
+    cursor: pointer;
+  }
+  .btn-group button:first-child {
+    border-radius: 0.3rem 0 0 0.3rem;
+    border-right: none;
+  }
+  .btn-group button:last-child {
+    border-radius: 0 0.3rem 0.3rem 0;
+  }
+  .btn-group button.active {
+    background-color: #19A5E4;
+  }
+`)
+
 class NavHeaderImpl extends Component {
   render () {
     const { logo, companyName, className } = this.props
     return (
       <header className={`NavHeader ${className}`}>
         <NavLogo logo={logo} companyName={companyName} />
+        <ToggleLanguageButton />
         <LinkContainer to='/team'>
           <NavItem className='pull-right team'><FontAwesome name='address-book' /></NavItem>
         </LinkContainer>
@@ -132,10 +182,12 @@ const QuickLinks = styled(QuickLinksImpl)`
   }
 `
 
-const ConversationListImpl = connect(state => ({
-  logo: state.ui.logo,
-  companyName: state.ui.companyName
-}))(class extends Component {
+const ConversationListImpl = connect(
+  state => Object.assign({},
+                          state.i18n,
+                          { logo: state.ui.logo },
+                          { companyName: state.ui.companyName })
+)(class extends Component {
   render () {
     const { logo, companyName, className } = this.props
     return (

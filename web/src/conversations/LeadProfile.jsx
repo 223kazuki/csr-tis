@@ -74,13 +74,14 @@ const LeadProfile = styled(LeadProfileImpl)`
 `;
 
 export default connect(
-  state => ({
-    isDemo: state.ui.isDemo,
-    selectedConversationID: state.conversations.selectedConversation,
-    profile: state.conversations.selectedProfile,
-    selectedTab: state.conversations.ui.profileSelectedTab,
-    stats: state.conversations.selectedConversationStats,
-    zendeskTickets: state.conversations.zendeskTickets }),
+  state => Object.assign({},
+    state.i18n,
+    { isDemo: state.ui.isDemo },
+    { selectedConversationID: state.conversations.selectedConversation },
+    { profile: state.conversations.selectedProfile },
+    { selectedTab: state.conversations.ui.profileSelectedTab },
+    { stats: state.conversations.selectedConversationStats },
+    { zendeskTickets: state.conversations.zendeskTickets }),
   dispatch => ({
     onFieldChange: fieldName => {
       return ({ value }) => {

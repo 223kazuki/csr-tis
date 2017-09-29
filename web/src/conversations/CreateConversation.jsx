@@ -111,7 +111,9 @@ const CreateConversation = styled(CreateConversationImpl)`
 `;
 
 export default connect(
-  state => ({ uiState: state.conversations.ui.createConversationWidgetState }),
+  state => Object.assign({},
+                         state.i18n,
+                         { uiState: state.conversations.ui.createConversationWidgetState }),
   dispatch => ({ setWidgetState: newState => dispatch(setCreateConversationWidgetState(newState)),
                  invite: (email, firstName, lastName) => dispatch(inviteToChat(email, firstName, lastName))})
 )(CreateConversation);
