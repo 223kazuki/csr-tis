@@ -9,6 +9,7 @@ import Messages from './Messages'
 import LeadProfile from './LeadProfile'
 import styled from 'styled-components'
 import { I18n, setLocale } from 'react-redux-i18n'
+import cookie from 'react-cookie';
 
 class NavLogoImpl extends Component {
   render () {
@@ -46,7 +47,7 @@ class ToggleLanguageButtonImpl extends Component {
   render () {
     const { toggleLanguage, locale, translations } = this.props
     const toggleButtons = Object.keys(translations).map((k) => {
-      return <button className={locale === k ? 'active' : ''} key={k} onClick={() => toggleLanguage(k)}>{k}</button>
+      return <button className={locale === k ? 'active' : ''} key={k} onClick={() => toggleLanguage(translations, k)}>{k}</button>
     })
     return (
       <li className={this.props.className}>
@@ -60,7 +61,9 @@ class ToggleLanguageButtonImpl extends Component {
 const ToggleLanguageButton = connect(
   state => state.i18n,
   (dispatch) => ({
-    toggleLanguage: (locale) => {
+    toggleLanguage: (translations, locale) => {
+      document.title = translations[locale].title
+      cookie.save('LOCALE', locale, { path: '/', maxAge: 7776000, httpOnly: false }) // Max age 3 months
       dispatch(setLocale(locale))
     }
   })

@@ -29,11 +29,14 @@ import applyPrimaryColor from './colorScheme'
 import { isDev } from './utils'
 import config from './config.json'
 import { loadTranslations, setLocale, syncTranslationWithStore, i18nReducer } from 'react-redux-i18n'
+import { readCookie } from './utils';
 
-const DEFAULT_LOCALE_LANGUAGE = config.locale.language || 'en'
+const LOCALE_LANGUAGE = readCookie('LOCALE') || config.locale.defaultLanguage || 'en'
 const translationsObjectJA = require(`./data/i18n/ja.json`)
 const translationsObjectEN = require(`./data/i18n/en.json`)
 const translationsObject = Object.assign({}, translationsObjectJA, translationsObjectEN)
+
+document.title = translationsObject[LOCALE_LANGUAGE].title
 
 const routeMiddleware = routerMiddleware(browserHistory)
 const store = createStore(
@@ -51,7 +54,7 @@ const store = createStore(
 
 syncTranslationWithStore(store)
 store.dispatch(loadTranslations(translationsObject))
-store.dispatch(setLocale(DEFAULT_LOCALE_LANGUAGE))
+store.dispatch(setLocale(LOCALE_LANGUAGE))
 
 if (isDev()) window._reduxStore = store
 
