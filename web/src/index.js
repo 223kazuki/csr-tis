@@ -35,6 +35,8 @@ const translationsObjectJA = require(`./data/i18n/ja.json`)
 const translationsObjectEN = require(`./data/i18n/en.json`)
 const translationsObject = Object.assign({}, translationsObjectJA, translationsObjectEN)
 
+document.title = translationsObject[DEFAULT_LOCALE_LANGUAGE].title
+
 const routeMiddleware = routerMiddleware(browserHistory)
 const store = createStore(
   combineReducers({

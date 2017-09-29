@@ -46,7 +46,7 @@ class ToggleLanguageButtonImpl extends Component {
   render () {
     const { toggleLanguage, locale, translations } = this.props
     const toggleButtons = Object.keys(translations).map((k) => {
-      return <button className={locale === k ? 'active' : ''} key={k} onClick={() => toggleLanguage(k)}>{k}</button>
+      return <button className={locale === k ? 'active' : ''} key={k} onClick={() => toggleLanguage(translations, k)}>{k}</button>
     })
     return (
       <li className={this.props.className}>
@@ -60,7 +60,8 @@ class ToggleLanguageButtonImpl extends Component {
 const ToggleLanguageButton = connect(
   state => state.i18n,
   (dispatch) => ({
-    toggleLanguage: (locale) => {
+    toggleLanguage: (translations, locale) => {
+      document.title = translations[locale].title
       dispatch(setLocale(locale))
     }
   })
