@@ -157,7 +157,7 @@
       "connectCalendars": "Connect calendars"
     },
     "name": {
-      "text": "%{lastName} %{firstName}"
+      "text": "%{firstName} %{lastName}"
     },
     "unknown": {
       "text": "Unknown"
