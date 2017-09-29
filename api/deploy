@@ -20,7 +20,7 @@ cd $WORKDIR
 git init
 git add .
 git commit -m "Deploy"
-git push -f https://git.heroku.com/layer-dom.git master
+git push -f https://git.heroku.com/csr-tis-api.git master
 
 cd /
 rm -rf $WORKDIR
