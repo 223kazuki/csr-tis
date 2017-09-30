@@ -1,5 +1,6 @@
 {
   "en": {
+    "title": "Layer CSR",
     "login": {
       "email": "Layer email",
       "password": "Password",
@@ -157,7 +158,7 @@
       "connectCalendars": "Connect calendars"
     },
     "name": {
-      "text": "%{lastName} %{firstName}"
+      "text": "%{firstName} %{lastName}"
     },
     "unknown": {
       "text": "Unknown"

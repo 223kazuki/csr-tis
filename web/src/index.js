@@ -29,9 +29,14 @@ import applyPrimaryColor from './colorScheme'
 import { isDev } from './utils'
 import config from './config.json'
 import { loadTranslations, setLocale, syncTranslationWithStore, i18nReducer } from 'react-redux-i18n'
+import { readCookie } from './utils';
 
-const LOCALE_LANGUAGE = config.locale.language || 'en'
-const translationsObject = require(`./data/i18n/${LOCALE_LANGUAGE}.json`)
+const LOCALE_LANGUAGE = readCookie('LOCALE') || config.locale.defaultLanguage || 'en'
+const translationsObjectJA = require(`./data/i18n/ja.json`)
+const translationsObjectEN = require(`./data/i18n/en.json`)
+const translationsObject = Object.assign({}, translationsObjectJA, translationsObjectEN)
+
+document.title = translationsObject[LOCALE_LANGUAGE].title
 
 const routeMiddleware = routerMiddleware(browserHistory)
 const store = createStore(

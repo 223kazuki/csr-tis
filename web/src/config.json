@@ -4,6 +4,6 @@
     "staging": "layer:///apps/staging/7c91dbc4-a2f7-11e7-bb21-87ee22204fbe"
   },
   "locale": {
-    "language": "ja"
+    "defaultLanguage": "ja"
   }
 }
