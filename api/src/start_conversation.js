@@ -58,7 +58,11 @@ const existingPrimaryConversation = prospectUserID => new Promise((resolve, reje
 });
 
 const createNewConversation = (agentID, prospectID) => new Promise((resolve, reject) => {
-  const participants = [`${agentID}`, `${prospectID}`];
+  let participants;
+  if (process.env.DEMO_BOT_ID)
+    participants = [`${agentID}`, `${prospectID}`, process.env.DEMO_BOT_ID];
+  else
+    participants = [`${agentID}`, `${prospectID}`];
   const metadata = {status: 'active', owner_id: `${agentID}`, primary_user_id: `${prospectID}`};
   layer.conversations.create({ participants, metadata, distinct: true }, (err, res) => {
     if (err)
