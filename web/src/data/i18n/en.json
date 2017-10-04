@@ -172,8 +172,8 @@
         "whenCanWeMeet": " When can we meet?",
         "meetingTitle": "Meeting title",
         "meetingLength": "Meeting length",
-        "proposeSomeTimes": "Propose some times",
-        "sending": " Sending",
+        "proposeSomeTimes": "Propose some times&hellip;",
+        "sending": " Sending&hellip;",
         "send": "Send",
         "submitted": "Submitted",
         "error": "Error",
@@ -187,13 +187,50 @@
         "thereWasAnErrorGettingAvailableTimes": "There was an error getting available times: %{message}",
         "minutes": "%{minute} min"
       },
-      "EmailReceipt": {},
-      "Location": {},
-      "Poll": {},
-      "Receipt": {},
-      "Response": {},
-      "SMSReceipt": {},
-      "Zoom": {}
+      "EmailReceipt": {
+        "recept": "You emailed %{count} %{messagePlural} on %{sentAtDate} %{sentAtHours}:%{sentAtMinutes}:%{sentAtSeconds}"
+      },
+      "File": {
+        "notSupported": "File type not supported yet: %{fileMIMEType}",
+        "couldNotParse": "Could not parse message content"
+      },
+      "LinkPreview": {
+        "loading": "Loading...",
+        "problemMessage": "There was a problem loading a preview for this link.",
+        "untitled": "Untitled page",
+        "noDescription": "No description found for this page"
+      },
+      "Location": {
+        "loading": " Getting your location…"
+      },
+      "Poll": {
+        "sending": " Sending&hellip;",
+        "send": "Send",
+        "poll": " Poll",
+        "pollQuestion": "Poll question",
+        "ex": "ex: How are you feeling?",
+        "addSomeOptions": "Add some options&hellip;",
+        "remove": "(Remove)",
+        "add": "Add"
+      },
+      "Receipt": {
+        "you": "You %{action}",
+        "recipient": "Recipient %{action}"
+      },
+      "Response": {
+        "responded": "Someone responded to you."
+      },
+      "SMSReceipt": {
+        "recept": "You sent %{count} %{messagePlural} via SMS on %{sentAtDate} %{sentAtHours}:%{sentAtMinutes}:%{sentAtSeconds}"
+      },
+      "Zoom": {
+        "joinCall": "Join call",
+        "usingZoomApp": "using Zoom app",
+        "dialIn": "Dial in",
+        "usingYourPhone": "using your phone",
+        "zoomCallLoading": "Zoom call loading...",
+        "inZoomCall": "~ You and Ron were in a %{durationInMinutes}-minute Zoom call ~"
+      }
     }
   }
 }

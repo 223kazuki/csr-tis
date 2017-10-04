@@ -11,6 +11,7 @@ import { currentUser, isUserMode } from '../../login/auth';
 import * as Layer from 'layer-websdk';
 import { stripPrefix } from '../../utils';
 import classNames from 'classnames';
+import { I18n } from 'react-redux-i18n';
 const contentType = require("content-type");
 
 const mimeType = 'application/x.card.text-poll+json';
@@ -56,29 +57,29 @@ class PollCompose extends Component {
     let sendButton = null;
     if (options.length > 0) {
       if (isSending)
-        sendButton = <button className='inline SendButton' disabled><FontAwesome name='spinner' spin /> Sending&hellip;</button>;
+        sendButton = <button className='inline SendButton' disabled><FontAwesome name='spinner' spin />{I18n.t('cards.File.send')}</button>;
       else
-        sendButton = <button className='inline SendButton' onClick={this.sendMessage.bind(this)}>Send</button>;
+        sendButton = <button className='inline SendButton' onClick={this.sendMessage.bind(this)}>{I18n.t('cards.File.send')}</button>;
     }
     else
-      sendButton = <button className='inline SendButton' disabled>Send</button>;
+      sendButton = <button className='inline SendButton' disabled>{I18n.t('cards.File.send')}</button>;
     return (
       <div className='PollCompose CardBody'>
         <div className='CardHeader'>
-          <p className='CardTitle'><FontAwesome name='bars' /> Poll</p>
+          <p className='CardTitle'><FontAwesome name='bars' />{I18n.t('cards.File.send')}</p>
           {sendButton}
         </div>
         <div className='PollBasics'>
-          <label>Poll question</label>
+          <label>{I18n.t('cards.File.send')}</label>
           <input type='text'
-            placeholder='ex: How are you feeling?'
+            placeholder={I18n.t('cards.File.send')}
             value={question}
             onChange={e => this.setState({ question: e.target.value })} />
         </div>
         <div className='PollOptions'>
-          <label>Add some options&hellip;</label>
+          <label>{I18n.t('cards.File.send')}</label>
           {options.map((opt, idx) => {
-            const removeButton = <button className='inline' onClick={this.removeOption(idx).bind(this)}>(Remove)</button>;
+            const removeButton = <button className='inline' onClick={this.removeOption(idx).bind(this)}>{I18n.t('cards.File.send')}</button>;
             return (<p key={idx}>{opt} {removeButton}</p>);
           })}
           <div className='NewPollOption'>
@@ -90,7 +91,7 @@ class PollCompose extends Component {
                   this.addNewOption();
               }}
               onChange={e => this.setState({ newOption: e.target.value })} />
-            <button className='inline' onClick={this.addNewOption.bind(this)}>Add</button>
+            <button className='inline' onClick={this.addNewOption.bind(this)}>{I18n.t('cards.File.send')}</button>
           </div>
         </div>
       </div>

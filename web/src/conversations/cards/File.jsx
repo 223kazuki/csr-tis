@@ -6,6 +6,7 @@ import FontAwesome from 'react-fontawesome';
 import * as Layer from 'layer-websdk';
 import './File.css';
 import filesize from 'filesize';
+import { I18n } from 'react-redux-i18n';
 
 class FilePDF extends Component {
   render() {
@@ -51,9 +52,9 @@ class File extends Component {
       else if (fileMIMEType.match(/image\/.+/))
         return <FileImage fileInfo={fileMetadata} url={url} />;
       else
-        return <p>File type not supported yet: {fileMIMEType}</p>;
+        return <p>{I18n.t('cards.File.notSupported', {fileMIMEType: fileMIMEType})}</p>;
     } catch (e) {
-      return <p>Could not parse message content</p>
+      return <p>{I18n.t('cards.File.couldNotParse')}</p>
     }
   }
 }

@@ -172,8 +172,8 @@
         "whenCanWeMeet": " いつお会いできますか？",
         "meetingTitle": "ミーティング名",
         "meetingLength": "ミーティング期間",
-        "proposeSomeTimes": "日時を提案する",
-        "sending": " 送信中",
+        "proposeSomeTimes": "日時を提案する&hellip;",
+        "sending": " 送信中&hellip;",
         "send": "送信する",
         "submitted": "送信済",
         "error": "エラー",
@@ -187,13 +187,50 @@
         "thereWasAnErrorGettingAvailableTimes": "日時の取得に失敗しました: %{message}",
         "minutes": "%{minute} 分"
       },
-      "EmailReceipt": {},
-      "Location": {},
-      "Poll": {},
-      "Receipt": {},
-      "Response": {},
-      "SMSReceipt": {},
-      "Zoom": {}
+      "EmailReceipt": {
+        "recept": "%{sentAtDate} %{sentAtHours}:%{sentAtMinutes}:%{sentAtSeconds} に %{count} %{messagePlural} を送信"
+      },
+      "File": {
+        "notSupported": "ファイルタイプ: %{fileMIMEType} は現在サポートしておりません",
+        "couldNotParse": "メッセージの読み込みに失敗しました"
+      },
+      "LinkPreview": {
+        "loading": "読み込み中...",
+        "problemMessage": "リンクのプレビューの読み込みに失敗しました",
+        "untitled": "無名のページ",
+        "noDescription": "このページに対する説明はありません"
+      },
+      "Location": {
+        "loading": " 現在位置を取得しています…"
+      },
+      "Poll": {
+        "sending": " 送信中&hellip;",
+        "send": "送信する",
+        "poll": " 投票",
+        "pollQuestion": "質問",
+        "ex": "例: 今の気持ちは？",
+        "addSomeOptions": "選択肢を追加&hellip;",
+        "remove": "(削除)",
+        "add": "追加"
+      },
+      "Receipt": {
+        "you": "あなた: %{action}",
+        "recipient": "受信者: %{action}"
+      },
+      "Response": {
+        "responded": "誰からがあなたへ返信しました"
+      },
+      "SMSReceipt": {
+        "recept": "%{sentAtDate} %{sentAtHours}:%{sentAtMinutes}:%{sentAtSeconds} に %{count} %{messagePlural} をSMSで送信"
+      },
+      "Zoom": {
+        "joinCall": "電話会議に参加する",
+        "usingZoomApp": "Zoom アプリを使う",
+        "dialIn": "ダイヤルする",
+        "usingYourPhone": "電話を使う",
+        "zoomCallLoading": "Zoom の着信を読み込んでいます...",
+        "inZoomCall": "~ あなたとロンは %{durationInMinutes}-分 Zoom で通話中です ~"
+      }
     }
   }
 }

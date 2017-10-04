@@ -5,6 +5,7 @@ const MessageHandlerMixin = LayerUI.mixins.MessageHandler;
 import { isUserMode } from '../../login/auth';
 import * as Layer from 'layer-websdk';
 import './Receipt.css';
+import { I18n } from 'react-redux-i18n';
 
 // Generic receipt
 class Receipt extends Component {
@@ -15,9 +16,9 @@ class Receipt extends Component {
       content = receipt.text;
     else if (receipt.action) {
       if (isUserMode())
-        content = `You ${receipt.action}`;
+        content = I18n.t('cards.Receipt.you', {action: receipt.action});
       else
-        content = `Recipient ${receipt.action}`;
+        content = I18n.t('cards.Receipt.recipient', {action: receipt.action});
     }
     else
       content = '';

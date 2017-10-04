@@ -4,6 +4,7 @@ import LayerUI, { registerComponent, registerMessageHandler } from 'layer-ui-web
 const MessageHandlerMixin = LayerUI.mixins.MessageHandler;
 import { get, post } from '../../api';
 import * as Layer from 'layer-websdk';
+import { I18n } from 'react-redux-i18n';
 
 import './Zoom.css';
 
@@ -13,14 +14,14 @@ class ZoomJoin extends Component {
       <div className='ZoomJoin'>
         <a target='blank' href={'https://layer.zoom.us/j/' + this.props.meetingID}>
           <button className='normal'>
-            Join call
-            <small>using Zoom app</small>
+            {I18n.t('cards.Zoom.joinCall')}
+            <small>{I18n.t('cards.Zoom.usingZoomApp')}</small>
           </button>
         </a>
         <a href={'tel:+1-646-558-8656,' + this.props.meetingID + ',,,,,47'}>
           <button className='primary'>
-            Dial in
-            <small>using your phone</small>
+            {I18n.t('cards.Zoom.dialIn')}
+            <small>{I18n.t('cards.Zoom.usingYourPhone')}</small>
           </button>
         </a>
       </div>
@@ -32,7 +33,7 @@ class ZoomLoading extends Component {
   render() {
     return (
       <div className='ZoomLoading'>
-        <p>Zoom call loading...</p>
+        <p>{I18n.t('cards.Zoom.zoomCallLoading')}</p>
       </div>
     )
   }
@@ -43,7 +44,7 @@ class ZoomOver extends Component {
     const durationInMinutes = this.props.duration / 60;
     return (
       <div className='ZoomOver'>
-        <p>~ You and Ron were in a {Math.round(durationInMinutes)}-minute Zoom call ~</p>
+        <p>{I18n.t('cards.Zoom.inZoomCall', {durationInMinutes: Math.round(durationInMinutes)})}</p>
       </div>
     )
   }

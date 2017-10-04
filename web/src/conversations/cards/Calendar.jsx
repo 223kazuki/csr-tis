@@ -341,7 +341,7 @@ class CalendarCompose extends Component {
     let sendButton = null;
     if (selectedTimespans.length > 0) {
       if (isSending)
-        sendButton = <button className='inline SendButton' disabled><FontAwesome name='spinner' spin />{I18n.t('cards.Calendar.sending')}&hellip;</button>;
+        sendButton = <button className='inline SendButton' disabled><FontAwesome name='spinner' spin />{I18n.t('cards.Calendar.sending')}</button>;
       else
         sendButton = <button className='inline SendButton' onClick={this.sendMessage.bind(this)}>{I18n.t('cards.Calendar.send')}</button>;
     }
@@ -375,7 +375,7 @@ class CalendarCompose extends Component {
           </div>
         </div>
         <div className='ProposeTimes'>
-          <label>{I18n.t('cards.Calendar.proposeSomeTimes')}&hellip;</label>
+          <label>{I18n.t('cards.Calendar.proposeSomeTimes')}</label>
           <ProposeTimes
             freeTimes={freeTimes}
             selectedTimespans={selectedTimespans}
