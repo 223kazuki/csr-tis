@@ -166,6 +166,34 @@
     "spinnerButton": {
       "errorMessage": "Error (click to show)",
       "unrecognizedState": "Unrecognized state %{status}"
+    },
+    "cards": {
+      "Calendar": {
+        "whenCanWeMeet": " When can we meet?",
+        "meetingTitle": "Meeting title",
+        "meetingLength": "Meeting length",
+        "proposeSomeTimes": "Propose some times",
+        "sending": " Sending",
+        "send": "Send",
+        "submitted": "Submitted",
+        "error": "Error",
+        "submitting": "Submitting&hellip; ",
+        "submit": "Submit",
+        "ex": "ex: Call with %{name}",
+        "loadingResponses": " Loading responses&hellip;",
+        "recipientHasConfirmedThisTime": "Recipient has confirmed this time:",
+        "waitingForRecipientToRespond": "Waiting for recipient to respond &hellip;",
+        "selectATime": "Select a time&hellip;",
+        "thereWasAnErrorGettingAvailableTimes": "There was an error getting available times: %{message}",
+        "minutes": "%{minute} min"
+      },
+      "EmailReceipt": {},
+      "Location": {},
+      "Poll": {},
+      "Receipt": {},
+      "Response": {},
+      "SMSReceipt": {},
+      "Zoom": {}
     }
   }
 }

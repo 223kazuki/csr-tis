@@ -166,6 +166,34 @@
     "spinnerButton": {
       "errorMessage": "エラー（クリックして詳細表示）",
       "unrecognizedState": "想定外のエラー %{status}"
+    },
+    "cards": {
+      "Calendar": {
+        "whenCanWeMeet": " いつお会いできますか？",
+        "meetingTitle": "ミーティング名",
+        "meetingLength": "ミーティング期間",
+        "proposeSomeTimes": "日時を提案する",
+        "sending": " 送信中",
+        "send": "送信する",
+        "submitted": "送信済",
+        "error": "エラー",
+        "submitting": "送信中&hellip; ",
+        "submit": "送信",
+        "ex": "例: %{name}と電話会議",
+        "loadingResponses": " データを読み込んでいます&hellip;",
+        "recipientHasConfirmedThisTime": "先方が予定を承認しました:",
+        "waitingForRecipientToRespond": "先方の返信を待っています &hellip;",
+        "selectATime": "時間を選択する&hellip;",
+        "thereWasAnErrorGettingAvailableTimes": "日時の取得に失敗しました: %{message}",
+        "minutes": "%{minute} 分"
+      },
+      "EmailReceipt": {},
+      "Location": {},
+      "Poll": {},
+      "Receipt": {},
+      "Response": {},
+      "SMSReceipt": {},
+      "Zoom": {}
     }
   }
 }
