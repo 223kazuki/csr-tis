@@ -5,6 +5,7 @@ const MessageHandlerMixin = LayerUI.mixins.MessageHandler;
 import FontAwesome from 'react-fontawesome';
 import * as Layer from 'layer-websdk';
 import './Location.css';
+import { I18n } from 'react-redux-i18n';
 
 const GOOGLE_EMBED_KEY = 'AIzaSyCXIyKqEoKV3VLrEAt1Bf1RgA7AmSddHqI';
 
@@ -12,7 +13,7 @@ class LocationLoading extends Component {
   render() {
     return (
       <div className='LocationLoading'>
-        <p><FontAwesome name='spinner' spin /> Getting your location…</p>
+        <p><FontAwesome name='spinner' spin />{I18n.t('cards.Location.loading')}</p>
       </div>
     )
   }

@@ -5,6 +5,7 @@ const MessageHandlerMixin = LayerUI.mixins.MessageHandler;
 import { isUserMode } from '../../login/auth';
 import * as Layer from 'layer-websdk';
 import './Receipt.css';
+import { I18n } from 'react-redux-i18n';
 
 class SMSReceipt extends Component {
   render() {
@@ -13,7 +14,12 @@ class SMSReceipt extends Component {
     const receipt = JSON.parse(this.props.receipt);
     const sentAt = new Date(receipt.sentAt);
     const messagePlural = receipt.count > 1 ? 'messages' : 'message';
-    const receiptString = `You sent ${receipt.count} ${messagePlural} via SMS on ${sentAt.toDateString()} ${sentAt.getHours()}:${sentAt.getMinutes()}:${sentAt.getSeconds()}`;
+    const receiptString = I18n.t('cards.EmailReceipt.recept', {count: receipt.count,
+                                                               messagePlural: messagePlural,
+                                                               sentAtDate: sentAt.toDateString(),
+                                                               sentAtHours: sentAt.getHours(),
+                                                               sentAtMinutes: sentAt.getMinutes(),
+                                                               sentAtSeconds: sentAt.getSeconds()});
     return (
       <div className='SMSReceipt'>
         <p>{receiptString}</p>

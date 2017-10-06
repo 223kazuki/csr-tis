@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import LayerUI, { registerComponent, registerMessageHandler } from 'layer-ui-web';
+import { I18n } from 'react-redux-i18n';
 const MessageHandlerMixin = LayerUI.mixins.MessageHandler;
 
 class Response extends Component {
   render() {
     return (
       <div className='CardResponse'>
-        <p>Someone responded to you.</p>
+        <p>{I18n.t('cards.Response.responded')}</p>
       </div>
     )
   }

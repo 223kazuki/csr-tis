@@ -4,13 +4,14 @@ import LayerUI, { registerComponent, registerMessageHandler } from 'layer-ui-web
 const MessageHandlerMixin = LayerUI.mixins.MessageHandler;
 import FontAwesome from 'react-fontawesome';
 import Autolinker from 'autolinker';
+import { I18n } from 'react-redux-i18n';
 
 class PreviewLoading extends Component {
   render() {
     return (
       <div className='PreviewLoading'>
         <FontAwesome name='spinner' spin />
-        <span>Loading...</span>
+        <span>{I18n.t('cards.LinkPreview.loading')}</span>
       </div>
     )
   }
@@ -20,7 +21,7 @@ class PreviewError extends Component {
   render() {
     return (
       <div className='PreviewError'>
-        <span>There was a problem loading a preview for this link.</span>
+        <span>{I18n.t('cards.LinkPreview.problemMessage')}</span>
       </div>
     )
   }
@@ -35,8 +36,8 @@ class LinkPreview extends Component {
           <img src={image} width='auto' height='90' alt={title} />
         </span>
         <span className='linkPreview-text'>
-          <h5>{title || 'Untitled page'}</h5>
-          <p>{description || 'No description found for this page'}</p>
+          <h5>{title || I18n.t('cards.LinkPreview.untitled')}</h5>
+          <p>{description || I18n.t('cards.LinkPreview.noDescription')}</p>
         </span>
       </a>
     )
