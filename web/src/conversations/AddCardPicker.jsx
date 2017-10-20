@@ -30,10 +30,10 @@ const AddCardType = styled(AddCardTypeImpl)`
 
 class AddCardContainerImpl extends Component {
   render () {
-    const { key, icon, title, onSelectCard } = this.props
+    const { key, icon, title, id, onSelectCard } = this.props
     return (
       <div className={`AddCardContainer cellItem ${this.props.className}`} key={key}>
-        <AddCardType icon={icon} title={title} onClick={onSelectCard.bind(null, title)} />
+        <AddCardType icon={icon} title={title} onClick={onSelectCard.bind(null, id)} />
       </div>
     )
   }
@@ -67,7 +67,7 @@ class AddCardPicker extends Component {
     console.log('cards', cards)
     const rows = cards.map((row, idx) => (
       <div className='cellRow' key={idx}>
-        {row.map(({ title, icon }, idx) => <AddCardContainer key={idx} icon={icon} title={I18n.t('cardTypes.' + title)} onSelectCard={onSelectCard} />)}
+        {row.map(({ id, icon }, idx) => <AddCardContainer key={idx} icon={icon} id={id} title={I18n.t('cardTypes.' + id)} onSelectCard={onSelectCard} />)}
       </div>
     ))
     return (

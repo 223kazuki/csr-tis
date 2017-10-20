@@ -73,17 +73,17 @@
       "noConversationSelected": "No conversation selected"
     },
     "cardTypes": {
-      "Calendar invite": "Calendar invite",
-      "Zoom call": "Zoom call",
-      "Location": "Location",
-      "Carousel (properties)": "Carousel (properties)",
-      "Carousel (finance)": "Carousel (finance)",
-      "Carousel (pages)": "Carousel (pages)",
-      "Carousel (videos)": "Carousel (videos)",
-      "Poll": "Poll",
-      "File": "File",
-      "Good news": "Good news",
-      "Touchpoint 2": "Touchpoint 2"
+      "calendarInvite": "Calendar invite",
+      "zoomCall": "Zoom call",
+      "location": "Location",
+      "carouselProperties": "Carousel (properties)",
+      "carouselFinance": "Carousel (finance)",
+      "carouselPages": "Carousel (pages)",
+      "carouselVideos": "Carousel (videos)",
+      "poll": "Poll",
+      "file": "File",
+      "goodNews": "Good news",
+      "touchpoint2": "Touchpoint 2"
     },
     "leadProfile": {
       "statsText": "Stats",

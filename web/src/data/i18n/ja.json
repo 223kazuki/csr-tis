@@ -73,17 +73,17 @@
       "noConversationSelected": "会話が選択されていません"
     },
     "cardTypes": {
-      "Calendar invite": "予定の作成",
-      "Zoom call": "Zoomで通話",
-      "Location": "現在位置",
-      "Carousel (properties)": "カルーセル (物件情報)",
-      "Carousel (finance)": "カルーセル (金融情報)",
-      "Carousel (pages)": "カルーセル (Webページ)",
-      "Carousel (videos)": "カルーセル (ビデオ)",
-      "Poll": "投票",
-      "File": "ファイル",
-      "Good news": "定型文1",
-      "Touchpoint 2": "定型文2"
+      "calendarInvite": "予定の作成",
+      "zoomCall": "Zoomで通話",
+      "location": "現在位置",
+      "carouselProperties": "カルーセル (物件情報)",
+      "carouselFinance": "カルーセル (金融情報)",
+      "carouselPages": "カルーセル (Webページ)",
+      "carouselVideos": "カルーセル (ビデオ)",
+      "poll": "投票",
+      "file": "ファイル",
+      "goodNews": "定型文1",
+      "touchpoint2": "定型文2"
     },
     "leadProfile": {
       "statsText": "統計",

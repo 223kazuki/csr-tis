@@ -254,6 +254,7 @@ class MessagesImpl extends Component {
     return node
   }
   render () {
+    const locale = this.props.locale;
     // Hack to show "Loading" while link preview loads
     const composer = document.getElementsByTagName('layer-composer')[0];
     var conversationID = this.props.conversationID;
@@ -312,9 +313,9 @@ class MessagesImpl extends Component {
       let cards = isUserMode() ? cardTypes.filter(c => c.userVisible) : cardTypes;
       const addCardPicker = (
         <Popover id='cardPicker' title='Send a card'>
-          <AddCardPicker options={cards} onSelectCard={title => {
+          <AddCardPicker options={cards} onSelectCard={id => {
             this.overlayTrigger.hide();
-            this.props.onSelectCard(title);
+            this.props.onSelectCard(id, locale);
           }} />
         </Popover>
       );
@@ -335,7 +336,7 @@ class MessagesImpl extends Component {
                   onComposerChangeValue={onComposerChange}
                   onSendMessage={onSend} />;
       if (!("geolocation" in navigator))
-        cards = cards.filter(c => c.title !== 'Location');
+        cards = cards.filter(c => c.id !== 'location');
     }
     return (
       <div className={classnames('full-height-panel', 'Messages', {clickThroughMessages: this.props.clickThroughMessages})}>
@@ -364,221 +365,233 @@ const Messages = connect(
     onComposerChange: evt => {
       dispatch(updateComposerContent(evt.detail.value));
     },
-    onSelectCard: cardTitle => {
+    onSelectCard: (cardID, locale) => {
       const composer = document.getElementsByTagName('layer-composer')[0];
-      switch (cardTitle) {
-        case "Calendar invite":
-          if (composer) {
-            const conversation = composer.conversation;
-            const parts = messagePartsForCalendar('compose');
-            const message = conversation.createMessage({ parts });
-            message.presend();
+      switch (locale) {
+        case "en": {
+          switch (cardID) {
+            case "calendarInvite":
+              if (composer) {
+                const conversation = composer.conversation;
+                const parts = messagePartsForCalendar('compose');
+                const message = conversation.createMessage({ parts });
+                message.presend();
+              }
+              break;
+            case "carouselProperties":
+              if (composer) {
+                const realEstateCards = [
+                  { title: '308 Sea Cliff Ave', detail: '$8,900,000', image_url: '/houses/308-sea-cliff-ave.jpg' },
+                  { title: '439 Burnett Ave', detail: '$2,250,000', image_url: '/houses/439-burnett-ave.jpg' },
+                  { title: '817 Marly Way', detail: '$1,200,000', image_url: '/houses/817-marly-way.jpg' },
+                  { title: '2517 Waymaker Way', detail: '$2,500,000', image_url: '/houses/2517-waymaker-way.jpg' },
+                  { title: '5832 Kana Rd', detail: '$3,250,000', image_url: '/houses/5832-kana-rd.jpg' }
+                ];
+                const parts = messagePartsForCarousel(realEstateCards);
+                composer.send(parts);
+              }
+              break;
+            case "carouselFinance":
+              if (composer) {
+                const cards = [
+                  { title: 'WTI Crude', detail: 'Oil has been down in the last month and is expected to go up to $100 per barrel soon.', image_url: '/finance/oil.png' },
+                  { title: 'Sugar', detail: 'Sugar is expected to rise as backlash against HFCS and artificial sweeteners intensifies.', image_url: '/finance/sugar.png' },
+                  { title: 'Real Estate', detail: 'Real estate is poised for a rebound and Fidelity has the best performing RE fund.', image_url: '/finance/reip.png' },
+                  { title: 'Donate', detail: "Pay it forward by contributing to the national 'Kids who don't read good' fund", image_url: '/finance/read.jpg' }
+                ];
+                const parts = messagePartsForCarousel(cards);
+                composer.send(parts);
+              }
+              break;
+            case "carouselPages":
+              if (composer) {
+                const cards = [
+                  { title: 'Airlines', detail: '', image_url: '/carousel-pages/airline.jpg', link: 'https://layer.com/airlines/' },
+                  { title: 'Finance', detail: '', image_url: '/carousel-pages/financial.jpg', link: 'https://layer.com/finance/' },
+                  { title: 'Hospitality', detail: '', image_url: '/carousel-pages/hotel.jpg', link: 'https://layer.com/hotels/' },
+                  { title: 'Retail', detail: '', image_url: '/carousel-pages/retail.jpg', link: 'https://layer.com/retail/' }
+                ];
+                const parts = messagePartsForCarousel(cards);
+                composer.send(parts);
+              }
+              break;
+            case "carouselVideos":
+              if (composer) {
+                const cards = [
+                  { title: 'Airlines', detail: '', image_url: '/carousel-videos/airline.png', link: 'https://vimeo.com/221311893' },
+                  { title: 'Finance', detail: '', image_url: '/carousel-videos/financial.png', link: 'https://vimeo.com/217919315' },
+                  { title: 'Hospitality', detail: '', image_url: '/carousel-videos/hotel.png', link: 'https://vimeo.com/214705752' },
+                  { title: 'Retail', detail: '', image_url: '/carousel-videos/retail.png', link: 'https://vimeo.com/206495347' }
+                ];
+                const parts = messagePartsForCarousel(cards);
+                composer.send(parts);
+              }
+              break;
+            case "zoomCall":
+              if (composer) {
+                const parts = messagePartsForZoomCall();
+                composer.send(parts);
+              }
+              break;
+            case "location":
+              {
+                const conversation = composer.conversation;
+                // Attempt to be compatible with Atlas
+                // https://github.com/layerhq/Atlas-iOS/blob/5daff2cab1c8a58278564e4fcce048d089a58c23/Code/Utilities/ATLMessagingUtilities.m#L35
+                const parts = messagePartsForLocation('loading');
+                const message = conversation.createMessage({ parts: parts });
+                // Preview message in conversation
+                message.presend();
+              }
+              break;
+            case "poll":
+              if (composer) {
+                const conversation = composer.conversation;
+                const parts = messagePartsForPoll('compose');
+                const message = conversation.createMessage({ parts });
+                message.presend();
+              }
+              break;
+            case "file":
+              if (composer) {
+                const conversation = composer.conversation;
+                const fileInput = document.createElement('input');
+                fileInput.type = 'file';
+                fileInput.accept = 'image/*,application/pdf';
+                fileInput.onchange = _ => {
+                  const file = fileInput.files[0];
+                  const message = conversation.createMessage({ parts: messagePartsForFile(file) });
+                  message.send();
+                }
+                fileInput.click();
+              }
+              break;
+            case "goodNews":
+              if (composer) {
+                composer.value = "Bill, I have good news to discuss. Please join me";
+              }
+              break;
+            case "touchpoint2":
+              if (composer) {
+                composer.value = "I have been reviewing your portfolio. First of all, congratulations, it has gone up by roughly $20 million. Check out your wealth report attached."
+              }
+              break;
+            default:
+              break;
           }
-          break;
-        case "Carousel (properties)":
-          if (composer) {
-            const realEstateCards = [
-              { title: '308 Sea Cliff Ave', detail: '$8,900,000', image_url: '/houses/308-sea-cliff-ave.jpg' },
-              { title: '439 Burnett Ave', detail: '$2,250,000', image_url: '/houses/439-burnett-ave.jpg' },
-              { title: '817 Marly Way', detail: '$1,200,000', image_url: '/houses/817-marly-way.jpg' },
-              { title: '2517 Waymaker Way', detail: '$2,500,000', image_url: '/houses/2517-waymaker-way.jpg' },
-              { title: '5832 Kana Rd', detail: '$3,250,000', image_url: '/houses/5832-kana-rd.jpg' }
-            ];
-            const parts = messagePartsForCarousel(realEstateCards);
-            composer.send(parts);
+        }
+        case "ja": {
+          switch (cardID) {
+            case "calendarInvite":
+              if (composer) {
+                const conversation = composer.conversation;
+                const parts = messagePartsForCalendar('compose');
+                const message = conversation.createMessage({ parts });
+                message.presend();
+              }
+              break;
+            case "carouselProperties":
+              if (composer) {
+                const realEstateCards = [
+                  { title: '308 Sea Cliff Ave', detail: '￥890,000,000', image_url: '/houses/308-sea-cliff-ave.jpg' },
+                  { title: '439 Burnett Ave', detail: '￥225,000,000', image_url: '/houses/439-burnett-ave.jpg' },
+                  { title: '817 Marly Way', detail: '￥120,000,000', image_url: '/houses/817-marly-way.jpg' },
+                  { title: '2517 Waymaker Way', detail: '￥250,000,000', image_url: '/houses/2517-waymaker-way.jpg' },
+                  { title: '5832 Kana Rd', detail: '￥325,000,000', image_url: '/houses/5832-kana-rd.jpg' }
+                ];
+                const parts = messagePartsForCarousel(realEstateCards);
+                composer.send(parts);
+              }
+              break;
+            case "carouselFinance":
+              if (composer) {
+                const cards = [
+                  { title: 'WTI Crude', detail: 'Oil has been down in the last month and is expected to go up to $100 per barrel soon.', image_url: '/finance/oil.png' },
+                  { title: 'Sugar', detail: 'Sugar is expected to rise as backlash against HFCS and artificial sweeteners intensifies.', image_url: '/finance/sugar.png' },
+                  { title: 'Real Estate', detail: 'Real estate is poised for a rebound and Fidelity has the best performing RE fund.', image_url: '/finance/reip.png' },
+                  { title: 'Donate', detail: "Pay it forward by contributing to the national 'Kids who don't read good' fund", image_url: '/finance/read.jpg' }
+                ];
+                const parts = messagePartsForCarousel(cards);
+                composer.send(parts);
+              }
+              break;
+            case "carouselPages":
+              if (composer) {
+                const cards = [
+                  { title: '航空業界', detail: '', image_url: '/carousel-pages/airline.jpg', link: 'https://layer.com/airlines/' },
+                  { title: '金融業界', detail: '', image_url: '/carousel-pages/financial.jpg', link: 'https://layer.com/finance/' },
+                  { title: '接客業界', detail: '', image_url: '/carousel-pages/hotel.jpg', link: 'https://layer.com/hotels/' },
+                  { title: '不動産業界', detail: '', image_url: '/carousel-pages/retail.jpg', link: 'https://layer.com/retail/' }
+                ];
+                const parts = messagePartsForCarousel(cards);
+                composer.send(parts);
+              }
+              break;
+            case "carouselVideos":
+              if (composer) {
+                const cards = [
+                  { title: '航空業界', detail: '', image_url: '/carousel-videos/airline.png', link: 'https://vimeo.com/221311893' },
+                  { title: '金融業界', detail: '', image_url: '/carousel-videos/financial.png', link: 'https://vimeo.com/217919315' },
+                  { title: '接客業界', detail: '', image_url: '/carousel-videos/hotel.png', link: 'https://vimeo.com/214705752' },
+                  { title: '不動産業界', detail: '', image_url: '/carousel-videos/retail.png', link: 'https://vimeo.com/206495347' }
+                ];
+                const parts = messagePartsForCarousel(cards);
+                composer.send(parts);
+              }
+              break;
+            case "zoomCall":
+              if (composer) {
+                const parts = messagePartsForZoomCall();
+                composer.send(parts);
+              }
+              break;
+            case "location":
+              {
+                const conversation = composer.conversation;
+                // Attempt to be compatible with Atlas
+                // https://github.com/layerhq/Atlas-iOS/blob/5daff2cab1c8a58278564e4fcce048d089a58c23/Code/Utilities/ATLMessagingUtilities.m#L35
+                const parts = messagePartsForLocation('loading');
+                const message = conversation.createMessage({ parts: parts });
+                // Preview message in conversation
+                message.presend();
+              }
+              break;
+            case "poll":
+              if (composer) {
+                const conversation = composer.conversation;
+                const parts = messagePartsForPoll('compose');
+                const message = conversation.createMessage({ parts });
+                message.presend();
+              }
+              break;
+            case "file":
+              if (composer) {
+                const conversation = composer.conversation;
+                const fileInput = document.createElement('input');
+                fileInput.type = 'file';
+                fileInput.accept = 'image/*,application/pdf';
+                fileInput.onchange = _ => {
+                  const file = fileInput.files[0];
+                  const message = conversation.createMessage({ parts: messagePartsForFile(file) });
+                  message.send();
+                }
+                fileInput.click();
+              }
+              break;
+            case "goodNews":
+              if (composer) {
+                composer.value = "こんにちは。今日はあなたによいお知らせがあって連絡しました。ぜひ会話に加わってください。";
+              }
+              break;
+            case "touchpoint2":
+              if (composer) {
+                composer.value = "あなたのポートフォリオを確認いたしました。おめでとうございます！約2,000万円の成長がありました。収益表を添付いたしますのでご確認ください。"
+              }
+              break;
+            default:
+              break;
           }
-          break;
-        case "Carousel (finance)":
-          if (composer) {
-            const cards = [
-              { title: 'WTI Crude', detail: 'Oil has been down in the last month and is expected to go up to $100 per barrel soon.', image_url: '/finance/oil.png' },
-              { title: 'Sugar', detail: 'Sugar is expected to rise as backlash against HFCS and artificial sweeteners intensifies.', image_url: '/finance/sugar.png' },
-              { title: 'Real Estate', detail: 'Real estate is poised for a rebound and Fidelity has the best performing RE fund.', image_url: '/finance/reip.png' },
-              { title: 'Donate', detail: "Pay it forward by contributing to the national 'Kids who don't read good' fund", image_url: '/finance/read.jpg' }
-            ];
-            const parts = messagePartsForCarousel(cards);
-            composer.send(parts);
-          }
-          break;
-        case "Carousel (pages)":
-          if (composer) {
-            const cards = [
-              { title: 'Airlines', detail: '', image_url: '/carousel-pages/airline.jpg', link: 'https://layer.com/airlines/' },
-              { title: 'Finance', detail: '', image_url: '/carousel-pages/financial.jpg', link: 'https://layer.com/finance/' },
-              { title: 'Hospitality', detail: '', image_url: '/carousel-pages/hotel.jpg', link: 'https://layer.com/hotels/' },
-              { title: 'Retail', detail: '', image_url: '/carousel-pages/retail.jpg', link: 'https://layer.com/retail/' }
-            ];
-            const parts = messagePartsForCarousel(cards);
-            composer.send(parts);
-          }
-          break;
-        case "Carousel (videos)":
-          if (composer) {
-            const cards = [
-              { title: 'Airlines', detail: '', image_url: '/carousel-videos/airline.png', link: 'https://vimeo.com/221311893' },
-              { title: 'Finance', detail: '', image_url: '/carousel-videos/financial.png', link: 'https://vimeo.com/217919315' },
-              { title: 'Hospitality', detail: '', image_url: '/carousel-videos/hotel.png', link: 'https://vimeo.com/214705752' },
-              { title: 'Retail', detail: '', image_url: '/carousel-videos/retail.png', link: 'https://vimeo.com/206495347' }
-            ];
-            const parts = messagePartsForCarousel(cards);
-            composer.send(parts);
-          }
-          break;
-        case "Zoom call":
-          if (composer) {
-            const parts = messagePartsForZoomCall();
-            composer.send(parts);
-          }
-          break;
-        case "Location":
-          {
-            const conversation = composer.conversation;
-            // Attempt to be compatible with Atlas
-            // https://github.com/layerhq/Atlas-iOS/blob/5daff2cab1c8a58278564e4fcce048d089a58c23/Code/Utilities/ATLMessagingUtilities.m#L35
-            const parts = messagePartsForLocation('loading');
-            const message = conversation.createMessage({ parts: parts });
-            // Preview message in conversation
-            message.presend();
-          }
-          break;
-        case "Poll":
-          if (composer) {
-            const conversation = composer.conversation;
-            const parts = messagePartsForPoll('compose');
-            const message = conversation.createMessage({ parts });
-            message.presend();
-          }
-          break;
-        case "File":
-          if (composer) {
-            const conversation = composer.conversation;
-            const fileInput = document.createElement('input');
-            fileInput.type = 'file';
-            fileInput.accept = 'image/*,application/pdf';
-            fileInput.onchange = _ => {
-              const file = fileInput.files[0];
-              const message = conversation.createMessage({ parts: messagePartsForFile(file) });
-              message.send();
-            }
-            fileInput.click();
-          }
-          break;
-        case "Good news":
-          if (composer) {
-            composer.value = "Bill, I have good news to discuss. Please join me";
-          }
-          break;
-        case "Touchpoint 2":
-          if (composer) {
-            composer.value = "I have been reviewing your portfolio. First of all, congratulations, it has gone up by roughly $20 million. Check out your wealth report attached."
-          }
-          break;
-        case "予定の作成":
-          if (composer) {
-            const conversation = composer.conversation;
-            const parts = messagePartsForCalendar('compose');
-            const message = conversation.createMessage({ parts });
-            message.presend();
-          }
-          break;
-        case "カルーセル (物件情報)":
-          if (composer) {
-            const realEstateCards = [
-              { title: '308 Sea Cliff Ave', detail: '￥890,000,000', image_url: '/houses/308-sea-cliff-ave.jpg' },
-              { title: '439 Burnett Ave', detail: '￥225,000,000', image_url: '/houses/439-burnett-ave.jpg' },
-              { title: '817 Marly Way', detail: '￥120,000,000', image_url: '/houses/817-marly-way.jpg' },
-              { title: '2517 Waymaker Way', detail: '￥250,000,000', image_url: '/houses/2517-waymaker-way.jpg' },
-              { title: '5832 Kana Rd', detail: '￥325,000,000', image_url: '/houses/5832-kana-rd.jpg' }
-            ];
-            const parts = messagePartsForCarousel(realEstateCards);
-            composer.send(parts);
-          }
-          break;
-        case "カルーセル (金融情報)":
-          if (composer) {
-            const cards = [
-              { title: 'WTI Crude', detail: 'Oil has been down in the last month and is expected to go up to $100 per barrel soon.', image_url: '/finance/oil.png' },
-              { title: 'Sugar', detail: 'Sugar is expected to rise as backlash against HFCS and artificial sweeteners intensifies.', image_url: '/finance/sugar.png' },
-              { title: 'Real Estate', detail: 'Real estate is poised for a rebound and Fidelity has the best performing RE fund.', image_url: '/finance/reip.png' },
-              { title: 'Donate', detail: "Pay it forward by contributing to the national 'Kids who don't read good' fund", image_url: '/finance/read.jpg' }
-            ];
-            const parts = messagePartsForCarousel(cards);
-            composer.send(parts);
-          }
-          break;
-        case "カルーセル (Webページ)":
-          if (composer) {
-            const cards = [
-              { title: '航空業界', detail: '', image_url: '/carousel-pages/airline.jpg', link: 'https://layer.com/airlines/' },
-              { title: '金融業界', detail: '', image_url: '/carousel-pages/financial.jpg', link: 'https://layer.com/finance/' },
-              { title: '接客業界', detail: '', image_url: '/carousel-pages/hotel.jpg', link: 'https://layer.com/hotels/' },
-              { title: '不動産業界', detail: '', image_url: '/carousel-pages/retail.jpg', link: 'https://layer.com/retail/' }
-            ];
-            const parts = messagePartsForCarousel(cards);
-            composer.send(parts);
-          }
-          break;
-        case "カルーセル (ビデオ)":
-          if (composer) {
-            const cards = [
-              { title: '航空業界', detail: '', image_url: '/carousel-videos/airline.png', link: 'https://vimeo.com/221311893' },
-              { title: '金融業界', detail: '', image_url: '/carousel-videos/financial.png', link: 'https://vimeo.com/217919315' },
-              { title: '接客業界', detail: '', image_url: '/carousel-videos/hotel.png', link: 'https://vimeo.com/214705752' },
-              { title: '不動産業界', detail: '', image_url: '/carousel-videos/retail.png', link: 'https://vimeo.com/206495347' }
-            ];
-            const parts = messagePartsForCarousel(cards);
-            composer.send(parts);
-          }
-          break;
-        case "Zoomで通話":
-          if (composer) {
-            const parts = messagePartsForZoomCall();
-            composer.send(parts);
-          }
-          break;
-        case "現在位置":
-          {
-            const conversation = composer.conversation;
-            // Attempt to be compatible with Atlas
-            // https://github.com/layerhq/Atlas-iOS/blob/5daff2cab1c8a58278564e4fcce048d089a58c23/Code/Utilities/ATLMessagingUtilities.m#L35
-            const parts = messagePartsForLocation('loading');
-            const message = conversation.createMessage({ parts: parts });
-            // Preview message in conversation
-            message.presend();
-          }
-          break;
-        case "投票":
-          if (composer) {
-            const conversation = composer.conversation;
-            const parts = messagePartsForPoll('compose');
-            const message = conversation.createMessage({ parts });
-            message.presend();
-          }
-          break;
-        case "ファイル":
-          if (composer) {
-            const conversation = composer.conversation;
-            const fileInput = document.createElement('input');
-            fileInput.type = 'file';
-            fileInput.accept = 'image/*,application/pdf';
-            fileInput.onchange = _ => {
-              const file = fileInput.files[0];
-              const message = conversation.createMessage({ parts: messagePartsForFile(file) });
-              message.send();
-            }
-            fileInput.click();
-          }
-          break;
-        case "定型文1":
-          if (composer) {
-            composer.value = "こんにちは。今日はあなたによいお知らせがあって連絡しました。ぜひ会話に加わってください。";
-          }
-          break;
-        case "定型文2":
-          if (composer) {
-            composer.value = "あなたのポートフォリオを確認いたしました。おめでとうございます！約2,000万円の成長がありました。収益表を添付いたしますのでご確認ください。"
-          }
-          break;
+        }
         default:
           break;
       }
