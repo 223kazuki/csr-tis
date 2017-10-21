@@ -33,6 +33,7 @@ import { messagePartsForCarousel } from './cards/Carousel';
 import { messagePartsForZoomCall } from './cards/Zoom';
 import { messagePartsForLocation } from './cards/Location';
 import { messagePartsForPoll } from './cards/Poll';
+import { messagePartsForFlightTicketList } from './cards/flights/FlightTicketList';
 require('./cards/LinkPreview');
 require('./cards/Response');
 import { messagePartsForFile } from './cards/File';
@@ -586,6 +587,75 @@ const Messages = connect(
             case "touchpoint2":
               if (composer) {
                 composer.value = "あなたのポートフォリオを確認いたしました。おめでとうございます！約2,000万円の成長がありました。収益表を添付いたしますのでご確認ください。"
+              }
+              break;
+            case "flightTicketList":
+              if (composer) {
+                const cards = [
+                  {
+                    "id": "1",
+                    "date": "12/30(月)",
+                    "routes": [
+                      {
+                        "seats": "○",
+                        "flightName": "TL002",
+                        "depart": {
+                           "airport": "HND",
+                           "airportJapanese": "羽田",
+                           "dateTime": "19:45"
+                        },
+                        "arrival": {
+                          "airport": "SFO",
+                          "airportJapanese": "サンフランシスコ",
+                          "dateTime": "12:00"
+                        }
+                      }
+                    ],
+                    "price": "￥98,000",
+                    "time": "9時間 15分",
+                    "milage": "1539マイル"
+                  },
+                  {
+                    "id": "2",
+                    "date": "12/30(月)",
+                    "routes": [
+                      {
+                        "seats": "△",
+                        "flightName": "TL012",
+                        "depart": {
+                          "airport": "NRT",
+                          "airportJapanese": "成田",
+                          "dateTime": "11:50"
+                        },
+                        "arrival": {
+                          "airport": "DFW",
+                          "airportJapanese": "ダラス・フォートワース",
+
+                          "dateTime": "08:05"
+                        }
+                      },
+                      {
+                        "seats": "7",
+                        "flightName": "TL7577",
+                        "depart": {
+                          "airport": "DFW",
+                          "airportJapanese": "ダラス・フォートワース",
+                          "dateTime": "11:01"
+                        },
+                        "arrival": {
+                          "airport": "SFO",
+                          "airportJapanese": "サンフランシスコ",
+                          "dateTime": "13:05"
+                        }
+                      }
+                    ],
+                    "price": "￥98,000",
+                    "time": "18時間 15分",
+                    "milage": "2371マイル"
+                  }
+                ];
+                const parts = messagePartsForFlightTicketList(cards);
+                composer.send(parts);
               }
               break;
             default:

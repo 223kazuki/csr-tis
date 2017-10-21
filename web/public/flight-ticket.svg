@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg viewBox="0 0 401.1332092285156 200.9584503173828" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <pattern id="pattern-0" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse" viewBox="0 0 100 100">
+      <path d="M 0 0 L 50 0 L 50 100 L 0 100 Z" style="fill: black;"/>
+    </pattern>
+    <linearGradient id="gradient-4" gradientUnits="userSpaceOnUse" x1="224.441" y1="126.058" x2="224.441" y2="332.336" gradientTransform="matrix(-0.085934, 0.996302, -2.195263, -0.189348, 659.074536, -59.434534)">
+      <stop offset="0" style="stop-color: rgb(166, 117, 206);"/>
+      <stop offset="1" style="stop-color: rgba(49, 41, 106, 1)"/>
+    </linearGradient>
+    <linearGradient id="gradient-10" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="0" spreadMethod="repeat">
+      <stop offset="0" style="stop-color: rgba(216, 216, 216, 1)"/>
+      <stop offset="1" style="stop-color: rgba(165, 165, 165, 1)"/>
+    </linearGradient>
+  </defs>
+  <rect x="-0.676" y="-1.279" width="405.232" height="206.278" style="fill: url(#gradient-4);"/>
+  <ellipse style="fill: rgb(126, 73, 195);" transform="matrix(0.204665, -0.978832, 0.978832, 0.204665, -484.338642, 890.163066)" cx="749.204" cy="1019.564" rx="270.722" ry="539.186"/>
+  <ellipse style="fill: url(#gradient-10);" transform="matrix(NaN, NaN, NaN, NaN, NaN, NaN)"/>
+</svg>

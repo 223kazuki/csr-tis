@@ -83,7 +83,13 @@
       "poll": "投票",
       "file": "ファイル",
       "goodNews": "定型文1",
-      "touchpoint2": "定型文2"
+      "touchpoint2": "定型文2",
+      "flightTicketList": "航空券一覧",
+      "flightTicket": "航空券",
+      "flightSeat": "航空機座席",
+      "flightTicketPurchase": "航空券購入",
+      "flightTicketReceit": "航空券レシート",
+      "pdf": "PDF"
     },
     "leadProfile": {
       "statsText": "統計",
