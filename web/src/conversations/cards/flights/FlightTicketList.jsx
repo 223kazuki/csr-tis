@@ -8,10 +8,10 @@ import './FlightTicketList.css';
 
 class CarouselCellFullScreen extends Component {
   render() {
-    const { close, id, date, routes, price, time, milage} = this.props;
+    const { close, id, date, routes, price, time, milage, select} = this.props;
     const flights = routes.map((route, i) => {
       return (
-        <div className='flights'>
+        <div className='flights' key={i}>
           <table>
             <colgroup>
               <col style={{width: "40%"}}/>
@@ -61,11 +61,13 @@ class CarouselCellFullScreen extends Component {
     return (
       <div className='CarouselCellFullScreen'>
         <button onClick={close} className='dismiss'><FontAwesome name='close' /></button>
-        <div className='carouselCellImage' style={{backgroundImage: `url(/flight.svg)`, backgroundSize: '150% auto'}}>
+        <div className='carouselCellImage'>
           <h1>{date}</h1>
           {flights}
           {detail}
-          <button>予約する</button>
+          <div className='submit'>
+            <button className='primary' onClick={select}>予約する</button>
+          </div>
         </div>
       </div>
     )
@@ -76,11 +78,17 @@ class CarouselCell extends Component {
   showExpanded() {
     const div = document.createElement('div');
     div.id = 'carouselCellExpanded';
-    ReactDOM.render(<CarouselCellFullScreen {...this.props} close={this.closeExpanded.bind(this)} />, div);
+    ReactDOM.render(<CarouselCellFullScreen {...this.props} close={this.closeExpanded.bind(this)} select={this.selectFlight.bind(this)}/>, div);
     document.body.appendChild(div);
   }
   closeExpanded() {
     document.getElementById('carouselCellExpanded').remove();
+  }
+  selectFlight() {
+    if (document.getElementById('carouselCellExpanded')) {
+      document.getElementById('carouselCellExpanded').remove();
+    };
+    console.log(this.props.id + ' selected.');
   }
   render() {
     const { id, date, routes} = this.props;
@@ -126,7 +134,7 @@ class CarouselCell extends Component {
         {contents}
         <div className='flightTicketPanel'>
           <span onClick={this.showExpanded.bind(this)}>詳細を見る</span>
-          <span>選択する</span>
+          <span onClick={this.selectFlight.bind(this)}>選択する</span>
         </div>
       </div>
     )
