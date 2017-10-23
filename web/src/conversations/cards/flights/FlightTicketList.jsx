@@ -8,7 +8,7 @@ import './FlightTicketList.css';
 
 class CarouselCellFullScreen extends Component {
   render() {
-    const { close, id, date, routes, price, time, milage, select} = this.props;
+    const { close, id, date, routes, price, time, milage, select, selectable } = this.props;
     const flights = routes.map((route, i) => {
       return (
         <div className='flights' key={i}>
@@ -58,6 +58,7 @@ class CarouselCellFullScreen extends Component {
           </tbody>
         </table>
       </div>);
+    var selectButton = selectable ? <button className='primary' onClick={select}>予約する</button> : null;
     return (
       <div className='CarouselCellFullScreen'>
         <button onClick={close} className='dismiss'><FontAwesome name='close' /></button>
@@ -66,7 +67,7 @@ class CarouselCellFullScreen extends Component {
           {flights}
           {detail}
           <div className='submit'>
-            <button className='primary' onClick={select}>予約する</button>
+            {selectButton}
           </div>
         </div>
       </div>
@@ -89,9 +90,18 @@ class CarouselCell extends Component {
       document.getElementById('carouselCellExpanded').remove();
     };
     console.log(this.props.id + ' selected.');
+    const composer = document.getElementsByTagName('layer-composer')[0];
+    const { id, date, routes, price, time, milage } = this.props;
+    const cards = [
+      Object.assign({ id, date, routes, price, time, milage },
+                    { selectable: false })
+    ];
+    console.log(cards);
+    const parts = messagePartsForFlightTicketList(cards);
+    composer.send(parts);
   }
   render() {
-    const { id, date, routes} = this.props;
+    const { id, date, routes, selectable } = this.props;
     var contents = routes.map((route, i) => {
       const dateHeader = ((i === 0) ? date : '');
       return (
@@ -129,12 +139,13 @@ class CarouselCell extends Component {
         </div>
       )
     });
+    var selectButton = selectable ? <span onClick={this.selectFlight.bind(this)}>選択する</span> : <span />;
     return (
       <div className='CarouselCell'>
         {contents}
         <div className='flightTicketPanel'>
           <span onClick={this.showExpanded.bind(this)}>詳細を見る</span>
-          <span onClick={this.selectFlight.bind(this)}>選択する</span>
+          {selectButton}
         </div>
       </div>
     )

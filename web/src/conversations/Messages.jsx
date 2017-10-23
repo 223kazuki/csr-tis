@@ -593,7 +593,8 @@ const Messages = connect(
               if (composer) {
                 const cards = [
                   {
-                    "id": "1",
+                    "id": "9b8810c8-18e8-4c8f-99ce-2a96915a21ab",
+                    "selectable": true,
                     "date": "12/30(月)",
                     "routes": [
                       {
@@ -616,7 +617,8 @@ const Messages = connect(
                     "milage": "1539マイル"
                   },
                   {
-                    "id": "2",
+                    "id": "90ddd38a-0ab1-4e44-bcbf-699fc51d7381",
+                    "selectable": true,
                     "date": "12/30(月)",
                     "routes": [
                       {
@@ -652,6 +654,38 @@ const Messages = connect(
                     "price": "￥98,000",
                     "time": "18時間 15分",
                     "milage": "2371マイル"
+                  }
+                ];
+                const parts = messagePartsForFlightTicketList(cards);
+                composer.send(parts);
+              }
+              break;
+            case "flightTicket":
+              if (composer) {
+                const cards = [
+                  {
+                    "id": "9b8810c8-18e8-4c8f-99ce-2a96915a21ab",
+                    "selectable": false,
+                    "date": "12/30(月)",
+                    "routes": [
+                      {
+                        "seats": "○",
+                        "flightName": "TL002",
+                        "depart": {
+                           "airport": "HND",
+                           "airportJapanese": "羽田",
+                           "dateTime": "19:45"
+                        },
+                        "arrival": {
+                          "airport": "SFO",
+                          "airportJapanese": "サンフランシスコ",
+                          "dateTime": "12:00"
+                        }
+                      }
+                    ],
+                    "price": "￥98,000",
+                    "time": "9時間 15分",
+                    "milage": "1539マイル"
                   }
                 ];
                 const parts = messagePartsForFlightTicketList(cards);
