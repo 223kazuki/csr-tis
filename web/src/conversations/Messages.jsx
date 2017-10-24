@@ -695,10 +695,8 @@ const Messages = connect(
               break;
             case "flightSeat":
               if (composer) {
-                const data = {
-
-                };
-                const parts = messagePartsForFlightSeat(data);
+                const seats = [];
+                const parts = messagePartsForFlightSeat(seats);
                 composer.send(parts);
               }
               break;

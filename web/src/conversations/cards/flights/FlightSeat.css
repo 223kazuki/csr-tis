@@ -2,9 +2,6 @@
   margin-left: -1rem;
   margin-right: -1rem; }
 
-.dom-flight-seat-demo .layer-message-item-main {
-  overflow-x: scroll !important; }
-
 layer-message-item.dom-flight-seat-demo layer-delete {
   display: none; }
 
@@ -22,18 +19,21 @@ layer-message-item.dom-flight-seat-demo layer-delete {
   margin: 0.25rem 0.5rem;
   overflow: hidden;
   width: 300px;
-  background-image: url('/select-seats-card.svg');
-  background-size: 100% auto;
-}
+  background-image: url("/select-seats-card.svg");
+  background-size: 100% auto; }
 
 .flightSeats .selectedSeat {
-  height: 80px;
-}
+  width: 100%;
+  font-size: 20px;
+  padding-left: 20px;
+  color: red;
+  display: table-cell;
+  vertical-align: middle;
+  height: 80px; }
 
 .flightSeats .selectSeatLabel {
   width: 100%;
-  background-color: #026CAB;
-}
+  background-color: #026CAB; }
 
 .flightSeats .selectSeatLabel span {
   width: 100%;
@@ -42,8 +42,7 @@ layer-message-item.dom-flight-seat-demo layer-delete {
   text-align: center;
   vertical-align: middle;
   margin: 10px 0;
-  cursor: pointer;
-}
+  cursor: pointer; }
 
 .carouselCellLabel {
   padding: 0.3em 0.6em; }
@@ -213,8 +212,7 @@ layer-message-item.dom-flight-seat-demo layer-delete {
   max-width: 375px;
   position: relative;
   top: 0;
-  margin: 0 auto;
-}
+  margin: 0 auto; }
 
 .flightSeatMap .header {
   display: flex;
@@ -226,15 +224,12 @@ layer-message-item.dom-flight-seat-demo layer-delete {
   height: 50px;
   top: 0;
   color: white;
-  background-color: rgba(0, 0, 0, .5);
-}
-
+  background-color: rgba(0, 0, 0, 0.5); }
 
 .flightSeatMap svg {
   width: 100%;
   max-width: 375px;
-  margin: 0 auto;
-}
+  margin: 0 auto; }
 
 .FullScreen .footer {
   position: absolute;
@@ -243,8 +238,7 @@ layer-message-item.dom-flight-seat-demo layer-delete {
   max-width: 355px;
   color: white;
   background-color: #EFF4F9;
-  padding: 10px;
-}
+  padding: 10px; }
 
 .FullScreen .footer button {
   height: 50px;
@@ -252,8 +246,7 @@ layer-message-item.dom-flight-seat-demo layer-delete {
   background-color: #CACFD2;
   border: none;
   color: white;
-  border-radius: 8px;
-}
+  border-radius: 8px; }
 
 .carouselFullScreenEmbed {
   margin: 1rem;
