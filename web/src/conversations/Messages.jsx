@@ -36,6 +36,7 @@ import { messagePartsForPoll } from './cards/Poll';
 import { messagePartsForFlightTicketList } from './cards/flights/FlightTicketList';
 import { messagePartsForFlightSeat } from './cards/flights/FlightSeat';
 import { messagePartsForFlightTicketPurchase } from './cards/flights/FlightTicketPurchase';
+import { messagePartsForPDF } from './cards/flights/PDF';
 require('./cards/LinkPreview');
 require('./cards/Response');
 import { messagePartsForFile } from './cards/File';
@@ -718,7 +719,15 @@ const Messages = connect(
               console.log('flightTicketReceit selected');
               break;
             case "pdf":
-              console.log('pdf selected');
+              if (composer) {
+                const doc = {
+                  title: 'e-チケット',
+                  discription: '',
+                  file: '/e-ticket.pdf'
+                };
+                const parts = messagePartsForPDF(doc);
+                composer.send(parts);
+              }
               break;
             default:
               break;
