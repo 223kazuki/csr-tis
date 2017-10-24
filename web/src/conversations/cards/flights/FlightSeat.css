@@ -24,12 +24,20 @@ layer-message-item.dom-flight-seat-demo layer-delete {
 
 .flightSeats .selectedSeat {
   width: 100%;
-  font-size: 20px;
   padding-left: 20px;
-  color: red;
   display: table-cell;
   vertical-align: middle;
   height: 80px; }
+
+.flightSeats .selectedSeat span {
+  display: flex;
+  align-items: center;
+  font-size: 15px;
+}
+
+.flightSeats .selectedSeat span svg {
+  margin-right: 10px;
+}
 
 .flightSeats .selectSeatLabel {
   width: 100%;

@@ -137,12 +137,25 @@ class FlightSeats extends Component {
     try {
       let data = JSON.parse(content);
       const seats = data.seats;
+      const selectSeatsLabel = (
+        <span>
+          <svg height="22px" width="22px" version="1.1" viewBox="0 0 22 22">
+            <defs/>
+            <g id="Symbols" fill="none" stroke="none" strokeWidth="1">
+              <g id="card/selected-seat" transform="translate(-15.000000, -37.000000)">
+                <circle id="Oval-6" cx="26" cy="48" fill="#BE2026" r="10" stroke="#BE2026"/>
+                <polygon id="Check" fill="#FFFFFF" points="21.5 47.5 20 49 24 53 33 44.5 31.5 43 24 50"/>
+              </g>
+            </g>
+          </svg>
+          {seats.map((seat, i) => {
+            return <span key={i}>{seat.name} が選択されています</span>;
+          })}
+        </span>);
       return (
         <div className='flightSeats'>
           <div className='selectedSeat'>
-            {seats.map((seat, i) => {
-              return <span key={i}>{seat.name} が選択されています</span>;
-            })}
+            {seats.length == 0 ? <span/> : selectSeatsLabel}
           </div>
           <div className='selectSeatLabel'>
             <span onClick={this.showExpanded.bind(this)}>{seats.length == 0 ? '座席を選択する' : '座席を選びなおす'}</span>
