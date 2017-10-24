@@ -716,9 +716,17 @@ const Messages = connect(
               }
               break;
             case "flightTicketReceit":
-              console.log('flightTicketReceit selected');
+              if (composer) {
+                const doc = {
+                  title: 'レシート',
+                  discription: '',
+                  file: '/receipt.pdf'
+                };
+                const parts = messagePartsForPDF(doc);
+                composer.send(parts);
+              }
               break;
-            case "pdf":
+            case "e-ticket":
               if (composer) {
                 const doc = {
                   title: 'e-チケット',

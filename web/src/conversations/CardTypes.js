@@ -10,10 +10,10 @@ export default [
   { id: 'file', icon: 'cloud-upload', userVisible: true },
   { id: 'goodNews', icon: 'magic' },
   { id: 'touchpoint2', icon: 'line-chart' },
-  { id: 'flightTicketList', icon: 'calendar-plus-o' },
-  { id: 'flightTicket', icon: 'calendar-plus-o' },
-  { id: 'flightSeat', icon: 'calendar-plus-o' },
-  { id: 'flightTicketPurchase', icon: 'calendar-plus-o' },
-  { id: 'flightTicketReceit', icon: 'calendar-plus-o' },
-  { id: 'pdf', icon: 'calendar-plus-o' }
+  { id: 'flightTicketList', icon: 'ticket' },
+  { id: 'flightTicket', icon: 'ticket' },
+  { id: 'flightSeat', icon: 'plane' },
+  { id: 'flightTicketPurchase', icon: 'credit-card' },
+  { id: 'flightTicketReceit', icon: 'file-pdf-o' },
+  { id: 'e-ticket', icon: 'file-pdf-o' }
 ]
