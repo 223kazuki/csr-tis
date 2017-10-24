@@ -1,0 +1,80 @@
+.dom-flight-ticket-purchase-demo {
+  margin-left: -1rem;
+  margin-right: -1rem; }
+
+layer-message-item.dom-flight-ticket-purchase-demo layer-delete {
+  display: none; }
+
+.carouselContainer {
+  font-size: 0.9em;
+  text-align: left;
+  white-space: nowrap;
+  max-width: 480px; }
+
+.FlightTicketPurchases {
+  width: 100%;
+  background: white;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 2px 0px #DDD;
+  display: inline-block;
+  margin: 0.25rem 0.5rem;
+  overflow: hidden;
+  width: 300px;
+  text-align: left; }
+
+.FlightTicketPurchases .header {
+  height: 20px;
+  background-color: #00539C;
+  color: white;
+  padding: 10px;
+}
+
+.FlightTicketPurchases .header span {
+  float: left;
+}
+
+.FlightTicketPurchases .header span.date {
+  float: right;
+  background-color: #236BA4;
+  border-radius: 5px;
+  padding: 5px;
+  font-size: 10px;
+}
+
+.FlightTicketPurchases .content {
+  padding: 10px;
+}
+
+.FlightTicketPurchases .content hr {
+  border-style: solid;
+  border-color: #DBDBDB;
+}
+
+.FlightTicketPurchases .content table {
+  width: 100%;
+}
+
+.FlightTicketPurchases .content td {
+  text-align: right;
+}
+
+.FlightTicketPurchases .footer {
+  background-color: #FAFAFA;
+  height: 20px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.FlightTicketPurchases .confirmed {
+  cursor: default;
+}
+
+.FlightTicketPurchases .footer span {
+  color: #58646D;
+}
+
+.FlightTicketPurchases .footer svg {
+}

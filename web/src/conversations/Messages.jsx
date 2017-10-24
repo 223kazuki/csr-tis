@@ -35,6 +35,7 @@ import { messagePartsForLocation } from './cards/Location';
 import { messagePartsForPoll } from './cards/Poll';
 import { messagePartsForFlightTicketList } from './cards/flights/FlightTicketList';
 import { messagePartsForFlightSeat } from './cards/flights/FlightSeat';
+import { messagePartsForFlightTicketPurchase } from './cards/flights/FlightTicketPurchase';
 require('./cards/LinkPreview');
 require('./cards/Response');
 import { messagePartsForFile } from './cards/File';
@@ -701,7 +702,17 @@ const Messages = connect(
               }
               break;
             case "flightTicketPurchase":
-              console.log('flightTicketPurchase selected');
+              if (composer) {
+                const order = {
+                  price: '￥98,000',
+                  tax: '￥0',
+                  amount: '￥98,000',
+                  date: '12/30(月)',
+                  confirmed: false
+                };
+                const parts = messagePartsForFlightTicketPurchase(order);
+                composer.send(parts);
+              }
               break;
             case "flightTicketReceit":
               console.log('flightTicketReceit selected');
