@@ -34,6 +34,7 @@ import { messagePartsForZoomCall } from './cards/Zoom';
 import { messagePartsForLocation } from './cards/Location';
 import { messagePartsForPoll } from './cards/Poll';
 import { messagePartsForFlightTicketList } from './cards/flights/FlightTicketList';
+import { messagePartsForFlightSeat } from './cards/flights/FlightSeat';
 require('./cards/LinkPreview');
 require('./cards/Response');
 import { messagePartsForFile } from './cards/File';
@@ -691,6 +692,24 @@ const Messages = connect(
                 const parts = messagePartsForFlightTicketList(cards);
                 composer.send(parts);
               }
+              break;
+            case "flightSeat":
+              if (composer) {
+                const data = {
+
+                };
+                const parts = messagePartsForFlightSeat(data);
+                composer.send(parts);
+              }
+              break;
+            case "flightTicketPurchase":
+              console.log('flightTicketPurchase selected');
+              break;
+            case "flightTicketReceit":
+              console.log('flightTicketReceit selected');
+              break;
+            case "pdf":
+              console.log('pdf selected');
               break;
             default:
               break;
