@@ -89,14 +89,12 @@ class CarouselCell extends Component {
     if (document.getElementById('carouselCellExpanded')) {
       document.getElementById('carouselCellExpanded').remove();
     };
-    console.log(this.props.id + ' selected.');
     const composer = document.getElementsByTagName('layer-composer')[0];
     const { id, date, routes, price, time, milage } = this.props;
     const cards = [
       Object.assign({ id, date, routes, price, time, milage },
                     { selectable: false })
     ];
-    console.log(cards);
     const parts = messagePartsForFlightTicketList(cards);
     composer.send(parts);
   }
@@ -105,7 +103,7 @@ class CarouselCell extends Component {
     var contents = routes.map((route, i) => {
       const dateHeader = ((i === 0) ? date : '');
       return (
-        <div className='flightTicket'>
+        <div key={i} className='flightTicket'>
           <table>
             <colgroup>
               <col style={{width: "40%"}}/>
@@ -113,7 +111,7 @@ class CarouselCell extends Component {
               <col style={{width: "40%"}}/>
             </colgroup>
             <tbody>
-              <tr><td colspan={3} className='dateHeader'>{dateHeader}</td></tr>
+              <tr><td colSpan={3} className='dateHeader'>{dateHeader}</td></tr>
               <tr>
                 <td className='flightTicketCell' style={{wordWrap: 'break-word',textAlign: 'center'}}>
                   <p>{route.depart.airport}</p>
@@ -158,7 +156,6 @@ class Carousel extends Component {
     try {
       let data = JSON.parse(content);
       const items = data.items || data;
-      console.log(items);
       return (
         <div className='carouselContainer'>
           {items.map((card, idx) => <CarouselCell {...card} key={idx} />)}
