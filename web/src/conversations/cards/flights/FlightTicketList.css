@@ -164,7 +164,8 @@ layer-message-item.dom-flight-ticket-list-demo layer-delete {
   position: absolute;
   right: 0;
   top: 0;
-  z-index: 20; }
+  z-index: 20;
+  overflow-y: scroll; }
 
 .CarouselCellFullScreen button.dismiss {
   background: rgba(160, 160, 160, 0.7);
