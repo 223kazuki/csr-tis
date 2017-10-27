@@ -126,7 +126,10 @@
       "state": "県",
       "zip": "郵便番号",
       "linkToSalesforce": "Salesforceリードとリンク",
-      "createSalesforceLead": "Salesforceリードを作成"
+      "createSalesforceLead": "Salesforceリードを作成",
+      "milage": "マイル",
+      "sex": "性別",
+      "birthday": "生年月日"
     },
     "zendeskTickets": {
       "id": "ID:",

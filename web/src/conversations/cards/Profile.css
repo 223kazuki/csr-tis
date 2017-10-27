@@ -1,0 +1,28 @@
+.CardBody {
+    width: 400px;
+}
+
+.ProfileCompose .ProfileBasics {
+  background: #F4F4F4;
+  padding: 0.5em 1em;
+}
+
+.ProfileCompose .ProfileOptions {
+  padding: 0.5em 1em 1em 1em;
+}
+
+.ProfileCompose .NewProfileOption {
+  display: flex;
+}
+.ProfileCompose .NewProfileOption button.inline {
+  flex: 0 0 auto;
+}
+
+.ProfilePrompt .Inputs {
+  background: #F4F4F4;
+  padding: 0.5em 1em;
+}
+
+.ProfilePrompt .Inputs table {
+    width: 100%;
+}

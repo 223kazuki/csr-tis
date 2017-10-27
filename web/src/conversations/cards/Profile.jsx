@@ -27,6 +27,7 @@ class Profile extends Component {
     super(props);
     this.state = {
       id: '',
+      lead_id: '',
       last_name: '',
       first_name: '',
       phone: '',
@@ -50,14 +51,16 @@ class Profile extends Component {
       } else {
         this.setState({ savedResponses: res });
         if (res.profile) {
-          const { id, last_name, first_name, phone, sex, birthday } = res.profile;
-          this.setState({ 
-            id: id,
-            last_name: last_name,
-            first_name: first_name,
-            phone: phone,
-            birthday: birthday,
-            sex: sex,
+          const { id, last_name, first_name, phone, sex, birthday, lead_id } = res.profile;
+          this.setState({
+            savedResponses: res,
+            id,
+            lead_id,
+            last_name,
+            first_name,
+            phone,
+            birthday,
+            sex
           });
         }
       }
@@ -72,15 +75,8 @@ class Profile extends Component {
   onSubmit() {
     this.setState({ isSubmitting: true });
     const messageID = stripPrefix(this.props.message.id);
-    const { id, last_name, first_name, phone, birthday, sex } = this.state;
-    const profile = {
-      id: id,
-      last_name: last_name,
-      first_name: first_name,
-      phone: phone,
-      birthday: birthday,
-      sex: sex,
-    };
+    const { id, last_name, first_name, phone, birthday, sex, lead_id } = this.state;
+    const profile = { id, lead_id, last_name, first_name, phone, birthday, sex };
     const patchOp = {operation: 'set', property: `profile`, value: profile };
     const payload = { raw: JSON.stringify(patchOp) };
     patch(`/message/${messageID}`, payload, (err, res) => {
@@ -90,6 +86,15 @@ class Profile extends Component {
         this.setState({ isSubmitting: new Error(res.error) });
       else {
         this.setState({ isSubmitting: false, submitted: true });
+        const payload = {
+          name: first_name + ' ' + last_name,
+          phone,
+          sex,
+          birthday
+        };
+        patch(`/editProfile?leadID=${lead_id}`, payload, (err, resp) => {
+          if (err) console.log(err);
+        });
       }
     });
   }
@@ -110,8 +115,12 @@ class Profile extends Component {
             <p className='CardTitle'><FontAwesome name='bars' /> お客様情報</p>
             {submitButton}
           </div>
-          <div className='ProposedOptions'>
+          <div className='Inputs'>
             <table>
+              <colgroup>
+                <col style={{width: "100px"}}/>
+                <col/>
+              </colgroup>
               <tbody>
                 <tr>
                   <th>お名前（姓）</th>
@@ -140,9 +149,13 @@ class Profile extends Component {
                 <tr>
                   <th>性別</th>
                   <td>
-                    <input type='text'
+                    <select
                       value={sex}
-                      onChange={e => this.setState({ sex: e.target.value })} />
+                      onChange={e => this.setState({ sex: e.target.value })}>
+                      <option value="9001"></option>
+                      <option value="9002">男性</option>
+                      <option value="9003">女性</option>
+                    </select>
                   </td>
                 </tr>
                 <tr>
@@ -202,10 +215,12 @@ registerComponent('csr-profile-card', {
       const { content, onSend, message } = this;
       if (message.isNew()) {
         const { profile } = JSON.parse(content);
-        const { id, last_name, first_name, phone, birthday, sex } = profile;
+        const { id, last_name, first_name, name, phone, birthday, sex, lead_id } = profile;
         const messageID = stripPrefix(message.id);
         const initialProfile = {
           id: id,
+          lead_id: lead_id,
+          name: name || '',
           last_name: last_name || '',
           first_name: first_name || '',
           phone: phone || '',

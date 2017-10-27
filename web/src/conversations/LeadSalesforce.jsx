@@ -33,6 +33,9 @@ class LeadSalesforce extends Component {
         <LabelledField label={I18n.t('leadSalesforce.name')} detail={displayName} onChange={onFieldChange('name')} />
         <LabelledField label={I18n.t('leadSalesforce.email')} detail={profile.email} onChange={onFieldChange('email')} />
         <LabelledField label={I18n.t('leadSalesforce.phone')} detail={profile.phone} placeholder={unknown} onChange={onFieldChange('phone')} tabIndex={startingTabIndex + 0} />
+        <LabelledField label={I18n.t('leadSalesforce.milage')} detail={profile.milage} placeholder={unknown} onChange={onFieldChange('milage')} tabIndex={startingTabIndex + 13} />
+        <LabelledField label={I18n.t('leadSalesforce.sex')} detail={profile.sex} placeholder={unknown} onChange={onFieldChange('sex')} tabIndex={startingTabIndex + 14} selectOptions={selectOptions['sex']} />
+        <LabelledField label={I18n.t('leadSalesforce.birthday')} detail={profile.birthday} placeholder={unknown} onChange={onFieldChange('birthday')} tabIndex={startingTabIndex + 15} />
         <LabelledField label={I18n.t('leadSalesforce.leadOwner')} detail={profile.lead_owner} placeholder={unknown} />
         <LabelledField label={I18n.t('leadSalesforce.leadStatus')} detail={profile.status} placeholder={unknown} selectOptions={selectOptions['status']} onChange={onFieldChange('status')} tabIndex={startingTabIndex + 7} />
         <LabelledField label={I18n.t('leadSalesforce.leadSource')} detail={profile.source} placeholder={unknown} selectOptions={selectOptions['source']} onChange={onFieldChange('source')} tabIndex={startingTabIndex + 8} />

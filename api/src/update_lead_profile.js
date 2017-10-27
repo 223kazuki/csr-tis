@@ -10,7 +10,7 @@ const layer = new LayerAPI({
 });
 
 var editableProfileFields = [
-  'status', 'source', 'phone', 'company', 'segment', 'industry', 'employees', 'department', 'role', 'address', 'city', 'state', 'zip', 'project_timeline', 'project_details', 'name', 'email'
+  'status', 'source', 'phone', 'company', 'segment', 'industry', 'employees', 'department', 'role', 'address', 'city', 'state', 'zip', 'project_timeline', 'project_details', 'name', 'email', 'milage', 'sex', 'birthday'
 ];
 const updateLeadProfile = (agentID, leadID, params) => new Promise((resolve, reject) => {
   if (params.phone)  // Normalize phone number

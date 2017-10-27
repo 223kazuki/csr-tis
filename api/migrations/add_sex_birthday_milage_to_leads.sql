@@ -1,0 +1,3 @@
+ALTER TABLE leads ADD COLUMN IF NOT EXISTS sex smallint;
+ALTER TABLE leads ADD COLUMN IF NOT EXISTS birthday text;
+ALTER TABLE leads ADD COLUMN IF NOT EXISTS milage integer;
