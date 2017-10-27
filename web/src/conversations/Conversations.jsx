@@ -10,6 +10,7 @@ import LeadProfile from './LeadProfile'
 import styled from 'styled-components'
 import { I18n, setLocale } from 'react-redux-i18n'
 import cookie from 'react-cookie';
+import { editProfile } from './actions'
 
 class NavLogoImpl extends Component {
   render () {
@@ -228,7 +229,21 @@ class ConversationsImpl extends Component {
     )
   }
 }
-const Conversations = styled(ConversationsImpl)`
+
+const Conversations = connect(
+  state => Object.assign({},
+    state.i18n,
+    { profile: state.conversations.selectedProfile }),
+  dispatch => ({
+    onFieldChange: fieldName => {
+      return ({ value }) => {
+        if (typeof value === 'object')
+          value = value.id;
+        dispatch(editProfile({ fieldName, value }));
+      }
+    }
+  })
+)(styled(ConversationsImpl)`
   display: flex;
   .ConversationsList {
     flex-shrink: 0;
@@ -246,6 +261,6 @@ const Conversations = styled(ConversationsImpl)`
     overflow-y: hidden;
     width: 420px;
   }
-`
+`)
 
 export default Conversations

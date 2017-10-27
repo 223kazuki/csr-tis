@@ -37,6 +37,7 @@ import { messagePartsForFlightTicketList } from './cards/flights/FlightTicketLis
 import { messagePartsForFlightSeat } from './cards/flights/FlightSeat';
 import { messagePartsForFlightTicketPurchase } from './cards/flights/FlightTicketPurchase';
 import { messagePartsForPDF } from './cards/flights/PDF';
+import { messagePartsForProfile } from './cards/Profile';
 require('./cards/LinkPreview');
 require('./cards/Response');
 import { messagePartsForFile } from './cards/File';
@@ -258,7 +259,6 @@ class MessagesImpl extends Component {
     return node
   }
   render () {
-    const locale = this.props.locale;
     // Hack to show "Loading" while link preview loads
     const composer = document.getElementsByTagName('layer-composer')[0];
     var conversationID = this.props.conversationID;
@@ -319,7 +319,8 @@ class MessagesImpl extends Component {
         <Popover id='cardPicker' title='Send a card'>
           <AddCardPicker options={cards} onSelectCard={id => {
             this.overlayTrigger.hide();
-            this.props.onSelectCard(id, locale);
+            const { locale, profile } = this.props;
+            this.props.onSelectCard(id, profile, locale);
           }} />
         </Popover>
       );
@@ -361,7 +362,8 @@ const Messages = connect(
                                      { selectedConversation: conversationWithID(state, ownProps.conversationID || state.conversations.selectedConversation) },
                                      { conversationID: ownProps.conversationID || state.conversations.selectedConversation },
                                      { composerContent: state.conversations.ui.composerContent },
-                                     { onSendTrigger: ownProps.onSendTrigger }),
+                                     { onSendTrigger: ownProps.onSendTrigger },
+                                     { profile: state.conversations.selectedProfile }),
   (dispatch) => ({
     onSendMessage: (conversationID, evt) => {
       dispatch(updateConversationPreview(conversationID, evt.detail.item));
@@ -369,7 +371,7 @@ const Messages = connect(
     onComposerChange: evt => {
       dispatch(updateComposerContent(evt.detail.value));
     },
-    onSelectCard: (cardID, locale) => {
+    onSelectCard: (cardID, profile, locale) => {
       const composer = document.getElementsByTagName('layer-composer')[0];
       switch (locale) {
         case "en": {
@@ -598,7 +600,7 @@ const Messages = connect(
                   {
                     "id": "9b8810c8-18e8-4c8f-99ce-2a96915a21ab",
                     "selectable": true,
-                    "date": "12/30(月)",
+                    "date": "12/28(木)",
                     "routes": [
                       {
                         "seats": "○",
@@ -615,14 +617,15 @@ const Messages = connect(
                         }
                       }
                     ],
-                    "price": "￥98,000",
+                    "price": "￥156,000",
+                    "tax": "￥17,320",
                     "time": "9時間 15分",
-                    "milage": "1539マイル"
+                    "milage": "5130マイル"
                   },
                   {
                     "id": "90ddd38a-0ab1-4e44-bcbf-699fc51d7381",
                     "selectable": true,
-                    "date": "12/30(月)",
+                    "date": "12/28(木)",
                     "routes": [
                       {
                         "seats": "△",
@@ -645,18 +648,58 @@ const Messages = connect(
                         "depart": {
                           "airport": "DFW",
                           "airportJapanese": "ダラス・フォートワース",
-                          "dateTime": "11:01"
+                          "dateTime": "11:10"
                         },
                         "arrival": {
                           "airport": "SFO",
                           "airportJapanese": "サンフランシスコ",
-                          "dateTime": "13:05"
+                          "dateTime": "13:14"
                         }
                       }
                     ],
-                    "price": "￥98,000",
-                    "time": "18時間 15分",
-                    "milage": "2371マイル"
+                    "price": "￥166,500",
+                    "tax": "￥17,320",
+                    "time": "18時間 24分",
+                    "milage": "7904マイル"
+                  },
+                  {
+                    "id": "9f06f070-d434-4a20-bfec-05a71902ad4f",
+                    "selectable": true,
+                    "date": "12/28(木)",
+                    "routes": [
+                      {
+                        "seats": "7",
+                        "flightName": "TL7016",
+                        "depart": {
+                          "airport": "NRT",
+                          "airportJapanese": "成田",
+                          "dateTime": "18:45"
+                        },
+                        "arrival": {
+                          "airport": "LAX",
+                          "airportJapanese": "ロサンゼルス",
+                          "dateTime": "11:45"
+                        }
+                      },
+                      {
+                        "seats": "7",
+                        "flightName": "TL7556",
+                        "depart": {
+                          "airport": "LAX",
+                          "airportJapanese": "ロサンゼルス",
+                          "dateTime": "14:00"
+                        },
+                        "arrival": {
+                          "airport": "SFO",
+                          "airportJapanese": "サンフランシスコ",
+                          "dateTime": "15:30"
+                        }
+                      }
+                    ],
+                    "price": "￥199,000",
+                    "tax": "￥17,320",
+                    "time": "13時間 45分",
+                    "milage": "5797マイル"
                   }
                 ];
                 const parts = messagePartsForFlightTicketList(cards);
@@ -735,6 +778,16 @@ const Messages = connect(
                 };
                 const parts = messagePartsForPDF(doc);
                 composer.send(parts);
+              }
+              break;
+            case "profile":
+              if (composer) {
+                const conversation = composer.conversation;
+                const data = Object.assign( { profile },
+                                            { compose: true })
+                const parts = messagePartsForProfile( JSON.stringify(data) );
+                const message = conversation.createMessage({ parts });
+                message.presend();
               }
               break;
             default:

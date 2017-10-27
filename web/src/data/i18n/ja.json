@@ -89,7 +89,8 @@
       "flightSeat": "航空機座席",
       "flightTicketPurchase": "航空券購入",
       "flightTicketReceit": "航空券レシート",
-      "e-ticket": "e-チケット"
+      "e-ticket": "e-チケット",
+      "profile": "個人情報入力"
     },
     "leadProfile": {
       "statsText": "統計",
