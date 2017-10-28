@@ -16,6 +16,7 @@ import {
   sendEmail,
   sendSMS,
   removeBot,
+  addBot,
   showOtherAgents,
   reassignToAgent } from './actions';
 import AddCardPicker from './AddCardPicker';
@@ -63,6 +64,7 @@ class ActionBarImpl extends Component {
       sendEmail,
       sendSMS,
       removeBot,
+      addBot,
       showAssigneeTargets,
       reassign,
       active,
@@ -100,6 +102,12 @@ class ActionBarImpl extends Component {
       removeBotButton = <button className='inline error' onClick={() => alert(removeBotState)}>{I18n.t('messages.errorMessage')}</button>
     else if (removeBotState === 'done')
       removeBotButton = <button className='inline success'>{I18n.t('messages.botRemovedText')}<FontAwesome name='check' /></button>
+    else if (removeBotState === 'added')
+      removeBotButton = <button className='inline success'>{I18n.t('messages.botAddedText')}<FontAwesome name='check' /></button>
+    else if (removeBotState === 'adding')
+      removeBotButton = <button className='inline' disabled>{I18n.t('messages.addingBotText')}<FontAwesome name='spinner' spin /></button>
+    else if (removeBotState === 'removed')
+      removeBotButton = <button className='inline' onClick={addBot}>{I18n.t('messages.addBotText')}</button>
     else
       removeBotButton = <button className='inline error'>{I18n.t('messages.unrecognizedState')} {removeBotState}</button>
 
@@ -197,6 +205,9 @@ const ActionBar = connect(
     },
     removeBot: _ => {
       dispatch(removeBot());
+    },
+    addBot: _ => {
+      dispatch(addBot());
     },
     showAssigneeTargets: _ => {
       dispatch(showOtherAgents());

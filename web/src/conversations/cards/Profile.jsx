@@ -51,7 +51,7 @@ class Profile extends Component {
       } else {
         this.setState({ savedResponses: res });
         if (res.profile) {
-          const { id, last_name, first_name, phone, sex, birthday, lead_id } = res.profile;
+          const { id, last_name, first_name, phone, sex, birthday, lead_id, submitted } = res.profile;
           this.setState({
             savedResponses: res,
             id,
@@ -60,7 +60,8 @@ class Profile extends Component {
             first_name,
             phone,
             birthday,
-            sex
+            sex,
+            submitted
           });
         }
       }
@@ -76,7 +77,7 @@ class Profile extends Component {
     this.setState({ isSubmitting: true });
     const messageID = stripPrefix(this.props.message.id);
     const { id, last_name, first_name, phone, birthday, sex, lead_id } = this.state;
-    const profile = { id, lead_id, last_name, first_name, phone, birthday, sex };
+    const profile = { id, lead_id, last_name, first_name, phone, birthday, sex, submitted: true };
     const patchOp = {operation: 'set', property: `profile`, value: profile };
     const payload = { raw: JSON.stringify(patchOp) };
     patch(`/message/${messageID}`, payload, (err, res) => {
@@ -94,6 +95,12 @@ class Profile extends Component {
         };
         patch(`/editProfile?leadID=${lead_id}`, payload, (err, resp) => {
           if (err) console.log(err);
+          const conversation = WebSDK.getConversation(this.props.message.conversationId);
+          const receiptMIMEType = `application/x.card-response+json`;
+          const receiptMessage = conversation.createMessage({
+            parts: [{ body: JSON.stringify({}), mimeType: receiptMIMEType }]
+          });
+          receiptMessage.send();
         });
       }
     });
@@ -102,7 +109,9 @@ class Profile extends Component {
     const { id, last_name, first_name, phone, sex, birthday, isSubmitting, submitted } = this.state;
 
     let submitButton = null;
-    if (isSubmitting instanceof Error)
+    if (submitted)
+      submitButton = <span>登録済</span>
+    else if (isSubmitting instanceof Error)
       submitButton = <button className='inline error' onClick={() => alert(isSubmitting.message)}>Error</button>;
     else if (isSubmitting)
       submitButton = <button className='inline' disabled>登録中&hellip; <FontAwesome name='spinner' spin /></button>;
@@ -127,6 +136,7 @@ class Profile extends Component {
                   <td>
                     <input type='text'
                       value={last_name}
+                      disabled={submitted}
                       onChange={e => this.setState({ last_name: e.target.value })} />
                   </td>
                 </tr>
@@ -135,6 +145,7 @@ class Profile extends Component {
                   <td>
                     <input type='text'
                       value={first_name}
+                      disabled={submitted}
                       onChange={e => this.setState({ first_name: e.target.value })} />
                   </td>
                 </tr>
@@ -143,6 +154,7 @@ class Profile extends Component {
                   <td>
                     <input type='text'
                       value={birthday}
+                      disabled={submitted}
                       onChange={e => this.setState({ birthday: e.target.value })} />
                   </td>
                 </tr>
@@ -151,6 +163,7 @@ class Profile extends Component {
                   <td>
                     <select
                       value={sex}
+                      disabled={submitted}
                       onChange={e => this.setState({ sex: e.target.value })}>
                       <option value="9001"></option>
                       <option value="9002">男性</option>
@@ -163,6 +176,7 @@ class Profile extends Component {
                   <td>
                     <input type='text'
                       value={phone}
+                      disabled={submitted}
                       onChange={e => this.setState({ phone: e.target.value })} />
                   </td>
                 </tr>

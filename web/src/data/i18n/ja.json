@@ -48,6 +48,9 @@
       "removingBotText": "除外中... ",
       "errorMessage": "エラー（クリックして詳細表示）",
       "botRemovedText": "ボットを外しました ",
+      "addingBotText": "追加中",
+      "addBotText": "ボットを追加する",
+      "botAddedText": "ボットが追加されました",
       "unrecognizedState": "想定外のエラー",
       "sendEmailText": "メール送信",
       "sendingText": "送信中... ",
@@ -228,7 +231,7 @@
         "recipient": "受信者: %{action}"
       },
       "Response": {
-        "responded": "誰からがあなたへ返信しました"
+        "responded": "誰かがあなたへ返信しました"
       },
       "SMSReceipt": {
         "recept": "%{sentAtDate} %{sentAtHours}:%{sentAtMinutes}:%{sentAtSeconds} に %{count} %{messagePlural} をSMSで送信"

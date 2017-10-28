@@ -408,6 +408,16 @@ agentRouter
     }
     this.body = { ok: true };
   })
+  .post('/addBot', function *(next) {
+    const conversationID = this.query.cid;
+    try {
+      yield inboundConversation.addBotToConversation(conversationID);
+    } catch (e) {
+      console.log("Error addind bot to conversation:");
+      console.log(e);
+    }
+    this.body = { ok: true };
+  })
   .post('/autofillLeads', function *(next) {
     const conversationID = this.query.cid;
     //const leadID = this.query.leadID;

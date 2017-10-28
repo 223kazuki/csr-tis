@@ -120,5 +120,6 @@ const createConversation = () => new Promise((resolve, reject) => {
 });
 
 const removeBotFromConversation = (conversationID) => layer.conversations.removeParticipantsAsync(conversationID, [process.env.DEMO_BOT_ID]);
+const addBotToConversation = (conversationID) => layer.conversations.addParticipantsAsync(conversationID, [process.env.DEMO_BOT_ID]);
 
-module.exports = { createConversation, getExistingConversation, removeBotFromConversation };
+module.exports = { createConversation, getExistingConversation, removeBotFromConversation, addBotToConversation };

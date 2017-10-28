@@ -293,6 +293,22 @@ export const removeBot = () => {
       }
       else {
         dispatch(setRemoveBotButtonState('done'));
+        setTimeout(() => dispatch(setRemoveBotButtonState('removed')), 3500);
+      }
+    });
+  }
+}
+export const addBot = () => {
+  return (dispatch, getState) => {
+    const conversationID = getState().conversations.selectedConversation;
+    dispatch(setRemoveBotButtonState('adding'));
+    post(`/addBot?cid=${conversationID}`, {}, (err, resp) => {
+      if (err) {
+        dispatch(setRemoveBotButtonState(err));
+        setTimeout(() => dispatch(setRemoveBotButtonState('default')), 5000);
+      }
+      else {
+        dispatch(setRemoveBotButtonState('added'));
         setTimeout(() => dispatch(setRemoveBotButtonState('default')), 3500);
       }
     });
