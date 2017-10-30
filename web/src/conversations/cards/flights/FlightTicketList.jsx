@@ -140,7 +140,9 @@ class CarouselCell extends Component {
     var selectButton = selectable ? <span onClick={this.selectFlight.bind(this)}>選択する</span> : <span />;
     return (
       <div className='CarouselCell'>
+        <div className='FlightTickets'>
         {contents}
+        </div>
         <div className='flightTicketPanel'>
           <span onClick={this.showExpanded.bind(this)}>詳細を見る</span>
           {selectButton}

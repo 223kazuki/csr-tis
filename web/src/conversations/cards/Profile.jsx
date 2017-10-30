@@ -161,14 +161,16 @@ class Profile extends Component {
                 <tr>
                   <th>性別</th>
                   <td>
-                    <select
-                      value={sex}
-                      disabled={submitted}
-                      onChange={e => this.setState({ sex: e.target.value })}>
-                      <option value="9001"></option>
-                      <option value="9002">男性</option>
-                      <option value="9003">女性</option>
-                    </select>
+                    <input type="radio" value="9002" style={{width: '13px'}}
+                    checked={sex == '9002'}
+                    disabled={submitted}
+                    onChange={e => this.setState({ sex: e.target.value })} />
+                    <span style={{marginRight: '10px'}}>男性</span>
+                    <input type="radio" value="9003" style={{width: '13px'}}
+                    checked={sex == '9003'}
+                    disabled={submitted}
+                    onChange={e => this.setState({ sex: e.target.value })} />
+                    <span>女性</span>
                   </td>
                 </tr>
                 <tr>

@@ -24,6 +24,12 @@ layer-message-item.dom-flight-ticket-list-demo layer-delete {
   overflow: hidden;
   width: 250px; }
 
+.CarouselCell .FlightTickets {
+  background-image: url("/flight-tickets.svg");
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  background-position: right bottom; }
+
 .carouselCellLabel {
   padding: 0.3em 0.6em; }
 
@@ -40,7 +46,7 @@ layer-message-item.dom-flight-ticket-list-demo layer-delete {
 
 .flightTicket {
   background-repeat: no-repeat;
-  background-image: url("/flight-ticket.svg");
+  /*background-image: url("/flight-ticket.svg");*/
   background-size: 100% auto;
   color: white; }
 
@@ -73,7 +79,8 @@ layer-message-item.dom-flight-ticket-list-demo layer-delete {
   padding: 10px 10px 25px 10px; }
 
 .flightTicketPanel > span {
-  color: #6F7A82;
+  color: #19A5E4;
+  font-weight: bold;
   cursor: pointer; }
 
 .flightTicketPanel > span:first-child {

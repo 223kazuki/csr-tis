@@ -49,7 +49,7 @@ const sendEmail = (agent, body, to, replyTo) => new Promise((resolve, reject) =>
   const toEmail = new mailHelper.Email(to);
   const fromEmail = new mailHelper.Email(agent.email);
   const replyToEmail = new mailHelper.Email(replyTo);
-  const subject = `${agent.first_name} has sent you a message`;
+  const subject = `${agent.first_name} からのメッセージです`;
   const content = new mailHelper.Content('text/html', body);
   const mail = new mailHelper.Mail(fromEmail, subject, toEmail, content);
   mail.setReplyTo(replyToEmail);

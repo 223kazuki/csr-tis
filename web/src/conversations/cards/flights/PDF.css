@@ -1,0 +1,57 @@
+.PDFIcon {
+  margin-right: 1rem;
+  position: relative;
+}
+.PDFIcon img {
+  height: 50px;
+}
+.PDFIcon .PDFIconOutline {
+  font-size: 2.5rem;
+}
+.PDFIcon .PDFIconType {
+  bottom: 0.8rem;
+  font-size: 0.7rem;
+  left: 0;
+  position: absolute;
+  right: 0;
+  text-align: center;
+}
+.FileDetails {
+  height: 50px;
+  flex: 1;
+}
+
+.FileDetails h5,
+.FileDetails p {
+  height: 50px;
+  text-align: left;
+  display: flex;
+  align-items: center;
+}
+
+.FileDetails h5 {
+  color: #404F5A;
+  font-size: 1rem;
+  font-weight: bold;
+  margin: 0.2rem 0 0.4rem 0;
+}
+.FileDetails p {
+  color: #70828E;
+  font-size: 0.8rem;
+  margin: 0;
+}
+
+.PDF {
+  border: 1px solid #C3CDD4;
+  border-radius: 0.25rem;
+  display: flex;
+  padding: 1rem 1rem;
+}
+
+.FileImage {
+  border-radius: 1rem;
+  overflow: hidden;
+}
+.FileImage img {
+  width: 100%;
+}

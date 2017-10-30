@@ -4,7 +4,7 @@ import FontAwesome from 'react-fontawesome';
 import LayerUI, { registerComponent, registerMessageHandler } from 'layer-ui-web';
 const MessageHandlerMixin = LayerUI.mixins.MessageHandler;
 import * as Layer from 'layer-websdk';
-import '../File.css';
+import './PDF.css';
 
 class PDF extends Component {
   render() {
@@ -14,10 +14,9 @@ class PDF extends Component {
       const doc = data.doc;
       return (
         <a href={doc.file} target='_blank'>
-          <div className='FilePDF'>
-            <div className='FileIcon'>
-              <span className='FileIconOutline'><FontAwesome name='file-o' /></span>
-              <span className='FileIconType'>PDF</span>
+          <div className='PDF'>
+            <div className='PDFIcon'>
+              <img src="/pdf1@2x.png" />
             </div>
             <div className='FileDetails'>
               <h5>{doc.title || 'Untitled file'}</h5>

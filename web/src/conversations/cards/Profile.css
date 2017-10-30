@@ -27,3 +27,7 @@
 .ProfilePrompt .Inputs table {
     width: 100%;
 }
+
+.ProfilePrompt .Inputs table tbody th {
+    font-weight: normal;
+}
