@@ -39,6 +39,7 @@ import { messagePartsForFlightSeat } from './cards/flights/FlightSeat';
 import { messagePartsForFlightTicketPurchase } from './cards/flights/FlightTicketPurchase';
 import { messagePartsForPDF } from './cards/flights/PDF';
 import { messagePartsForProfile } from './cards/Profile';
+import { messagePartsForConfirmation } from './cards/Confirmation';
 require('./cards/LinkPreview');
 require('./cards/Response');
 import { messagePartsForFile } from './cards/File';
@@ -799,6 +800,23 @@ const Messages = connect(
                 const parts = messagePartsForProfile( JSON.stringify(data) );
                 const message = conversation.createMessage({ parts });
                 message.presend();
+              }
+              break;
+            case "confirmation":
+              if (composer) {
+                const data = {
+                  title: 'フライト予約内容',
+                  contents: [
+                    { name: '国内線・国際線', value: '国際線' },
+                    { name: 'ご予約人数', value: '1' },
+                    { name: '出発地域', value: '東京' },
+                    { name: '到着地域', value: 'サンフランシスコ' },
+                    { name: 'ご出発の日付', value: '2017/10/31' },
+                    { name: 'お帰りの日付', value: '2017/11/01' }
+                  ]
+                };
+                const parts = messagePartsForConfirmation(data);
+                composer.send(parts);
               }
               break;
             default:

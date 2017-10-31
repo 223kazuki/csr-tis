@@ -1,0 +1,86 @@
+.dom-confirmation-demo {
+  margin-left: -1rem;
+  margin-right: -1rem; }
+
+layer-message-item.dom-confirmation-demo layer-delete {
+  display: none; }
+
+.carouselContainer {
+  font-size: 0.9em;
+  text-align: left;
+  white-space: nowrap;
+  max-width: 480px; }
+
+.Confirmation {
+  width: 100%;
+  background: white;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 2px 0px #DDD;
+  display: inline-block;
+  margin: 0.25rem 0.5rem;
+  overflow: hidden;
+  width: 300px;
+  text-align: left; }
+
+.Confirmation .header {
+  height: 20px;
+  background-color: #00539C;
+  color: white;
+  padding: 10px;
+}
+
+.Confirmation .header span {
+  float: left;
+}
+
+.Confirmation .header span.date {
+  float: right;
+  background-color: #236BA4;
+  border-radius: 5px;
+  padding: 5px;
+  font-size: 10px;
+}
+
+.Confirmation .content {
+  padding: 10px;
+}
+
+.Confirmation .content hr {
+  border-style: solid;
+  border-color: #DBDBDB;
+}
+
+.Confirmation .content table {
+  width: 100%;
+}
+
+.Confirmation .content th {
+  font-weight: normal;
+}
+
+.Confirmation .content td {
+  text-align: right;
+}
+
+.Confirmation .footer {
+  background-color: #FAFAFA;
+  height: 20px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.Confirmation .confirmed {
+  cursor: default;
+}
+
+.Confirmation .footer span {
+  width: 50%;
+  text-align: center;
+  color: #19A5E4;
+}
+
+.Confirmation .footer svg {
+}

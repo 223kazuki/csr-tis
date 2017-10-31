@@ -93,7 +93,8 @@
       "flightTicketPurchase": "航空券購入",
       "flightTicketReceit": "航空券レシート",
       "e-ticket": "e-チケット",
-      "profile": "個人情報入力"
+      "profile": "個人情報入力",
+      "confirmation": "入力内容確認"
     },
     "leadProfile": {
       "statsText": "統計",
