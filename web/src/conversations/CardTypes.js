@@ -16,5 +16,6 @@ export default [
   { id: 'flightTicketPurchase', icon: 'credit-card' },
   { id: 'flightTicketReceit', icon: 'file-pdf-o' },
   { id: 'e-ticket', icon: 'file-pdf-o' },
-  { id: 'profile', icon: 'user-o' }
+  { id: 'profile', icon: 'user-o' },
+  { id: 'confirmation', icon: 'user-o' }
 ]
